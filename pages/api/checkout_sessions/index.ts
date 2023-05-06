@@ -22,13 +22,15 @@ export default async function handler(
       }
       // Create Checkout Sessions from body params.
       const params: Stripe.Checkout.SessionCreateParams = {
-        submit_type: 'donate',
+        // submit_type: 'donate',
         payment_method_types: ['card'],
+        mode: 'payment',
         line_items: [
           {
             // name: 'Custom amount donation',
-            amount: formatAmountForStripe(amount, CURRENCY),
+            // amount: formatAmountForStripe(amount, CURRENCY),
             // currency: CURRENCY,
+            price: 'price_1MUi0HEjv771bjTXHmDQ2BET',
             quantity: 1
           }
         ],
@@ -37,7 +39,6 @@ export default async function handler(
       }
       const checkoutSession: Stripe.Checkout.Session =
         await stripe.checkout.sessions.create(params)
-
       res.status(200).json(checkoutSession)
     } catch (err) {
       const errorMessage =
