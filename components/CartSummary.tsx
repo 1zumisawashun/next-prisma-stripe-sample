@@ -37,9 +37,8 @@ const CartSummary = () => {
       setLoading(false)
       return
     }
-    const sessionId = response.id as string
-    // @ts-ignore
-    redirectToCheckout({ sessionId })
+
+    redirectToCheckout(response.id as string)
   }
 
   return (

@@ -1,4 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
+import Stripe from 'stripe'
+import inventory from '../../../constants/products'
 
 /*
  * Product data can be loaded from anywhere. In this case, we’re loading it from
@@ -8,9 +10,8 @@ import { NextApiRequest, NextApiResponse } from 'next'
  * The important thing is that the product info is loaded from somewhere trusted
  * so you know the pricing information is accurate.
  */
-import { validateCartItems } from 'use-shopping-cart/utilities/serverless'
-import Stripe from 'stripe'
-import inventory from '../../../data/products'
+// import { validateCartItems } from 'use-shopping-cart/utilities/serverless'
+const { validateCartItems } = require('use-shopping-cart/utilities')
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   // https://github.com/stripe/stripe-node#configuration
@@ -24,8 +25,8 @@ export default async function handler(
   if (req.method === 'POST') {
     try {
       // Validate the cart details that were sent from the client.
-      const line_items = validateCartItems(inventory as any, req.body)
-      const hasSubscription = line_items.find((item) => {
+      const line_items = validateCartItems(inventory, req.body)
+      const hasSubscription = line_items.find((item: any) => {
         return !!item.price_data.recurring
       })
       // Create Checkout Sessions from body params.

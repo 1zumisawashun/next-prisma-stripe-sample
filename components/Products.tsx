@@ -1,5 +1,5 @@
 import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart'
-import products from '../data/products'
+import products from '../constants/products'
 
 const Products = () => {
   const { addItem, removeItem } = useShoppingCart()
