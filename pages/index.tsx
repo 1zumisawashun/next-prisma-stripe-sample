@@ -12,7 +12,7 @@ const IndexPage: NextPage = () => {
             className="card checkout-style-background"
           >
             <h2 className="bottom">Donate with Checkout</h2>
-            <img src="/checkout-one-time-payments.svg" />
+            <img src="/checkout-one-time-payments.svg" alt="" />
           </Link>
         </li>
         <li>
@@ -21,7 +21,7 @@ const IndexPage: NextPage = () => {
             className="card elements-style-background"
           >
             <h2 className="bottom">Donate with Elements</h2>
-            <img src="/elements-card-payment.svg" />
+            <img src="/elements-card-payment.svg" alt="" />
           </Link>
         </li>
         <li>
@@ -30,7 +30,7 @@ const IndexPage: NextPage = () => {
             className="card cart-style-background"
           >
             <h2 className="bottom">Use Shopping Cart</h2>
-            <img src="/use-shopping-cart.png" />
+            <img src="/use-shopping-cart.png" alt="" />
           </Link>
         </li>
       </ul>

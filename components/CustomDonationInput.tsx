@@ -20,8 +20,9 @@ const CustomDonationInput = ({
   currency,
   step,
   onChange,
-  className,
+  className
 }: Props) => (
+  // eslint-disable-next-line jsx-a11y/label-has-associated-control
   <label>
     Custom donation amount ({formatAmountForDisplay(min, currency)}-
     {formatAmountForDisplay(max, currency)}):
@@ -34,7 +35,7 @@ const CustomDonationInput = ({
       max={max}
       step={step}
       onChange={onChange}
-    ></input>
+    />
     <input
       type="range"
       name={name}
@@ -43,7 +44,7 @@ const CustomDonationInput = ({
       max={max}
       step={step}
       onChange={onChange}
-    ></input>
+    />
   </label>
 )
 

@@ -1,12 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
+import Stripe from 'stripe'
 import { CURRENCY, MIN_AMOUNT, MAX_AMOUNT } from '../../../config'
 import { formatAmountForStripe } from '../../../utils/stripe-helpers'
 
-import Stripe from 'stripe'
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   // https://github.com/stripe/stripe-node#configuration
-  apiVersion: '2022-08-01',
+  apiVersion: '2022-08-01'
 })
 
 export default async function handler(
@@ -14,7 +14,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === 'POST') {
-    const amount: number = req.body.amount
+    const { amount } = req.body
     try {
       // Validate the amount that was passed from the client.
       if (!(amount >= MIN_AMOUNT && amount <= MAX_AMOUNT)) {
@@ -26,14 +26,14 @@ export default async function handler(
         payment_method_types: ['card'],
         line_items: [
           {
-            name: 'Custom amount donation',
+            // name: 'Custom amount donation',
             amount: formatAmountForStripe(amount, CURRENCY),
-            currency: CURRENCY,
-            quantity: 1,
-          },
+            // currency: CURRENCY,
+            quantity: 1
+          }
         ],
         success_url: `${req.headers.origin}/result?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${req.headers.origin}/donate-with-checkout`,
+        cancel_url: `${req.headers.origin}/donate-with-checkout`
       }
       const checkoutSession: Stripe.Checkout.Session =
         await stripe.checkout.sessions.create(params)

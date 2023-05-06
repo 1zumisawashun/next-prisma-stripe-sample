@@ -1,12 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
+import Stripe from 'stripe'
 import { CURRENCY, MIN_AMOUNT, MAX_AMOUNT } from '../../../config'
 import { formatAmountForStripe } from '../../../utils/stripe-helpers'
 
-import Stripe from 'stripe'
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   // https://github.com/stripe/stripe-node#configuration
-  apiVersion: '2020-08-27',
+  apiVersion: '2022-08-01'
 })
 
 export default async function handler(
@@ -20,7 +20,7 @@ export default async function handler(
   }
   const {
     amount,
-    payment_intent_id,
+    payment_intent_id
   }: { amount: number; payment_intent_id?: string } = req.body
   // Validate the amount that was passed from the client.
   if (!(amount >= MIN_AMOUNT && amount <= MAX_AMOUNT)) {
@@ -37,7 +37,7 @@ export default async function handler(
         const updated_intent = await stripe.paymentIntents.update(
           payment_intent_id,
           {
-            amount: formatAmountForStripe(amount, CURRENCY),
+            amount: formatAmountForStripe(amount, CURRENCY)
           }
         )
         res.status(200).json(updated_intent)
@@ -59,8 +59,8 @@ export default async function handler(
       currency: CURRENCY,
       description: process.env.STRIPE_PAYMENT_DESCRIPTION ?? '',
       automatic_payment_methods: {
-        enabled: true,
-      },
+        enabled: true
+      }
     }
     const payment_intent: Stripe.PaymentIntent =
       await stripe.paymentIntents.create(params)

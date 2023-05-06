@@ -9,7 +9,7 @@ type Props = {
 
 const Layout = ({
   children,
-  title = 'TypeScript Next.js Stripe Example',
+  title = 'TypeScript Next.js Stripe Example'
 }: Props) => (
   <>
     <Head>
@@ -32,7 +32,7 @@ const Layout = ({
       <header>
         <div className="header-content">
           <Link href="/" className="logo">
-            <img src="/logo.png" />
+            <img src="/logo.png" alt="" />
           </Link>
           <h1>
             <span className="light">Stripe Sample</span>

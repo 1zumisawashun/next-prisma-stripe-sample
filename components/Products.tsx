@@ -1,6 +1,5 @@
+import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart'
 import products from '../data/products'
-import { formatCurrencyString } from 'use-shopping-cart'
-import { useShoppingCart } from 'use-shopping-cart'
 
 const Products = () => {
   const { addItem, removeItem } = useShoppingCart()
@@ -14,10 +13,11 @@ const Products = () => {
           <p className="price">
             {formatCurrencyString({
               value: product.price,
-              currency: product.currency,
+              currency: product.currency
             })}
           </p>
           <button
+            type="button"
             className="cart-style-background"
             onClick={() => {
               console.log(product)
@@ -27,6 +27,7 @@ const Products = () => {
             Add to cart
           </button>
           <button
+            type="button"
             className="cart-style-background"
             onClick={() => removeItem(product.id)}
           >

@@ -12,7 +12,7 @@ const DonatePage: NextPage = () => {
   const [paymentIntent, setPaymentIntent] = useState<PaymentIntent | null>(null)
   useEffect(() => {
     fetchPostJSON('/api/payment_intents', {
-      amount: Math.round(config.MAX_AMOUNT / config.AMOUNT_STEP),
+      amount: Math.round(config.MAX_AMOUNT / config.AMOUNT_STEP)
     }).then((data) => {
       setPaymentIntent(data)
     })
@@ -29,10 +29,10 @@ const DonatePage: NextPage = () => {
               appearance: {
                 variables: {
                   colorIcon: '#6772e5',
-                  fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
-                },
+                  fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif'
+                }
               },
-              clientSecret: paymentIntent.client_secret,
+              clientSecret: paymentIntent.client_secret
             }}
           >
             <ElementsForm paymentIntent={paymentIntent} />

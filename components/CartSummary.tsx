@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
-import StripeTestCards from '../components/StripeTestCards'
-
 import { useShoppingCart } from 'use-shopping-cart'
+import StripeTestCards from './StripeTestCards'
+
 import { fetchPostJSON } from '../utils/api-helpers'
 
 const CartSummary = () => {
@@ -14,7 +14,7 @@ const CartSummary = () => {
     cartCount,
     clearCart,
     cartDetails,
-    redirectToCheckout,
+    redirectToCheckout
   } = useShoppingCart()
 
   useEffect(() => setCartEmpty(!cartCount), [cartCount])
@@ -37,8 +37,9 @@ const CartSummary = () => {
       setLoading(false)
       return
     }
-
-    redirectToCheckout({ sessionId: response.id })
+    const sessionId = response.id as string
+    // @ts-ignore
+    redirectToCheckout({ sessionId })
   }
 
   return (

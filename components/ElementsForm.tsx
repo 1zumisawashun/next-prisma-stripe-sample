@@ -1,18 +1,43 @@
 import React, { useState, FC } from 'react'
-
-import CustomDonationInput from '../components/CustomDonationInput'
-import StripeTestCards from '../components/StripeTestCards'
-import PrintObject from '../components/PrintObject'
-
+import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js'
+import { PaymentIntent } from '@stripe/stripe-js'
 import { fetchPostJSON } from '../utils/api-helpers'
+import CustomDonationInput from './CustomDonationInput'
+import StripeTestCards from './StripeTestCards'
+import PrintObject from './PrintObject'
+
 import {
   formatAmountForDisplay,
-  formatAmountFromStripe,
+  formatAmountFromStripe
 } from '../utils/stripe-helpers'
 import * as config from '../config'
 
-import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js'
-import { PaymentIntent } from '@stripe/stripe-js'
+const PaymentStatus = ({ status }: { status: string }) => {
+  switch (status) {
+    case 'processing':
+    case 'requires_payment_method':
+    case 'requires_confirmation':
+      return <h2>Processing...</h2>
+
+    case 'requires_action':
+      return <h2>Authenticating...</h2>
+
+    case 'succeeded':
+      return <h2>Payment Succeeded 🥳</h2>
+
+    case 'error':
+      return (
+        <>
+          <h2>Error 😭</h2>
+          {/* <p className="error-message">{errorMessage}</p> */}
+          <p className="error-message">error</p>
+        </>
+      )
+
+    default:
+      return null
+  }
+}
 
 const ElementsForm: FC<{
   paymentIntent?: PaymentIntent | null
@@ -22,7 +47,7 @@ const ElementsForm: FC<{
     : Math.round(config.MAX_AMOUNT / config.AMOUNT_STEP)
   const [input, setInput] = useState({
     customDonation: defaultAmout,
-    cardholderName: '',
+    cardholderName: ''
   })
   const [paymentType, setPaymentType] = useState('')
   const [payment, setPayment] = useState({ status: 'initial' })
@@ -30,36 +55,10 @@ const ElementsForm: FC<{
   const stripe = useStripe()
   const elements = useElements()
 
-  const PaymentStatus = ({ status }: { status: string }) => {
-    switch (status) {
-      case 'processing':
-      case 'requires_payment_method':
-      case 'requires_confirmation':
-        return <h2>Processing...</h2>
-
-      case 'requires_action':
-        return <h2>Authenticating...</h2>
-
-      case 'succeeded':
-        return <h2>Payment Succeeded 🥳</h2>
-
-      case 'error':
-        return (
-          <>
-            <h2>Error 😭</h2>
-            <p className="error-message">{errorMessage}</p>
-          </>
-        )
-
-      default:
-        return null
-    }
-  }
-
   const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) =>
     setInput({
       ...input,
-      [e.currentTarget.name]: e.currentTarget.value,
+      [e.currentTarget.name]: e.currentTarget.value
     })
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
@@ -72,7 +71,7 @@ const ElementsForm: FC<{
     // Create a PaymentIntent with the specified amount.
     const response = await fetchPostJSON('/api/payment_intents', {
       amount: input.customDonation,
-      payment_intent_id: paymentIntent?.id,
+      payment_intent_id: paymentIntent?.id
     })
     setPayment(response)
 
@@ -89,10 +88,10 @@ const ElementsForm: FC<{
         return_url: 'http://localhost:3000/donate-with-elements',
         payment_method_data: {
           billing_details: {
-            name: input.cardholderName,
-          },
-        },
-      },
+            name: input.cardholderName
+          }
+        }
+      }
     })
 
     if (error) {

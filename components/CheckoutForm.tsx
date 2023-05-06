@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-import CustomDonationInput from '../components/CustomDonationInput'
-import StripeTestCards from '../components/StripeTestCards'
+import CustomDonationInput from './CustomDonationInput'
+import StripeTestCards from './StripeTestCards'
 
 import getStripe from '../utils/get-stripejs'
 import { fetchPostJSON } from '../utils/api-helpers'
@@ -11,13 +11,13 @@ import * as config from '../config'
 const CheckoutForm = () => {
   const [loading, setLoading] = useState(false)
   const [input, setInput] = useState({
-    customDonation: Math.round(config.MAX_AMOUNT / config.AMOUNT_STEP),
+    customDonation: Math.round(config.MAX_AMOUNT / config.AMOUNT_STEP)
   })
 
   const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) =>
     setInput({
       ...input,
-      [e.currentTarget.name]: e.currentTarget.value,
+      [e.currentTarget.name]: e.currentTarget.value
     })
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
@@ -25,7 +25,7 @@ const CheckoutForm = () => {
     setLoading(true)
     // Create a Checkout Session.
     const response = await fetchPostJSON('/api/checkout_sessions', {
-      amount: input.customDonation,
+      amount: input.customDonation
     })
 
     if (response.statusCode === 500) {
@@ -39,7 +39,7 @@ const CheckoutForm = () => {
       // Make the id field from the Checkout Session creation API response
       // available to this file, so you can provide it as parameter here
       // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
-      sessionId: response.id,
+      sessionId: response.id
     })
     // If `redirectToCheckout` fails due to a browser or network
     // error, display the localized error message to your customer
@@ -52,7 +52,7 @@ const CheckoutForm = () => {
     <form onSubmit={handleSubmit}>
       <CustomDonationInput
         className="checkout-style"
-        name={'customDonation'}
+        name="customDonation"
         value={input.customDonation}
         min={config.MIN_AMOUNT}
         max={config.MAX_AMOUNT}

@@ -11,7 +11,13 @@ const StripeTestCards = () => {
       </a>{' '}
       for this demo, e.g.{' '}
       <div className="card-number">
-        4242<span></span>4242<span></span>4242<span></span>4242
+        4242
+        <span />
+        4242
+        <span />
+        4242
+        <span />
+        4242
       </div>
       .
     </div>

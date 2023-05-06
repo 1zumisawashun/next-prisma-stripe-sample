@@ -9,12 +9,12 @@ import { NextApiRequest, NextApiResponse } from 'next'
  * so you know the pricing information is accurate.
  */
 import { validateCartItems } from 'use-shopping-cart/utilities/serverless'
+import Stripe from 'stripe'
 import inventory from '../../../data/products'
 
-import Stripe from 'stripe'
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   // https://github.com/stripe/stripe-node#configuration
-  apiVersion: '2020-08-27',
+  apiVersion: '2022-08-01'
 })
 
 export default async function handler(
@@ -34,12 +34,12 @@ export default async function handler(
         payment_method_types: ['card'],
         billing_address_collection: 'auto',
         shipping_address_collection: {
-          allowed_countries: ['US', 'CA'],
+          allowed_countries: ['US', 'CA']
         },
         line_items,
         success_url: `${req.headers.origin}/result?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${req.headers.origin}/use-shopping-cart`,
-        mode: hasSubscription ? 'subscription' : 'payment',
+        mode: hasSubscription ? 'subscription' : 'payment'
       }
 
       const checkoutSession: Stripe.Checkout.Session =
