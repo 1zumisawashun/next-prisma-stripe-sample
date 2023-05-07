@@ -18,7 +18,7 @@ const Products = () => {
           </p>
           <button
             type="button"
-            className="cart-style-background"
+            className="btn btn-blue"
             onClick={() => {
               console.log(product)
               addItem(product)
@@ -28,7 +28,7 @@ const Products = () => {
           </button>
           <button
             type="button"
-            className="cart-style-background"
+            className="btn btn-blue"
             onClick={() => removeItem(product.id)}
           >
             Remove

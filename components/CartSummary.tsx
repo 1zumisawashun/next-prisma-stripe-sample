@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react'
-
 import { useShoppingCart } from 'use-shopping-cart'
-import StripeTestCards from './StripeTestCards'
-
 import { fetchPostJSON } from '../functions/helpers/api-helpers'
 
 const CartSummary = () => {
@@ -56,19 +53,14 @@ const CartSummary = () => {
       </p>
 
       {/* Redirects the user to Stripe */}
-      <StripeTestCards />
       <button
-        className="cart-style-background"
+        className="btn btn-blue"
         type="submit"
         disabled={cartEmpty || loading}
       >
         Checkout
       </button>
-      <button
-        className="cart-style-background"
-        type="button"
-        onClick={clearCart}
-      >
+      <button className="btn btn-blue" type="button" onClick={clearCart}>
         Clear Cart
       </button>
     </form>

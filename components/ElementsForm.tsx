@@ -1,11 +1,9 @@
-import React, { useState, FC } from 'react'
+import React, { useState } from 'react'
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js'
 import { PaymentIntent } from '@stripe/stripe-js'
 import { fetchPostJSON } from '../functions/helpers/api-helpers'
 import CustomDonationInput from './CustomDonationInput'
-import StripeTestCards from './StripeTestCards'
 import { PrintObject } from './uis/PrintObject'
-
 import {
   formatAmountForDisplay,
   formatAmountFromStripe
@@ -118,7 +116,6 @@ const ElementsForm: React.FC<ElementsFormProps> = ({
           currency={config.CURRENCY}
           onChange={handleInputChange}
         />
-        <StripeTestCards />
         <fieldset className="elements-style">
           <legend>Your payment details:</legend>
           {paymentType === 'card' ? (
@@ -140,7 +137,7 @@ const ElementsForm: React.FC<ElementsFormProps> = ({
           </div>
         </fieldset>
         <button
-          className="elements-style-background"
+          className="btn btn-blue"
           type="submit"
           disabled={
             !['initial', 'succeeded', 'error'].includes(payment.status) ||
