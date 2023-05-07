@@ -1,6 +1,7 @@
 import { NextPage, GetServerSideProps } from 'next'
 import Link from 'next/link'
 import { Layout } from '../components/layouts/Layout'
+import { PrintObject } from '../components/uis/PrintObject'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
@@ -30,9 +31,7 @@ const IndexPage: NextPage = (props) => {
     <Layout title="Home | Next.js + TypeScript Example">
       <ul className="card-list">
         <li>
-          <pre>
-            <code>{JSON.stringify(props, null, 2)}</code>
-          </pre>
+          <PrintObject content={props} />
         </li>
         <li>
           <Link

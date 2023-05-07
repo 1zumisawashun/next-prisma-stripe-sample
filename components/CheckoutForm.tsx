@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
-
 import CustomDonationInput from './CustomDonationInput'
 import StripeTestCards from './StripeTestCards'
-
 import { getStripe } from '../libs/stripejs'
 import { fetchPostJSON } from '../helpers/api-helpers'
 import { formatAmountForDisplay } from '../helpers/stripe-helpers'

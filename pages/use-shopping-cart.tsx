@@ -1,7 +1,5 @@
 import { NextPage } from 'next'
 import { Layout } from '../components/layouts/Layout'
-
-import Cart from '../components/Cart'
 import CartSummary from '../components/CartSummary'
 import Products from '../components/Products'
 
@@ -15,10 +13,8 @@ const DonatePage: NextPage = () => {
           <a href="https://useshoppingcart.com">use-shopping-cart</a> React
           hooks library.
         </p>
-        <Cart>
-          <CartSummary />
-          <Products />
-        </Cart>
+        <CartSummary />
+        <Products />
       </div>
     </Layout>
   )

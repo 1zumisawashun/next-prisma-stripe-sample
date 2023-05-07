@@ -38,10 +38,13 @@ const PaymentStatus = ({ status }: { status: string }) => {
       return null
   }
 }
-
-const ElementsForm: FC<{
+type ElementsFormProps = {
   paymentIntent?: PaymentIntent | null
-}> = ({ paymentIntent = null }) => {
+}
+
+const ElementsForm: React.FC<ElementsFormProps> = ({
+  paymentIntent = null
+}) => {
   const defaultAmout = paymentIntent
     ? formatAmountFromStripe(paymentIntent.amount, paymentIntent.currency)
     : Math.round(config.MAX_AMOUNT / config.AMOUNT_STEP)
