@@ -2,6 +2,7 @@ import { AppProps } from 'next/app'
 import { CartProvider } from 'use-shopping-cart'
 import * as config from '../functions/constants/config'
 import '../styles.css'
+import '../globals.css'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (

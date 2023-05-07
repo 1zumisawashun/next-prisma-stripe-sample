@@ -31,6 +31,9 @@ const IndexPage: NextPage = (props) => {
     <Layout title="Home | Next.js + TypeScript Example">
       <ul className="card-list">
         <li>
+          <h1 className="text-3xl font-bold underline">Hello world!</h1>
+        </li>
+        <li>
           <PrintObject content={props} />
         </li>
         <li>
