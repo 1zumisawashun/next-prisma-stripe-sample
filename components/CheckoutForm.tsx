@@ -4,9 +4,9 @@ import CustomDonationInput from './CustomDonationInput'
 import StripeTestCards from './StripeTestCards'
 
 import { getStripe } from '../libs/stripejs'
-import { fetchPostJSON } from '../utils/api-helpers'
-import { formatAmountForDisplay } from '../utils/stripe-helpers'
-import * as config from '../config'
+import { fetchPostJSON } from '../helpers/api-helpers'
+import { formatAmountForDisplay } from '../helpers/stripe-helpers'
+import * as config from '../constants/config'
 
 const CheckoutForm = () => {
   const [loading, setLoading] = useState(false)

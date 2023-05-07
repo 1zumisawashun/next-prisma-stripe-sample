@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react'
 import { Elements } from '@stripe/react-stripe-js'
 import { PaymentIntent } from '@stripe/stripe-js'
 import { getStripe } from '../libs/stripejs'
-import { fetchPostJSON } from '../utils/api-helpers'
-import Layout from '../components/Layout'
-import * as config from '../config'
+import { fetchPostJSON } from '../helpers/api-helpers'
+import { Layout } from '../components/layouts/Layout'
+import * as config from '../constants/config'
 import ElementsForm from '../components/ElementsForm'
 
 const DonatePage: NextPage = () => {

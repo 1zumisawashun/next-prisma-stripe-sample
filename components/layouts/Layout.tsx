@@ -2,15 +2,15 @@ import React, { ReactNode } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 
-type Props = {
+type LayoutProps = {
   children: ReactNode
   title?: string
 }
 
-const Layout = ({
+export const Layout: React.FC<LayoutProps> = ({
   children,
   title = 'TypeScript Next.js Stripe Example'
-}: Props) => (
+}) => (
   <>
     <Head>
       <title>{title}</title>
@@ -66,5 +66,3 @@ const Layout = ({
     </div>
   </>
 )
-
-export default Layout

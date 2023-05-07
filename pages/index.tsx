@@ -1,6 +1,6 @@
 import { NextPage, GetServerSideProps } from 'next'
 import Link from 'next/link'
-import Layout from '../components/Layout'
+import { Layout } from '../components/layouts/Layout'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   try {

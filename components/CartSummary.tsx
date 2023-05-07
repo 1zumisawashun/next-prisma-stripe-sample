@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { useShoppingCart } from 'use-shopping-cart'
 import StripeTestCards from './StripeTestCards'
 
-import { fetchPostJSON } from '../utils/api-helpers'
+import { fetchPostJSON } from '../helpers/api-helpers'
 
 const CartSummary = () => {
   const [loading, setLoading] = useState(false)

@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import { CartProvider } from 'use-shopping-cart'
-import * as config from '../config'
+import * as config from '../constants/config'
 
 const Cart = ({ children }: { children: ReactNode }) => (
   <CartProvider

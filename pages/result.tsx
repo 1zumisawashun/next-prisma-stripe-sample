@@ -1,13 +1,11 @@
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
-
 import useSWR from 'swr'
-import Layout from '../components/Layout'
-import PrintObject from '../components/PrintObject'
+import { Layout } from '../components/layouts/Layout'
+import { PrintObject } from '../components/uis/PrintObject'
 import Cart from '../components/Cart'
 import { ClearCart } from '../components/ClearCart'
-
-import { fetchGetJSON } from '../utils/api-helpers'
+import { fetchGetJSON } from '../helpers/api-helpers'
 
 const ResultPage: NextPage = () => {
   const router = useRouter()

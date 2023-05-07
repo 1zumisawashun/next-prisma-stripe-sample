@@ -1,16 +1,16 @@
 import React, { useState, FC } from 'react'
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js'
 import { PaymentIntent } from '@stripe/stripe-js'
-import { fetchPostJSON } from '../utils/api-helpers'
+import { fetchPostJSON } from '../helpers/api-helpers'
 import CustomDonationInput from './CustomDonationInput'
 import StripeTestCards from './StripeTestCards'
-import PrintObject from './PrintObject'
+import { PrintObject } from './uis/PrintObject'
 
 import {
   formatAmountForDisplay,
   formatAmountFromStripe
-} from '../utils/stripe-helpers'
-import * as config from '../config'
+} from '../helpers/stripe-helpers'
+import * as config from '../constants/config'
 
 const PaymentStatus = ({ status }: { status: string }) => {
   switch (status) {

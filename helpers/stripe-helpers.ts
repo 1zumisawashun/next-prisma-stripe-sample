@@ -21,7 +21,9 @@ export function formatAmountForStripe(
     currency,
     currencyDisplay: 'symbol'
   })
+
   const parts = numberFormat.formatToParts(amount)
+
   let zeroDecimalCurrency: boolean = true
   for (const part of parts) {
     if (part.type === 'decimal') {

@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { CURRENCY, MIN_AMOUNT, MAX_AMOUNT } from '../../../config'
-import { formatAmountForStripe } from '../../../utils/stripe-helpers'
+import { CURRENCY, MIN_AMOUNT, MAX_AMOUNT } from '../../../constants/config'
+import { formatAmountForStripe } from '../../../helpers/stripe-helpers'
 import {
   stripe,
   StripeCheckoutSession,
