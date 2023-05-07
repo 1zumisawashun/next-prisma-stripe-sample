@@ -3,8 +3,8 @@ import {
   stripe,
   StripeCheckoutSession,
   StripeCheckoutSessionCreateParams
-} from '../../../libs/stripe'
-import inventory from '../../../constants/products'
+} from '../../../functions/libs/stripe'
+import inventory from '../../../functions/constants/products'
 
 /*
  * Product data can be loaded from anywhere. In this case, we’re loading it from

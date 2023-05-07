@@ -1,7 +1,7 @@
 import React, { useState, FC } from 'react'
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js'
 import { PaymentIntent } from '@stripe/stripe-js'
-import { fetchPostJSON } from '../helpers/api-helpers'
+import { fetchPostJSON } from '../functions/helpers/api-helpers'
 import CustomDonationInput from './CustomDonationInput'
 import StripeTestCards from './StripeTestCards'
 import { PrintObject } from './uis/PrintObject'
@@ -9,8 +9,8 @@ import { PrintObject } from './uis/PrintObject'
 import {
   formatAmountForDisplay,
   formatAmountFromStripe
-} from '../helpers/stripe-helpers'
-import * as config from '../constants/config'
+} from '../functions/helpers/stripe-helpers'
+import * as config from '../functions/constants/config'
 
 const PaymentStatus = ({ status }: { status: string }) => {
   switch (status) {

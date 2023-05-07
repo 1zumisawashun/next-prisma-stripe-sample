@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import { Layout } from '../components/layouts/Layout'
 import { PrintObject } from '../components/uis/PrintObject'
-import { fetchGetJSON } from '../helpers/api-helpers'
+import { fetchGetJSON } from '../functions/helpers/api-helpers'
 
 const ResultPage: NextPage = () => {
   const router = useRouter()

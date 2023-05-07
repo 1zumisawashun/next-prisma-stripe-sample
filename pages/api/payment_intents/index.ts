@@ -1,11 +1,15 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { CURRENCY, MIN_AMOUNT, MAX_AMOUNT } from '../../../constants/config'
-import { formatAmountForStripe } from '../../../helpers/stripe-helpers'
+import {
+  CURRENCY,
+  MIN_AMOUNT,
+  MAX_AMOUNT
+} from '../../../functions/constants/config'
+import { formatAmountForStripe } from '../../../functions/helpers/stripe-helpers'
 import {
   stripe,
   StripePaymentIntent,
   StripePaymentIntentCreateParams
-} from '../../../libs/stripe'
+} from '../../../functions/libs/stripe'
 
 export default async function handler(
   req: NextApiRequest,

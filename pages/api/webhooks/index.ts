@@ -6,7 +6,7 @@ import {
   StripePaymentIntent,
   StripeCharge,
   StripeEvent
-} from '../../../libs/stripe'
+} from '../../../functions/libs/stripe'
 
 const webhookSecret: string = process.env.STRIPE_WEBHOOK_SECRET!
 

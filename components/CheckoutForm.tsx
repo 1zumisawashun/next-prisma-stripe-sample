@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import CustomDonationInput from './CustomDonationInput'
 import StripeTestCards from './StripeTestCards'
-import { getStripe } from '../libs/stripejs'
-import { fetchPostJSON } from '../helpers/api-helpers'
-import { formatAmountForDisplay } from '../helpers/stripe-helpers'
-import * as config from '../constants/config'
+import { getStripe } from '../functions/libs/stripejs'
+import { fetchPostJSON } from '../functions/helpers/api-helpers'
+import { formatAmountForDisplay } from '../functions/helpers/stripe-helpers'
+import * as config from '../functions/constants/config'
 
 const CheckoutForm = () => {
   const [loading, setLoading] = useState(false)
