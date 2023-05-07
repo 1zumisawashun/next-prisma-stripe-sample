@@ -1,13 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-
-import Stripe from 'stripe'
 import { CURRENCY, MIN_AMOUNT, MAX_AMOUNT } from '../../../config'
 import { formatAmountForStripe } from '../../../utils/stripe-helpers'
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  // https://github.com/stripe/stripe-node#configuration
-  apiVersion: '2022-08-01'
-})
+import {
+  stripe,
+  StripePaymentIntent,
+  StripePaymentIntentCreateParams
+} from '../../../libs/stripe'
 
 export default async function handler(
   req: NextApiRequest,
@@ -54,7 +52,7 @@ export default async function handler(
   }
   try {
     // Create PaymentIntent from body params.
-    const params: Stripe.PaymentIntentCreateParams = {
+    const params: StripePaymentIntentCreateParams = {
       amount: formatAmountForStripe(amount, CURRENCY),
       currency: CURRENCY,
       description: process.env.STRIPE_PAYMENT_DESCRIPTION ?? '',
@@ -62,7 +60,7 @@ export default async function handler(
         enabled: true
       }
     }
-    const payment_intent: Stripe.PaymentIntent =
+    const payment_intent: StripePaymentIntent =
       await stripe.paymentIntents.create(params)
 
     res.status(200).json(payment_intent)

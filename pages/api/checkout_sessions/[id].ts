@@ -1,11 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-
-import Stripe from 'stripe'
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  // https://github.com/stripe/stripe-node#configuration
-  apiVersion: '2022-08-01'
-})
+import { stripe, StripeCheckoutSession } from '../../../libs/stripe'
 
 export default async function handler(
   req: NextApiRequest,
@@ -16,7 +10,7 @@ export default async function handler(
     if (!id.startsWith('cs_')) {
       throw Error('Incorrect CheckoutSession ID.')
     }
-    const checkout_session: Stripe.Checkout.Session =
+    const checkout_session: StripeCheckoutSession =
       await stripe.checkout.sessions.retrieve(id, {
         expand: ['payment_intent']
       })

@@ -1,5 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import Stripe from 'stripe'
+import {
+  stripe,
+  StripeCheckoutSession,
+  StripeCheckoutSessionCreateParams
+} from '../../../libs/stripe'
 import inventory from '../../../constants/products'
 
 /*
@@ -13,11 +17,6 @@ import inventory from '../../../constants/products'
 // import { validateCartItems } from 'use-shopping-cart/utilities/serverless'
 const { validateCartItems } = require('use-shopping-cart/utilities')
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  // https://github.com/stripe/stripe-node#configuration
-  apiVersion: '2022-08-01'
-})
-
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -30,7 +29,7 @@ export default async function handler(
         return !!item.price_data.recurring
       })
       // Create Checkout Sessions from body params.
-      const params: Stripe.Checkout.SessionCreateParams = {
+      const params: StripeCheckoutSessionCreateParams = {
         submit_type: 'pay',
         payment_method_types: ['card'],
         billing_address_collection: 'auto',
@@ -43,7 +42,7 @@ export default async function handler(
         mode: hasSubscription ? 'subscription' : 'payment'
       }
 
-      const checkoutSession: Stripe.Checkout.Session =
+      const checkoutSession: StripeCheckoutSession =
         await stripe.checkout.sessions.create(params)
 
       res.status(200).json(checkoutSession)
