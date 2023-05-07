@@ -2,40 +2,16 @@ import React, { useState } from 'react'
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js'
 import { PaymentIntent } from '@stripe/stripe-js'
 import { fetchPostJSON } from '../functions/helpers/api-helpers'
-import CustomDonationInput from './CustomDonationInput'
+import CustomDonationInput from './uis/CustomDonationInput'
 import { PrintObject } from './uis/PrintObject'
 import {
   formatAmountForDisplay,
   formatAmountFromStripe
 } from '../functions/helpers/stripe-helpers'
 import * as config from '../functions/constants/config'
+import { PaymentStatus } from './uis/PaymentStatus'
+import { Button } from './uis/Button'
 
-const PaymentStatus = ({ status }: { status: string }) => {
-  switch (status) {
-    case 'processing':
-    case 'requires_payment_method':
-    case 'requires_confirmation':
-      return <h2>Processing...</h2>
-
-    case 'requires_action':
-      return <h2>Authenticating...</h2>
-
-    case 'succeeded':
-      return <h2>Payment Succeeded 🥳</h2>
-
-    case 'error':
-      return (
-        <>
-          <h2>Error 😭</h2>
-          {/* <p className="error-message">{errorMessage}</p> */}
-          <p className="error-message">error</p>
-        </>
-      )
-
-    default:
-      return null
-  }
-}
 type ElementsFormProps = {
   paymentIntent?: PaymentIntent | null
 }
@@ -43,16 +19,15 @@ type ElementsFormProps = {
 const ElementsForm: React.FC<ElementsFormProps> = ({
   paymentIntent = null
 }) => {
-  const defaultAmout = paymentIntent
+  const defaultAmount = paymentIntent
     ? formatAmountFromStripe(paymentIntent.amount, paymentIntent.currency)
     : Math.round(config.MAX_AMOUNT / config.AMOUNT_STEP)
   const [input, setInput] = useState({
-    customDonation: defaultAmout,
+    customDonation: defaultAmount,
     cardholderName: ''
   })
   const [paymentType, setPaymentType] = useState('')
-  const [payment, setPayment] = useState({ status: 'initial' })
-  const [errorMessage, setErrorMessage] = useState('')
+  const [payment, setPayment] = useState({ status: 'initial', message: '' })
   const stripe = useStripe()
   const elements = useElements()
 
@@ -67,7 +42,7 @@ const ElementsForm: React.FC<ElementsFormProps> = ({
     // Abort if form isn't valid
     if (!e.currentTarget.reportValidity()) return
     if (!elements) return
-    setPayment({ status: 'processing' })
+    setPayment({ status: 'processing', message: '' })
 
     // Create a PaymentIntent with the specified amount.
     const response = await fetchPostJSON('/api/payment_intents', {
@@ -77,8 +52,7 @@ const ElementsForm: React.FC<ElementsFormProps> = ({
     setPayment(response)
 
     if (response.statusCode === 500) {
-      setPayment({ status: 'error' })
-      setErrorMessage(response.message)
+      setPayment({ status: 'error', message: response.message })
       return
     }
 
@@ -96,11 +70,19 @@ const ElementsForm: React.FC<ElementsFormProps> = ({
     })
 
     if (error) {
-      setPayment({ status: 'error' })
-      setErrorMessage(error.message ?? 'An unknown error occurred')
+      setPayment({
+        status: 'error',
+        message: error.message ?? 'An unknown error occurred'
+      })
     } else if (paymentIntent) {
-      setPayment(paymentIntent)
+      setPayment({ status: paymentIntent as any, message: '' })
     }
+  }
+
+  const isDisabled = () => {
+    return (
+      !['initial', 'succeeded', 'error'].includes(payment.status) || !stripe
+    )
   }
 
   return (
@@ -136,18 +118,11 @@ const ElementsForm: React.FC<ElementsFormProps> = ({
             />
           </div>
         </fieldset>
-        <button
-          className="btn btn-blue"
-          type="submit"
-          disabled={
-            !['initial', 'succeeded', 'error'].includes(payment.status) ||
-            !stripe
-          }
-        >
+        <Button type="submit" disabled={isDisabled()}>
           Donate {formatAmountForDisplay(input.customDonation, config.CURRENCY)}
-        </button>
+        </Button>
       </form>
-      <PaymentStatus status={payment.status} />
+      <PaymentStatus status={payment.status} message={payment.message} />
       <PrintObject content={payment} />
     </>
   )

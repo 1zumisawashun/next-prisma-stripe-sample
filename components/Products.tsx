@@ -1,5 +1,6 @@
 import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart'
 import products from '../functions/constants/products'
+import { Button } from './uis/Button'
 
 const Products = () => {
   const { addItem, removeItem } = useShoppingCart()
@@ -16,23 +17,10 @@ const Products = () => {
               currency: product.currency
             })}
           </p>
-          <button
-            type="button"
-            className="btn btn-blue"
-            onClick={() => {
-              console.log(product)
-              addItem(product)
-            }}
-          >
-            Add to cart
-          </button>
-          <button
-            type="button"
-            className="btn btn-blue"
-            onClick={() => removeItem(product.id)}
-          >
-            Remove
-          </button>
+          <div className="btn-wrapper">
+            <Button onClick={() => addItem(product)}>Add to cart</Button>
+            <Button onClick={() => removeItem(product.id)}>Remove</Button>
+          </div>
         </div>
       ))}
     </section>

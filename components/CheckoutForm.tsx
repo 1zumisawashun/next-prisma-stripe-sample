@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import CustomDonationInput from './CustomDonationInput'
+import CustomDonationInput from './uis/CustomDonationInput'
 import { getStripe } from '../functions/libs/stripejs'
 import { fetchPostJSON } from '../functions/helpers/api-helpers'
 import { formatAmountForDisplay } from '../functions/helpers/stripe-helpers'
 import * as config from '../functions/constants/config'
+import { Button } from './uis/Button'
 
 const CheckoutForm = () => {
   const [loading, setLoading] = useState(false)
@@ -57,9 +58,9 @@ const CheckoutForm = () => {
         currency={config.CURRENCY}
         onChange={handleInputChange}
       />
-      <button className="btn btn-blue" type="submit" disabled={loading}>
+      <Button type="submit" disabled={loading}>
         Donate {formatAmountForDisplay(input.customDonation, config.CURRENCY)}
-      </button>
+      </Button>
     </form>
   )
 }

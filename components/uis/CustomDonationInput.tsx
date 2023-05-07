@@ -1,5 +1,5 @@
 import React from 'react'
-import { formatAmountForDisplay } from '../functions/helpers/stripe-helpers'
+import { formatAmountForDisplay } from '../../functions/helpers/stripe-helpers'
 
 type Props = {
   name: string

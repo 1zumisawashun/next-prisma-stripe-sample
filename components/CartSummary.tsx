@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useShoppingCart } from 'use-shopping-cart'
 import { fetchPostJSON } from '../functions/helpers/api-helpers'
+import { Button } from './uis/Button'
 
 const CartSummary = () => {
   const [loading, setLoading] = useState(false)
@@ -53,16 +54,12 @@ const CartSummary = () => {
       </p>
 
       {/* Redirects the user to Stripe */}
-      <button
-        className="btn btn-blue"
-        type="submit"
-        disabled={cartEmpty || loading}
-      >
-        Checkout
-      </button>
-      <button className="btn btn-blue" type="button" onClick={clearCart}>
-        Clear Cart
-      </button>
+      <div className="btn-wrapper">
+        <Button type="submit" disabled={cartEmpty || loading}>
+          Checkout
+        </Button>
+        <Button onClick={clearCart}>Clear Cart</Button>
+      </div>
     </form>
   )
 }
