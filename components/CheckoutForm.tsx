@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import CustomDonationInput from './uis/CustomDonationInput'
 import { getStripe } from '../functions/libs/stripejs'
 import { fetchPostJSON } from '../functions/helpers/api-helpers'
 import { formatAmountForDisplay } from '../functions/helpers/stripe-helpers'
 import * as config from '../functions/constants/config'
-import { Button } from './uis/Button'
+import { Button, InputNumber, InputRange } from './uis'
 
 const CheckoutForm = () => {
   const [loading, setLoading] = useState(false)
@@ -48,14 +47,27 @@ const CheckoutForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <CustomDonationInput
-        className="checkout-style"
+      <label htmlFor="customDonation">
+        Custom donation amount (
+        {formatAmountForDisplay(config.MIN_AMOUNT, config.CURRENCY)}-
+        {formatAmountForDisplay(config.MAX_AMOUNT, config.CURRENCY)}):
+      </label>
+      <InputNumber
+        className="elements-style"
         name="customDonation"
         value={input.customDonation}
         min={config.MIN_AMOUNT}
         max={config.MAX_AMOUNT}
         step={config.AMOUNT_STEP}
-        currency={config.CURRENCY}
+        onChange={handleInputChange}
+      />
+      <InputRange
+        className="elements-style"
+        name="customDonation"
+        value={input.customDonation}
+        min={config.MIN_AMOUNT}
+        max={config.MAX_AMOUNT}
+        step={config.AMOUNT_STEP}
         onChange={handleInputChange}
       />
       <Button type="submit" disabled={loading}>

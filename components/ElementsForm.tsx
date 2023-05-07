@@ -2,15 +2,19 @@ import React, { useState } from 'react'
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js'
 import { PaymentIntent } from '@stripe/stripe-js'
 import { fetchPostJSON } from '../functions/helpers/api-helpers'
-import CustomDonationInput from './uis/CustomDonationInput'
-import { PrintObject } from './uis/PrintObject'
 import {
   formatAmountForDisplay,
   formatAmountFromStripe
 } from '../functions/helpers/stripe-helpers'
 import * as config from '../functions/constants/config'
-import { PaymentStatus } from './uis/PaymentStatus'
-import { Button } from './uis/Button'
+import {
+  PaymentStatus,
+  Button,
+  InputNumber,
+  InputRange,
+  InputText,
+  PrintObject
+} from './uis'
 
 type ElementsFormProps = {
   paymentIntent?: PaymentIntent | null
@@ -88,26 +92,38 @@ const ElementsForm: React.FC<ElementsFormProps> = ({
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <CustomDonationInput
+        <label htmlFor="customDonation">
+          Custom donation amount (
+          {formatAmountForDisplay(config.MIN_AMOUNT, config.CURRENCY)}-
+          {formatAmountForDisplay(config.MAX_AMOUNT, config.CURRENCY)}):
+        </label>
+        <InputNumber
           className="elements-style"
           name="customDonation"
           value={input.customDonation}
           min={config.MIN_AMOUNT}
           max={config.MAX_AMOUNT}
           step={config.AMOUNT_STEP}
-          currency={config.CURRENCY}
           onChange={handleInputChange}
         />
+        <InputRange
+          className="elements-style"
+          name="customDonation"
+          value={input.customDonation}
+          min={config.MIN_AMOUNT}
+          max={config.MAX_AMOUNT}
+          step={config.AMOUNT_STEP}
+          onChange={handleInputChange}
+        />
+
         <fieldset className="elements-style">
           <legend>Your payment details:</legend>
           {paymentType === 'card' ? (
-            <input
+            <InputText
               placeholder="Cardholder name"
               className="elements-style"
-              type="Text"
               name="cardholderName"
               onChange={handleInputChange}
-              required
             />
           ) : null}
           <div className="FormRow elements-style">
