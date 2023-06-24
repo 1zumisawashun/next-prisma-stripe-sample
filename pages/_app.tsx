@@ -2,9 +2,8 @@ import { AppProps } from 'next/app'
 import { CartProvider } from 'use-shopping-cart'
 import { SessionProvider } from 'next-auth/react'
 import * as config from '../functions/constants/config'
-import Header from '../components/layouts/Header'
 import { RouteProvider } from '../routers/RouteProvider'
-import '../styles.css'
+import { Header } from '../components/layouts/Header'
 import '../globals.css'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {

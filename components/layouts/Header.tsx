@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { signIn, signOut, useSession } from 'next-auth/react'
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
-const Header = () => {
+export const Header = () => {
   const { data: session, status } = useSession()
   return (
     <div className="bg-gray-900">
@@ -20,6 +20,11 @@ const Header = () => {
               <li className="py-1 px-4 text-white no-underline">
                 <Link href="/articles" legacyBehavior>
                   <a>Articles</a>
+                </Link>
+              </li>
+              <li className="py-1 px-4 text-white no-underline">
+                <Link href="/checkout" legacyBehavior>
+                  <a>Checkout</a>
                 </Link>
               </li>
               {status !== 'loading' && session && (
@@ -54,5 +59,3 @@ const Header = () => {
     </div>
   )
 }
-
-export default Header

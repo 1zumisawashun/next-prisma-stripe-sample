@@ -1,71 +1,32 @@
-import { NextPage, GetServerSideProps } from 'next'
 import Link from 'next/link'
-import { Layout } from '../components/layouts/Layout'
-import { PrintObject } from '../components/uis/PrintObject'
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  try {
-    const host = context.req.headers.host || 'localhost:3000'
-    const protocol = /^localhost/.test(host) ? 'http' : 'https'
-    console.log(`${protocol}://${host}/api/products`)
-    const products = await fetch(`${protocol}://${host}/api/products`).then(
-      (data) => data.json()
-    )
-    return {
-      props: {
-        products
-      }
-    }
-  } catch (e) {
-    console.log(e)
-    return {
-      props: {
-        products: []
-      }
-    }
-  }
-}
-
-const IndexPage: NextPage = (props) => {
+/* eslint-disable jsx-a11y/anchor-is-valid */
+const Home = () => {
   return (
-    <Layout title="Home | Next.js + TypeScript Example">
-      <ul className="card-list">
-        <li>
-          <h1 className="text-3xl font-bold underline">Hello world!</h1>
-        </li>
-        <li>
-          <PrintObject content={props} />
-        </li>
-        <li>
-          <Link
-            href="/donate-with-checkout"
-            className="card checkout-style-background"
-          >
-            <h2 className="bottom">Donate with Checkout</h2>
-            <img src="/checkout-one-time-payments.svg" alt="" />
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/donate-with-elements"
-            className="card elements-style-background"
-          >
-            <h2 className="bottom">Donate with Elements</h2>
-            <img src="/elements-card-payment.svg" alt="" />
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/use-shopping-cart"
-            className="card cart-style-background"
-          >
-            <h2 className="bottom">Use Shopping Cart</h2>
-            <img src="/use-shopping-cart.png" alt="" />
-          </Link>
-        </li>
-      </ul>
-    </Layout>
+    <div className="pt-32 pb-12 md:pt-40 md:pb-20">
+      <div className="pb-12 text-center md:pb-16">
+        <h1 className="leading-tighter mb-4 text-7xl font-extrabold tracking-tighter md:text-8xl">
+          <span className="bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+            BUKUMA
+          </span>
+        </h1>
+        <div className="mx-auto max-w-3xl">
+          <p className="mb-8 text-xl">Bookmark articles you like!</p>
+          <div className="flexjustify-center mt-5">
+            <div className="mt-3">
+              <Link href="/articles" legacyBehavior>
+                <a className="group inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 p-0.5 font-medium text-gray-900 hover:text-white focus:ring-4 focus:ring-blue-300 group-hover:from-purple-600 group-hover:to-blue-500 dark:text-white dark:focus:ring-blue-800">
+                  <span className="rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900">
+                    Find Articles
+                  </span>
+                </a>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 
-export default IndexPage
+export default Home
