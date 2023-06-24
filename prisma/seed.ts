@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 // ここで、data/articles.ts に記述したデータをインポートしています
-import { articles } from '../functions/constants/articles'
+import { articles } from '../src/functions/constants/articles'
 
 const prisma = new PrismaClient()
 
