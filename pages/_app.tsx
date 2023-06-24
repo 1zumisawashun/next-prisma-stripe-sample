@@ -1,18 +1,27 @@
 import { AppProps } from 'next/app'
 import { CartProvider } from 'use-shopping-cart'
+import { SessionProvider } from 'next-auth/react'
 import * as config from '../functions/constants/config'
+import Header from '../components/layouts/Header'
+import { RouteProvider } from '../routers/RouteProvider'
 import '../styles.css'
 import '../globals.css'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
-    <CartProvider
-      cartMode="checkout-session"
-      stripe={process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string}
-      currency={config.CURRENCY}
-    >
-      <Component {...pageProps} />
-    </CartProvider>
+    <SessionProvider session={pageProps.session}>
+      {/* @ts-expect-error Server Component */}
+      <RouteProvider>
+        <CartProvider
+          cartMode="checkout-session"
+          stripe={process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string}
+          currency={config.CURRENCY}
+        >
+          <Header />
+          <Component {...pageProps} />
+        </CartProvider>
+      </RouteProvider>
+    </SessionProvider>
   )
 }
 
