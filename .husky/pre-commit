@@ -17,28 +17,29 @@ NC='\033[0m'
 echo "\n 🚧🏗️  ${BOLD}Checking format, lint and types in your project before committing${NC}"
 
 # Check Prettier standards
-npm run check-format ||
+npm run format ||
 (
-    echo "\n ❌🟨 Prettier Check ${RED}Failed${NC}. 🟨❌\n Run ${BLUE}npm run format${NC}, add changes and try commit again.\n";
+    echo "\n ❌🟨 Prettier Check ${RED}Failed${NC}. 🟨❌\n Run ${BLUE}npm run format:fix${NC}, add changes and try commit again.\n";
     false;
 )
 
 # Check ESLint Standards
-npm run check-lint ||
+npm run lint:js ||
 (
-    echo "\n ❌🟪 ESLint Check ${RED}Failed${NC}. 🟪❌\n Make the required changes listed above, add changes and try to commit again.\n"
+    echo "\n ❌🟪 ESLint Check ${RED}Failed${NC}. 🟪❌n Run ${BLUE}npm run list:js:fix${NC}, add changes and try commit again.\n"
     false;
 )
 
 # Check tsconfig standards
-npm run check-types ||
+npm run types ||
 (
     echo "\n ❌🟦 Type check ${RED}Failed${NC}. 🟦❌\n Make the changes required above.\n"
     false;
 )
 
 # If everything passes... Now we can build
-echo "🔥🚀 ${BOLD}All passed... Now we can build.${NC} 🚀🔥"
+# echo "🔥🚀 ${BOLD}All passed... Now we can build.${NC} 🚀🔥"
+echo "🔥🚀 ${BOLD}All passed...${NC} 🚀🔥"
 
 # npm run build ||
 # (

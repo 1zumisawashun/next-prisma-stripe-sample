@@ -1,6 +1,6 @@
 import { NextPage, GetServerSideProps } from 'next'
-import { Layout } from '../components/layouts/Layout'
-import { PrintObject } from '../components/uis/PrintObject'
+import { Layout } from '@/components/layouts/Layout'
+import { PrintObject } from '@/components/uis/PrintObject'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
@@ -25,7 +25,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 }
 
-const Checkout: NextPage = (props) => {
+const Cart: NextPage = (props) => {
   return (
     <Layout title="Home | Next.js + TypeScript Example">
       <ul className="card-list">
@@ -40,4 +40,4 @@ const Checkout: NextPage = (props) => {
   )
 }
 
-export default Checkout
+export default Cart

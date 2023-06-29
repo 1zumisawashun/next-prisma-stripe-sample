@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { getStripe } from '../functions/libs/stripejs'
-import { fetchPostJSON } from '../functions/helpers/api-helpers'
-import { formatAmountForDisplay } from '../functions/helpers/stripe-helpers'
-import * as config from '../functions/constants/config'
-import { Button, InputNumber, InputRange } from './uis'
+import { getStripe } from '../../functions/libs/stripejs'
+import { fetchPostJSON } from '../../functions/helpers/api-helpers'
+import { formatAmountForDisplay } from '../../functions/helpers/stripe-helpers'
+import * as config from '../../functions/constants/config'
+import { Button, InputNumber, InputRange } from '../../components/uis'
 
 const CheckoutForm = () => {
   const [loading, setLoading] = useState(false)

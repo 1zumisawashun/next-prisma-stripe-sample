@@ -6,7 +6,7 @@ import { getStripe } from '@/functions/libs/stripejs'
 import { fetchPostJSON } from '@/functions/helpers/api-helpers'
 import { Layout } from '@/components/layouts/Layout'
 import * as config from '@/functions/constants/config'
-import ElementsForm from '@/components/ElementsForm'
+import ElementsForm from '@/features/stripeElement/ElementsForm'
 
 const DonatePage: NextPage = () => {
   const [paymentIntent, setPaymentIntent] = useState<PaymentIntent | null>(null)

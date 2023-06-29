@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 import { Layout } from '@/components/layouts/Layout'
-import CartSummary from '@/components/CartSummary'
-import Products from '@/components/Products'
+import CartSummary from '@/features/useShoppingCart/CartSummary'
+import Products from '@/features/useShoppingCart/Products'
 
 const DonatePage: NextPage = () => {
   return (

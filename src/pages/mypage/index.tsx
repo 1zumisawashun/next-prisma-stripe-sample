@@ -1,9 +1,9 @@
 import { GetServerSideProps } from 'next'
-import { getSession } from 'next-auth/react'
-import Router from 'next/router'
 import Link from 'next/link'
-import prisma from '../functions/libs/prisma'
-import { ArticleProps } from '../functions/types/Article'
+import Router from 'next/router'
+import { getSession } from 'next-auth/react'
+import prisma from '@/functions/libs/prisma'
+import { ArticleProps } from '@/functions/types/Article'
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 const Mypage = ({ articles }: { articles: ArticleProps[] }) => {
