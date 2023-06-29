@@ -1,10 +1,12 @@
+import { BaseSyntheticEvent } from 'react'
+
 type InputNumberProps = {
   name: string
   value: number
   min: number
   max: number
   step: number
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onChange: (e: BaseSyntheticEvent) => void
   className?: string
 }
 

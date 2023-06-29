@@ -1,7 +1,9 @@
+import { BaseSyntheticEvent } from 'react'
+
 type InputTextProps = {
-  name?: string
-  value?: number
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  name: string
+  value: string
+  onChange: (e: BaseSyntheticEvent) => void
   className?: string
   placeholder?: string
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, BaseSyntheticEvent } from 'react'
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js'
 import { PaymentIntent } from '@stripe/stripe-js'
 import { fetchPostJSON } from '../../functions/helpers/api-helpers'
@@ -35,11 +35,13 @@ const ElementsForm: React.FC<ElementsFormProps> = ({
   const stripe = useStripe()
   const elements = useElements()
 
-  const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) =>
-    setInput({
-      ...input,
-      [e.currentTarget.name]: e.currentTarget.value
-    })
+  const handleChange = (e: BaseSyntheticEvent) => {
+    const { name, value } = e.target
+    setInput((prevState) => ({
+      ...prevState,
+      [name]: value
+    }))
+  }
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
@@ -104,7 +106,7 @@ const ElementsForm: React.FC<ElementsFormProps> = ({
           min={config.MIN_AMOUNT}
           max={config.MAX_AMOUNT}
           step={config.AMOUNT_STEP}
-          onChange={handleInputChange}
+          onChange={handleChange}
         />
         <InputRange
           className="elements-style"
@@ -113,17 +115,18 @@ const ElementsForm: React.FC<ElementsFormProps> = ({
           min={config.MIN_AMOUNT}
           max={config.MAX_AMOUNT}
           step={config.AMOUNT_STEP}
-          onChange={handleInputChange}
+          onChange={handleChange}
         />
 
         <fieldset className="elements-style">
           <legend>Your payment details:</legend>
           {paymentType === 'card' ? (
             <InputText
+              value={input.cardholderName}
               placeholder="Cardholder name"
               className="elements-style"
               name="cardholderName"
-              onChange={handleInputChange}
+              onChange={handleChange}
             />
           ) : null}
           <div className="FormRow elements-style">

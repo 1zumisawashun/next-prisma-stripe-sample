@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, BaseSyntheticEvent } from 'react'
 import { getStripe } from '../../functions/libs/stripejs'
 import { fetchPostJSON } from '../../functions/helpers/api-helpers'
 import { formatAmountForDisplay } from '../../functions/helpers/stripe-helpers'
@@ -11,11 +11,13 @@ const CheckoutForm = () => {
     customDonation: Math.round(config.MAX_AMOUNT / config.AMOUNT_STEP)
   })
 
-  const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) =>
-    setInput({
-      ...input,
-      [e.currentTarget.name]: e.currentTarget.value
-    })
+  const handleChange = (e: BaseSyntheticEvent) => {
+    const { name, value } = e.target
+    setInput((prevState) => ({
+      ...prevState,
+      [name]: value
+    }))
+  }
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
@@ -59,7 +61,7 @@ const CheckoutForm = () => {
         min={config.MIN_AMOUNT}
         max={config.MAX_AMOUNT}
         step={config.AMOUNT_STEP}
-        onChange={handleInputChange}
+        onChange={handleChange}
       />
       <InputRange
         className="elements-style"
@@ -68,7 +70,7 @@ const CheckoutForm = () => {
         min={config.MIN_AMOUNT}
         max={config.MAX_AMOUNT}
         step={config.AMOUNT_STEP}
-        onChange={handleInputChange}
+        onChange={handleChange}
       />
       <Button type="submit" disabled={loading}>
         Donate {formatAmountForDisplay(input.customDonation, config.CURRENCY)}

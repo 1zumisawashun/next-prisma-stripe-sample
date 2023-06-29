@@ -1,23 +1,46 @@
-import React, { useState } from 'react'
+import React, { useState, BaseSyntheticEvent } from 'react'
 import Router from 'next/router'
-import { getStripe } from '../../functions/libs/stripejs'
-import { fetchPostJSON } from '../../functions/helpers/api-helpers'
-import { formatAmountForDisplay } from '../../functions/helpers/stripe-helpers'
-import * as config from '../../functions/constants/config'
-import { Button, InputNumber, InputRange } from '../../components/uis'
+import { Button, InputText } from '../../components/uis'
 
 const CreateForm = () => {
-  async function handleSubmit(): Promise<void> {
+  const [formData, setFormData] = useState({
+    title: '',
+    content: ''
+  })
+  const handleChange = (e: BaseSyntheticEvent) => {
+    const { name, value } = e.target
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value
+    }))
+  }
+  const handleSubmit = async (): Promise<void> => {
     await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/books`, {
       method: 'POST'
     })
-    Router.push(`/books`)
+    Router.push(`/mypage/books`)
   }
 
   return (
-    <Button type="button" onClick={() => handleSubmit()}>
-      create
-    </Button>
+    <div className="container mx-auto grid gap-4 px-6 py-16">
+      <InputText
+        name="title"
+        value={formData.title}
+        onChange={handleChange}
+        placeholder="formData.title"
+      />
+      <InputText
+        name="content"
+        value={formData.content}
+        onChange={handleChange}
+        placeholder="formData.content"
+      />
+      <div>
+        <Button type="button" onClick={handleSubmit}>
+          create
+        </Button>
+      </div>
+    </div>
   )
 }
 
