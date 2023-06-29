@@ -1,8 +1,8 @@
 import { User } from './User'
 
-export type ArticleProps = {
+export type BookProps = {
   id: number
   title: string
   content: string
-  users: User[]
+  bookmarked_users: User[]
 }

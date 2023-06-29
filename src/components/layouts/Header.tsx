@@ -18,8 +18,8 @@ export const Header = () => {
           <div className="flex w-full content-center justify-between pt-2 lg:w-1/2 lg:justify-end lg:pt-0">
             <ul className="flex flex-1 items-center justify-center lg:flex-none">
               <li className="px-4 py-1 text-white no-underline">
-                <Link href="/articles" legacyBehavior>
-                  <a>Articles</a>
+                <Link href="/books" legacyBehavior>
+                  <a>Books</a>
                 </Link>
               </li>
               <li className="px-4 py-1 text-white no-underline">

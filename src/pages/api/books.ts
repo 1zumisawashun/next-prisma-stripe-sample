@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { getSession } from 'next-auth/react'
-import prisma from '../../../../functions/libs/prisma'
+import prisma from '@/functions/libs/prisma'
 
 // リクエストとレスポンスの型を指定しています
 export default async function (req: NextApiRequest, res: NextApiResponse) {
@@ -10,13 +10,18 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   // session オブジェクトに email が存在しているかを判定しています
   // Prisma によるスキーマの作成を行なった際に、users テーブルの email カラムは必須にしたので、ログインしていれば email にはメールアドレスが格納されているはずです
   if (session?.user?.email) {
-    const result = await prisma.book.update({
+    const user = await prisma.user.findUnique({
       where: {
-        id: Number(req.query.id)
-      },
+        email: session?.user?.email
+      }
+    })
+    const result = await prisma.book.create({
       data: {
-        bookmarked_users: {
-          connect: { email: session?.user?.email }
+        title: 'title2',
+        content: 'content2',
+        published: false,
+        posted_user: {
+          connect: { id: user!.id }
         }
       }
     })

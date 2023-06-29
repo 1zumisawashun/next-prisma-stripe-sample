@@ -10,10 +10,10 @@ const Home = () => {
           </span>
         </h1>
         <div className="mx-auto max-w-3xl">
-          <p className="mb-8 text-xl">Bookmark articles you like!</p>
+          <p className="mb-8 text-xl">Bookmark books you like!</p>
           <div className="flexjustify-center mt-5">
             <div className="mt-3">
-              <ButtonLink href="/articles">Find Articles</ButtonLink>
+              <ButtonLink href="/books">Find Books</ButtonLink>
             </div>
           </div>
         </div>

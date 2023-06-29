@@ -1,4 +1,4 @@
-export const articles = [
+export const books = [
   {
     title: 'Latest Updates on React 18',
     content:

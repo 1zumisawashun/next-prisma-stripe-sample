@@ -1,12 +1,12 @@
 import { PrismaClient } from '@prisma/client'
-// ここで、data/articles.ts に記述したデータをインポートしています
-import { articles } from '../src/functions/constants/articles'
+// ここで、data/books.ts に記述したデータをインポートしています
+import { books } from '../src/functions/constants/books'
 
 const prisma = new PrismaClient()
 
 async function main() {
-  await prisma.article.createMany({
-    data: articles
+  await prisma.book.createMany({
+    data: books
   })
 }
 

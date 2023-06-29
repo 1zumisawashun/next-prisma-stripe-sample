@@ -26,7 +26,7 @@ const login = ({
                     <Button
                       onClick={() =>
                         signIn(provider.id, {
-                          callbackUrl: '/articles'
+                          callbackUrl: '/books'
                         })
                       }
                     >

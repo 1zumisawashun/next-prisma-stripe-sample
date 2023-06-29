@@ -6,7 +6,7 @@ import prisma from '@/functions/libs/prisma'
 import { BookProps } from '@/functions/types/Book'
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
-const Mypage = ({ books }: { books: BookProps[] }) => {
+const Bookmarks = ({ books }: { books: BookProps[] }) => {
   async function removeBookmark(id: number): Promise<void> {
     await fetch(
       `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/bookmark/remove/${id}`,
@@ -80,7 +80,7 @@ const Mypage = ({ books }: { books: BookProps[] }) => {
   )
 }
 
-export default Mypage
+export default Bookmarks
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const session = await getSession({ req })
@@ -98,7 +98,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
       }
     },
     include: {
-      bookmarked_users: true
+      posted_user: true
     }
   })
   const books = JSON.parse(JSON.stringify(data))

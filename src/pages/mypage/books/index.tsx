@@ -1,3 +1,4 @@
+// 投稿したもの一覧
 import { GetServerSideProps } from 'next'
 import Link from 'next/link'
 import Router from 'next/router'
@@ -6,7 +7,7 @@ import prisma from '@/functions/libs/prisma'
 import { BookProps } from '@/functions/types/Book'
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
-const Mypage = ({ books }: { books: BookProps[] }) => {
+const MypageBooks = ({ books }: { books: BookProps[] }) => {
   async function removeBookmark(id: number): Promise<void> {
     await fetch(
       `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/bookmark/remove/${id}`,
@@ -80,7 +81,7 @@ const Mypage = ({ books }: { books: BookProps[] }) => {
   )
 }
 
-export default Mypage
+export default MypageBooks
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const session = await getSession({ req })
@@ -89,21 +90,20 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     return { props: { books: null } }
   }
 
-  const data = await prisma.book.findMany({
+  const data = await prisma.user.findUnique({
     where: {
-      bookmarked_users: {
-        some: {
-          email: session.user?.email as string
-        }
-      }
+      email: session.user?.email as string
     },
     include: {
-      bookmarked_users: true
+      bookmarks: true
     }
   })
-  const books = JSON.parse(JSON.stringify(data))
+
+  const users = JSON.parse(JSON.stringify(data))
+
+  console.log(users, 'users')
 
   return {
-    props: { books }
+    props: { users }
   }
 }

@@ -5,7 +5,7 @@ import { ProtectedRoute } from './ProtectedRoute'
 
 // ログイン済みユーザにのみ表示するページ
 // 今回は、マイページと記事の詳細ページに関して、ログインを要求します
-const authRoutes = ['/mypage', '/articles/[id]']
+const authRoutes = ['/mypage', '/books/[id]']
 
 // children に型をつけています
 export const RouteProvider = ({ children }: { children: ReactNode }) => {
