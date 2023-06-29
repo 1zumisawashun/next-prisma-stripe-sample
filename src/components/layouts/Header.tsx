@@ -11,7 +11,7 @@ export const Header = () => {
           <div className="flex w-full justify-center font-extrabold text-white lg:w-1/2 lg:justify-start">
             <Link href="/" legacyBehavior>
               <a className="text-2xl text-gray-900 no-underline hover:text-gray-900 hover:no-underline">
-                🚀 &nbsp; <span className=" text-gray-200">BUKUMA</span>
+                🚀 &nbsp; <span className=" text-gray-200">BooxMix</span>
               </a>
             </Link>
           </div>
