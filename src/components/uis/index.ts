@@ -1,4 +1,5 @@
 export { Button } from './Button'
+export { ButtonLink } from './ButtonLink'
 export { InputNumber } from './InputNumber'
 export { InputRange } from './InputRange'
 export { InputText } from './InputText'

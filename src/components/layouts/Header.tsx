@@ -27,6 +27,11 @@ export const Header = () => {
                   <a>Checkout</a>
                 </Link>
               </li>
+              <li className="py-1 px-4 text-white no-underline">
+                <Link href="/catalog" legacyBehavior>
+                  <a>Catalog</a>
+                </Link>
+              </li>
               {status !== 'loading' && session && (
                 // status が 'loading' でない、つまり認証情報の取得が完了している、
                 // かつ、認証されている場合に、下記が表示されます

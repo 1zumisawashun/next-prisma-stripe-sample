@@ -7,7 +7,6 @@ type ButtonProps = {
   children: ReactNode
 }
 
-/* eslint-disable react/button-has-type */
 export const Button: React.FC<ButtonProps> = ({
   onClick,
   type = 'button',
@@ -16,13 +15,12 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
-      type={type}
+      type="button"
       disabled={disabled}
-      className="group relative inline-flex items-center justify-start overflow-hidden rounded bg-white px-6 py-3 font-medium transition-all hover:bg-white"
+      className="group inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 p-0.5 font-medium text-gray-900 hover:text-white focus:ring-4 focus:ring-blue-300 group-hover:from-purple-600 group-hover:to-blue-500 dark:text-white dark:focus:ring-blue-800"
       onClick={onClick}
     >
-      <span className="absolute bottom-0 left-0 mb-9 ml-9 h-48 w-48 -translate-x-full translate-y-full rotate-[-40deg] rounded bg-slate-800 transition-all duration-500 ease-out group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0" />
-      <span className="relative w-full text-left text-black transition-colors duration-300 ease-in-out group-hover:text-white">
+      <span className="rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900">
         {children}
       </span>
     </button>

@@ -17,10 +17,7 @@ const CartSummary = () => {
 
   useEffect(() => setCartEmpty(!cartCount), [cartCount])
 
-  const handleCheckout: React.FormEventHandler<HTMLFormElement> = async (
-    event
-  ) => {
-    event.preventDefault()
+  const handleCheckout = async () => {
     setLoading(true)
     setErrorMessage('')
 
@@ -40,7 +37,7 @@ const CartSummary = () => {
   }
 
   return (
-    <form onSubmit={handleCheckout}>
+    <>
       <h2>Cart summary</h2>
       {errorMessage ? (
         <p style={{ color: 'red' }}>Error: {errorMessage}</p>
@@ -55,12 +52,12 @@ const CartSummary = () => {
 
       {/* Redirects the user to Stripe */}
       <div className="btn-wrapper">
-        <Button type="submit" disabled={cartEmpty || loading}>
+        <Button onClick={handleCheckout} disabled={cartEmpty || loading}>
           Checkout
         </Button>
         <Button onClick={clearCart}>Clear Cart</Button>
       </div>
-    </form>
+    </>
   )
 }
 

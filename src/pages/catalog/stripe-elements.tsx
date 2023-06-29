@@ -2,26 +2,30 @@ import { NextPage } from 'next'
 import { useState, useEffect } from 'react'
 import { Elements } from '@stripe/react-stripe-js'
 import { PaymentIntent } from '@stripe/stripe-js'
-import { getStripe } from '../functions/libs/stripejs'
-import { fetchPostJSON } from '../functions/helpers/api-helpers'
-import { Layout } from '../components/layouts/Layout'
-import * as config from '../functions/constants/config'
-import ElementsForm from '../components/ElementsForm'
+import { getStripe } from '../../functions/libs/stripejs'
+import { fetchPostJSON } from '../../functions/helpers/api-helpers'
+import { Layout } from '../../components/layouts/Layout'
+import * as config from '../../functions/constants/config'
+import ElementsForm from '../../components/ElementsForm'
 
 const DonatePage: NextPage = () => {
   const [paymentIntent, setPaymentIntent] = useState<PaymentIntent | null>(null)
+
   useEffect(() => {
     fetchPostJSON('/api/payment_intents', {
       amount: Math.round(config.MAX_AMOUNT / config.AMOUNT_STEP)
-    }).then((data) => {
-      setPaymentIntent(data)
     })
+      .then((data) => {
+        setPaymentIntent(data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }, [setPaymentIntent])
+
   return (
     <Layout title="Donate with Elements | Next.js + TypeScript Example">
       <div className="page-container">
-        <h1>Donate with Elements</h1>
-        <p>Donate to our project 💖</p>
         {paymentIntent && paymentIntent.client_secret ? (
           <Elements
             stripe={getStripe()}

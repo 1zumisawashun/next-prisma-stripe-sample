@@ -64,6 +64,7 @@ export default async function handler(
         enabled: true
       }
     }
+
     const payment_intent: StripePaymentIntent =
       await stripe.paymentIntents.create(params)
 
