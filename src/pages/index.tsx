@@ -2,7 +2,7 @@ import { ButtonLink } from '../components/uis'
 
 const Home = () => {
   return (
-    <div className="pt-32 pb-12 md:pt-40 md:pb-20">
+    <div className="pb-12 pt-32 md:pb-20 md:pt-40">
       <div className="pb-12 text-center md:pb-16">
         <h1 className="leading-tighter mb-4 text-7xl font-extrabold tracking-tighter md:text-8xl">
           <span className="bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
