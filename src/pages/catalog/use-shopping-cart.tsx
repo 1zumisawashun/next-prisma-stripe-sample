@@ -1,12 +1,12 @@
 import { NextPage } from 'next'
-import { Layout } from '../../components/layouts/Layout'
-import CartSummary from '../../components/CartSummary'
-import Products from '../../components/Products'
+import { Layout } from '@/components/layouts/Layout'
+import CartSummary from '@/components/CartSummary'
+import Products from '@/components/Products'
 
 const DonatePage: NextPage = () => {
   return (
     <Layout title="Shopping Cart | Next.js + TypeScript Example">
-      <div className="page-container">
+      <div className="container mx-auto px-6 py-16">
         <h1>Shopping Cart</h1>
         <p>
           Powered by the{' '}

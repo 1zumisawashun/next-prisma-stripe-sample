@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import { Layout } from '../../components/layouts/Layout'
+import { Layout } from '@/components/layouts/Layout'
 
 import CheckoutForm from '../../components/CheckoutForm'
 
