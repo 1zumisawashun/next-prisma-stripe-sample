@@ -3,7 +3,7 @@ import Router from 'next/router'
 import prisma from '../../functions/libs/prisma'
 import { BookProps } from '../../functions/types/Book'
 
-const Books = ({ books }: { books: BookProps[] }) => {
+export default function page({ books }: { books: BookProps[] }) {
   return (
     <div className="container mx-auto">
       <div className="mt-10 w-full px-8">
@@ -31,8 +31,6 @@ const Books = ({ books }: { books: BookProps[] }) => {
     </div>
   )
 }
-
-export default Books
 
 export const getStaticProps: GetStaticProps = async () => {
   const books = await prisma.book.findMany()

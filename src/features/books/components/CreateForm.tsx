@@ -16,7 +16,6 @@ export const CreateForm = () => {
     }))
   }
   const handleSubmit = async (): Promise<void> => {
-    //bodyを送るとsessionがとれないぽい
     await fetchPostJSON(
       `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/books/create`,
       formData

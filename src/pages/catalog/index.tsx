@@ -1,8 +1,7 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { Layout } from '@/components/layouts/Layout'
 
-const Catalog = () => {
+export default function page() {
   return (
     <Layout title="Home | Next.js + TypeScript Example">
       <div className="container mx-auto px-6 py-16">
@@ -42,5 +41,3 @@ const Catalog = () => {
     </Layout>
   )
 }
-
-export default Catalog

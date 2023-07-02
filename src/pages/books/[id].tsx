@@ -10,7 +10,7 @@ type Props = {
   isBookmarked: boolean
 }
 
-const Article = ({ book, isBookmarked }: Props) => {
+export default function page({ book, isBookmarked }: Props) {
   async function addBookmark(id: number): Promise<void> {
     await fetch(
       `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/bookmark/add/${id}`,
@@ -69,8 +69,6 @@ const Article = ({ book, isBookmarked }: Props) => {
     </div>
   )
 }
-
-export default Article
 
 export const getServerSideProps: GetServerSideProps = async ({
   req,

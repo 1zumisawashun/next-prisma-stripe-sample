@@ -1,6 +1,6 @@
 import { ButtonLink } from '../components/uis'
 
-const Home = () => {
+export default function page() {
   return (
     <div className="pb-12 pt-32 md:pb-20 md:pt-40">
       <div className="pb-12 text-center md:pb-16">
@@ -21,5 +21,3 @@ const Home = () => {
     </div>
   )
 }
-
-export default Home

@@ -1,5 +1,3 @@
-const MypagePayment = () => {
+export default function page() {
   return <div>mypage-payment</div>
 }
-
-export default MypagePayment

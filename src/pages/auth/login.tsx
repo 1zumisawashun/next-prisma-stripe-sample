@@ -3,10 +3,9 @@ import { InferGetServerSidePropsType } from 'next'
 import Image from 'next/image'
 import { Button } from '../../components/uis'
 
-const login = ({
-  // ここで型を定義しています
+export default function page({
   providers
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <div className="flex flex-col items-center space-y-20 pt-40">
       <Image
@@ -41,8 +40,6 @@ const login = ({
     </div>
   )
 }
-
-export default login
 
 export const getServerSideProps = async () => {
   // ここで、認証の方法を取得しています

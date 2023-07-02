@@ -1,5 +1,3 @@
-const MypageAddress = () => {
+export default function page() {
   return <div>mypage-address</div>
 }
-
-export default MypageAddress

@@ -8,7 +8,7 @@ import { Layout } from '@/components/layouts/Layout'
 import * as config from '@/functions/constants/config'
 import ElementsForm from '@/features/stripeElement/ElementsForm'
 
-const DonatePage: NextPage = () => {
+const Page: NextPage = () => {
   const [paymentIntent, setPaymentIntent] = useState<PaymentIntent | null>(null)
 
   useEffect(() => {
@@ -49,4 +49,4 @@ const DonatePage: NextPage = () => {
   )
 }
 
-export default DonatePage
+export default Page

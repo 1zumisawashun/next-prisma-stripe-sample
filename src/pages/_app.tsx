@@ -6,7 +6,7 @@ import { RouteProvider } from '../routers/RouteProvider'
 import { Header } from '../components/layouts/Header'
 import '@/styles/globals.css'
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
+export default function page({ Component, pageProps }: AppProps) {
   return (
     <SessionProvider session={pageProps.session}>
       {/* @ts-expect-error Server Component */}
@@ -23,5 +23,3 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     </SessionProvider>
   )
 }
-
-export default MyApp

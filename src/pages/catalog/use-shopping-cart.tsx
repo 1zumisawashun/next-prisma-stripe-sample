@@ -1,9 +1,8 @@
-import { NextPage } from 'next'
 import { Layout } from '@/components/layouts/Layout'
 import CartSummary from '@/features/useShoppingCart/CartSummary'
 import Products from '@/features/useShoppingCart/Products'
 
-const DonatePage: NextPage = () => {
+export default function page() {
   return (
     <Layout title="Shopping Cart | Next.js + TypeScript Example">
       <div className="container mx-auto px-6 py-16">
@@ -19,5 +18,3 @@ const DonatePage: NextPage = () => {
     </Layout>
   )
 }
-
-export default DonatePage

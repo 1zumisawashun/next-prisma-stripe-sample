@@ -5,7 +5,7 @@ import { Layout } from '@/components/layouts/Layout'
 import { PrintObject } from '@/components/uis/PrintObject'
 import { fetchGetJSON } from '@/functions/helpers/api-helpers'
 
-const Thankyou: NextPage = () => {
+const Page: NextPage = () => {
   const router = useRouter()
 
   // Fetch CheckoutSession from static page via
@@ -31,4 +31,4 @@ const Thankyou: NextPage = () => {
   )
 }
 
-export default Thankyou
+export default Page

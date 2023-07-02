@@ -2,6 +2,21 @@ import { NextPage, GetServerSideProps } from 'next'
 import { Layout } from '@/components/layouts/Layout'
 import { PrintObject } from '@/components/uis/PrintObject'
 
+export default function page(props: NextPage) {
+  return (
+    <Layout title="Home | Next.js + TypeScript Example">
+      <ul className="card-list">
+        <li>
+          <h1 className="text-3xl font-bold underline">Hello world!</h1>
+        </li>
+        <li>
+          <PrintObject content={props} />
+        </li>
+      </ul>
+    </Layout>
+  )
+}
+
 export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     const host = context.req.headers.host || 'localhost:3000'
@@ -24,20 +39,3 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
   }
 }
-
-const Cart: NextPage = (props) => {
-  return (
-    <Layout title="Home | Next.js + TypeScript Example">
-      <ul className="card-list">
-        <li>
-          <h1 className="text-3xl font-bold underline">Hello world!</h1>
-        </li>
-        <li>
-          <PrintObject content={props} />
-        </li>
-      </ul>
-    </Layout>
-  )
-}
-
-export default Cart
