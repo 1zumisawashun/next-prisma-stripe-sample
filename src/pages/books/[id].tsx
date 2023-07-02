@@ -31,7 +31,7 @@ export default function page({ book, isBookmarked }: Props) {
     Router.push(`/books/${id}`)
   }
   return (
-    <div className="container mx-auto">
+    <div className="styled-container">
       <div className="my-12 flex justify-center p-12">
         <div className="mx-auto w-full lg:w-8/12">
           <div className="text-lightBlue-500 bg-lightBlue-200 mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-3 text-center shadow-sm" />

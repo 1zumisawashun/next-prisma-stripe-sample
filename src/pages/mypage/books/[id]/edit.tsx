@@ -1,12 +1,11 @@
 import { getSession } from 'next-auth/react'
 import { GetServerSideProps } from 'next'
-import { EditForm } from '@/features/books/components'
+import { BookEditForm } from '@/features/books/components'
 import prisma from '@/functions/libs/prisma'
 import { BookProps } from '@/functions/types/Book'
 
 export default function page({ book }: { book: BookProps }) {
-  console.log(book, 'book')
-  return <EditForm book={book} />
+  return <BookEditForm book={book} />
 }
 
 export const getServerSideProps: GetServerSideProps = async ({

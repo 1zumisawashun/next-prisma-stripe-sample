@@ -1,13 +1,18 @@
 import React, { useState, BaseSyntheticEvent } from 'react'
 import Router from 'next/router'
 import { Button, InputText } from '../../../components/uis'
-import { fetchPostJSON } from '@/functions/helpers/api-helpers'
+import { fetchPutJSON } from '@/functions/helpers/api-helpers'
+import { BookProps } from '@/functions/types/Book'
 
-export const CreateForm = () => {
+type Props = {
+  book: BookProps
+}
+export const BookEditForm: React.FC<Props> = ({ book }) => {
   const [formData, setFormData] = useState({
-    title: '',
-    content: ''
+    title: book.title,
+    content: book.content
   })
+
   const handleChange = (e: BaseSyntheticEvent) => {
     const { name, value } = e.target
     setFormData((prevState) => ({
@@ -15,9 +20,10 @@ export const CreateForm = () => {
       [name]: value
     }))
   }
+
   const handleSubmit = async (): Promise<void> => {
-    await fetchPostJSON(
-      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/books/create`,
+    await fetchPutJSON(
+      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/books/edit/${book.id}`,
       formData
     )
     Router.push(`/mypage/books`)
@@ -39,7 +45,7 @@ export const CreateForm = () => {
       />
       <div>
         <Button type="button" onClick={handleSubmit}>
-          create
+          edit
         </Button>
       </div>
     </div>

@@ -6,4 +6,7 @@
   body {
     @apply font-ja leading-relaxed tracking-wider;
   }
+  .styled-container {
+    @apply container mx-auto max-w-4xl;
+  }
 }

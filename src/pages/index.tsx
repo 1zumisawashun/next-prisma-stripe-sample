@@ -6,11 +6,11 @@ export default function page() {
       <div className="pb-12 text-center md:pb-16">
         <h1 className="leading-tighter mb-4 text-7xl font-extrabold tracking-tighter md:text-8xl">
           <span className="bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
-            BUKUMA
+            Boox Mix!
           </span>
         </h1>
         <div className="mx-auto max-w-3xl">
-          <p className="mb-8 text-xl">Bookmark books you like!</p>
+          <p className="mb-8 text-xl">Make book playlists you like!</p>
           <div className="flexjustify-center mt-5">
             <div className="mt-3">
               <ButtonLink href="/books">Find Books</ButtonLink>

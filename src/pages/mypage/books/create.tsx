@@ -1,5 +1,5 @@
-import { CreateForm } from '@/features/books/components'
+import { BookCreateForm } from '@/features/books/components'
 
 export default function page() {
-  return <CreateForm />
+  return <BookCreateForm />
 }

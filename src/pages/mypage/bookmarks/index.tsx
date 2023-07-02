@@ -7,6 +7,7 @@ import { BookProps } from '@/functions/types/Book'
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 export default function page({ books }: { books: BookProps[] }) {
+  console.log(books)
   async function removeBookmark(id: number): Promise<void> {
     await fetch(
       `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/bookmark/remove/${id}`,
@@ -40,7 +41,8 @@ export default function page({ books }: { books: BookProps[] }) {
                           {book.title}
                         </p>
                         <div className="font-medium text-gray-400">
-                          {book.bookmarked_users.length > 1
+                          {book?.bookmarked_users &&
+                          book.bookmarked_users.length > 1
                             ? //  ここでは user という単語の単数形と複数形の切り替えを行なっています
                               `${book.bookmarked_users.length} users`
                             : `${book.bookmarked_users.length} user`}{' '}
@@ -96,7 +98,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
       }
     },
     include: {
-      posted_user: true
+      bookmarked_users: true
     }
   })
   const books = JSON.parse(JSON.stringify(data))
