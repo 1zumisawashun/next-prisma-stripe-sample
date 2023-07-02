@@ -3,7 +3,10 @@ import { getSession } from 'next-auth/react'
 import prisma from '../../../../functions/libs/prisma'
 
 // リクエストとレスポンスの型を指定しています
-export default async function (req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   // ここで、req のオブジェクトから認証情報を取得しています
   const session = await getSession({ req })
 

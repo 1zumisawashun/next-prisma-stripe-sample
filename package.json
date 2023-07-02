@@ -3,6 +3,7 @@
   "scripts": {
     "dev": "next",
     "build": "prisma generate && prisma db push && next build",
+    "build:fix": "next build",
     "start": "next start",
     "types": "tsc --pretty --noEmit",
     "lint:js": "eslint --ext .tsx,.ts src/",

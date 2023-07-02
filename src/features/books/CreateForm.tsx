@@ -1,6 +1,7 @@
 import React, { useState, BaseSyntheticEvent } from 'react'
 import Router from 'next/router'
 import { Button, InputText } from '../../components/uis'
+import { fetchPostJSON } from '@/functions/helpers/api-helpers'
 
 const CreateForm = () => {
   const [formData, setFormData] = useState({
@@ -15,8 +16,10 @@ const CreateForm = () => {
     }))
   }
   const handleSubmit = async (): Promise<void> => {
-    await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/books`, {
-      method: 'POST'
+    //bodyを送るとsessionがとれないぽい
+    await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/books/create`, {
+      method: 'POST',
+      body: JSON.stringify({ title: 'test2', content: 'test2' })
     })
     Router.push(`/mypage/books`)
   }
