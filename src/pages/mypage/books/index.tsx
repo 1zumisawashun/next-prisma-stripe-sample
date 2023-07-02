@@ -7,56 +7,48 @@ import prisma from '@/functions/libs/prisma'
 import { BookProps } from '@/functions/types/Book'
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
-const MypageBooks = ({ books }: { books: BookProps[] }) => {
-  async function removeBookmark(id: number): Promise<void> {
-    await fetch(
-      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/bookmark/remove/${id}`,
-      { method: 'PUT' }
-    )
-    Router.push('/mypage')
-  }
+export default function page({ posts }: { posts: BookProps[] }) {
+  console.log(posts)
   return (
     <div className="container mx-auto px-6 py-16">
-      {books.length > 0 ? (
-        // ブックマークしている記事が存在する場合、記事の一覧を表示します
+      {posts.length !== 0 ? (
         <div className="mx-auto sm:w-8/12 lg:w-6/12 xl:w-[40%]">
           <div className="overflow-x-auto">
-            <h1 className="mb-8 text-center text-3xl">
-              All books you bookmarked
-            </h1>
+            <h1 className="mb-8 text-center text-3xl">All books you posted</h1>
             <table className="w-full table-auto">
               <tbody className="divide-y divide-slate-100 text-sm font-medium">
-                {books.map((book) => (
+                {posts.map((post) => (
                   <tr
-                    key={book.id}
+                    key={post.id}
                     className="group transition-colors hover:bg-gray-100"
                   >
                     <td className="py-4 pl-10">
                       <div>
                         <p
                           aria-hidden="true"
-                          onClick={() => Router.push(`/books/${book.id}`)}
+                          onClick={() => Router.push(`/books/${post.id}`)}
                           className="cursor-pointer text-lg font-semibold text-gray-700"
                         >
-                          {book.title}
+                          {post.title}
                         </p>
-                        <div className="font-medium text-gray-400">
+                        {/* <div className="font-medium text-gray-400">
                           {book.bookmarked_users.length > 1
                             ? //  ここでは user という単語の単数形と複数形の切り替えを行なっています
                               `${book.bookmarked_users.length} users`
                             : `${book.bookmarked_users.length} user`}{' '}
                           bookmarked this article
-                        </div>
+                        </div> */}
                       </div>
                     </td>
                     <td className="text-center font-medium">
-                      <span
-                        aria-hidden="true"
-                        onClick={() => removeBookmark(book.id)}
-                        className="mr-2 cursor-pointer rounded bg-red-100 px-2.5 py-0.5 text-sm font-medium text-red-800 dark:bg-red-200 dark:text-red-900"
+                      <Link
+                        href={`/mypage/books/${post.id}/edit`}
+                        legacyBehavior
                       >
-                        DELETE
-                      </span>
+                        <a className="mr-2 cursor-pointer rounded bg-blue-100 px-2.5 py-0.5 text-sm font-medium text-blue-800 dark:bg-blue-200 dark:text-blue-900">
+                          EDIT
+                        </a>
+                      </Link>
                     </td>
                   </tr>
                 ))}
@@ -65,13 +57,12 @@ const MypageBooks = ({ books }: { books: BookProps[] }) => {
           </div>
         </div>
       ) : (
-        // ブックマークしている記事が存在しない場合、記事の一覧ページへのリンクを表示します
         <div className="text-center">
-          <h1 className="text-3xl">No books bookmarked</h1>
-          <Link href="/books" legacyBehavior>
+          <h1 className="text-3xl">No books posted</h1>
+          <Link href="/mypage/books/create" legacyBehavior>
             <a className="group mt-5 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 p-0.5 font-medium text-gray-900 hover:text-white focus:ring-4 focus:ring-blue-300 group-hover:from-purple-600 group-hover:to-blue-500 dark:text-white dark:focus:ring-blue-800">
               <span className="rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900">
-                Find Books
+                Post Books
               </span>
             </a>
           </Link>
@@ -81,27 +72,27 @@ const MypageBooks = ({ books }: { books: BookProps[] }) => {
   )
 }
 
-export default MypageBooks
-
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const session = await getSession({ req })
+
   if (!session) {
     res.statusCode = 401
     return { props: { books: null } }
   }
 
-  const data = await prisma.user.findUnique({
-    where: {
-      email: session.user?.email as string
-    },
-    include: {
-      bookmarks: true
-    }
-  })
+  const email = session.user?.email as string
 
-  const users = JSON.parse(JSON.stringify(data))
+  const posts = await prisma.user
+    .findUnique({
+      where: {
+        email
+      }
+    })
+    .posts()
+
+  // const posts = JSON.parse(JSON.stringify(posts))
 
   return {
-    props: { users }
+    props: { posts }
   }
 }

@@ -9,28 +9,20 @@ export default async function handler(
 ) {
   const session = await getServerSession(req, res, options)
   const { title, content } = req.body
+  console.log(title, content, 'title, content')
 
   if (session?.user?.email) {
-    const user = await prisma.user.findUnique({
+    const result = await prisma.book.update({
       where: {
-        email: session?.user?.email
+        id: Number(req.query.id)
+      },
+      data: {
+        title,
+        content
       }
     })
-    if (user) {
-      const result = await prisma.book.create({
-        data: {
-          title,
-          content,
-          published: false,
-          posted_user: {
-            connect: { id: user.id }
-          }
-        }
-      })
-      res.json(result)
-    } else {
-      res.status(401).send({ message: 'Unauthorized' })
-    }
+    console.log(result, 'result')
+    res.json(result)
   } else {
     res.status(401).send({ message: 'Unauthorized' })
   }

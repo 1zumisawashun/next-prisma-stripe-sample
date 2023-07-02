@@ -1,7 +1,5 @@
-import CreateForm from '@/features/books/CreateForm'
+import { CreateForm } from '@/features/books/components'
 
-const MypageBooksCreate = () => {
+export default function page() {
   return <CreateForm />
 }
-
-export default MypageBooksCreate
