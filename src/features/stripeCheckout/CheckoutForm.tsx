@@ -19,8 +19,7 @@ const CheckoutForm = () => {
     }))
   }
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
-    e.preventDefault()
+  const handleSubmit = async () => {
     setLoading(true)
     // Create a Checkout Session.
     const response = await fetchPostJSON('/api/checkout_sessions', {
@@ -72,7 +71,7 @@ const CheckoutForm = () => {
         step={config.AMOUNT_STEP}
         onChange={handleChange}
       />
-      <Button type="submit" disabled={loading}>
+      <Button type="button" disabled={loading} onClick={handleSubmit}>
         Donate {formatAmountForDisplay(input.customDonation, config.CURRENCY)}
       </Button>
     </form>

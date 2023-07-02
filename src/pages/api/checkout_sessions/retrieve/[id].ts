@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { stripe, StripeCheckoutSession } from '../../../functions/libs/stripe'
+import { stripe, StripeCheckoutSession } from '@/functions/libs/stripe'
 
 export default async function handler(
   req: NextApiRequest,

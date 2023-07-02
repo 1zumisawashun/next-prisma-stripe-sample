@@ -43,10 +43,7 @@ const ElementsForm: React.FC<ElementsFormProps> = ({
     }))
   }
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
-    e.preventDefault()
-    // Abort if form isn't valid
-    if (!e.currentTarget.reportValidity()) return
+  const handleSubmit = async () => {
     if (!elements) return
     setPayment({ status: 'processing', message: '' })
 
@@ -66,7 +63,7 @@ const ElementsForm: React.FC<ElementsFormProps> = ({
     const { error } = await stripe!.confirmPayment({
       elements,
       confirmParams: {
-        return_url: 'http://localhost:3000/donate-with-elements',
+        return_url: 'http://localhost:3000/cart/thankyou',
         payment_method_data: {
           billing_details: {
             name: input.cardholderName
@@ -137,7 +134,7 @@ const ElementsForm: React.FC<ElementsFormProps> = ({
             />
           </div>
         </fieldset>
-        <Button type="submit" disabled={isDisabled()}>
+        <Button type="button" disabled={isDisabled()} onClick={handleSubmit}>
           Donate {formatAmountForDisplay(input.customDonation, config.CURRENCY)}
         </Button>
       </form>

@@ -8,11 +8,10 @@ import { fetchGetJSON } from '@/functions/helpers/api-helpers'
 const Page: NextPage = () => {
   const router = useRouter()
 
-  // Fetch CheckoutSession from static page via
-  // https://nextjs.org/docs/basic-features/data-fetching#static-generation
+  // Fetch CheckoutSession from static page via https://nextjs.org/docs/basic-features/data-fetching#static-generation
   const { data, error } = useSWR(
     router.query.session_id
-      ? `/api/checkout_sessions/${router.query.session_id}`
+      ? `/api/checkout_sessions/retrieve/${router.query.session_id}`
       : null,
     fetchGetJSON
   )

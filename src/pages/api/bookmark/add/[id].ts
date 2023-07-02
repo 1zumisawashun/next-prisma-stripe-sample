@@ -7,6 +7,12 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  // Validate the amount that was passed from the client.
+  if (req.method !== 'PUT') {
+    res.setHeader('Allow', 'PUT')
+    res.status(405).end('Method Not Allowed')
+    return
+  }
   // ここで、req のオブジェクトから認証情報を取得しています
   const session = await getSession({ req })
 

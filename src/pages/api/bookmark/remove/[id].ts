@@ -6,6 +6,12 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  // Validate the amount that was passed from the client.
+  if (req.method !== 'PUT') {
+    res.setHeader('Allow', 'PUT')
+    res.status(405).end('Method Not Allowed')
+    return
+  }
   const session = await getSession({ req })
 
   if (session?.user?.email) {
