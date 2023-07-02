@@ -11,17 +11,16 @@ import ElementsForm from '@/features/stripeElement/ElementsForm'
 const Page: NextPage = () => {
   const [paymentIntent, setPaymentIntent] = useState<PaymentIntent | null>(null)
 
-  useEffect(() => {
-    fetchPostJSON('/api/payment_intents', {
+  const asyncFunc = async () => {
+    const res = await fetchPostJSON('/api/payment_intents', {
       amount: Math.round(config.MAX_AMOUNT / config.AMOUNT_STEP)
     })
-      .then((data) => {
-        setPaymentIntent(data)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }, [setPaymentIntent])
+    setPaymentIntent(res)
+  }
+
+  useEffect(() => {
+    asyncFunc()
+  }, [])
 
   return (
     <Layout title="Donate with Elements | Next.js + TypeScript Example">

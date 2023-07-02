@@ -48,6 +48,7 @@ const ElementsForm: React.FC<ElementsFormProps> = ({
     setPayment({ status: 'processing', message: '' })
 
     // Create a PaymentIntent with the specified amount.
+    // 「増減させる＝値段を変更」してもupdateさせるので問題なし
     const response = await fetchPostJSON('/api/payment_intents', {
       amount: input.customDonation,
       payment_intent_id: paymentIntent?.id
