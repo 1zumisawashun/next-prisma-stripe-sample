@@ -7,7 +7,6 @@ import { BookProps } from '@/functions/types/Book'
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 export default function page({ books }: { books: BookProps[] }) {
-  console.log(books)
   async function removeBookmark(id: number): Promise<void> {
     await fetch(
       `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/bookmark/remove/${id}`,

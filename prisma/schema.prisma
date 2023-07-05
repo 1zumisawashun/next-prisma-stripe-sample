@@ -15,6 +15,11 @@ generator client {
   previewFeatures = ["jsonProtocol"]
 }
 
+generator erd {
+  provider = "prisma-erd-generator"
+  output = "./public/ERD.svg"
+}
+
 datasource db {
   provider          = "postgresql"
   url               = env("POSTGRES_PRISMA_URL") // uses connection pooling
@@ -70,13 +75,65 @@ model User {
   emailVerified DateTime? @map("email_verified")
   image         String?
   createdAt     DateTime  @default(now()) @map(name: "created_at")
-  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
-  bookmarks     Book[]    @relation("UserBookmarks")
-  posts         Book[]    @relation("UserPosts")
-  accounts      Account[]
-  sessions      Session[]
+  updatedAt     DateTime? @updatedAt @map(name: "updated_at")
+
+  accounts  Account[]
+  sessions  Session[]
+  bookmarks Book[]    @relation("UserBookmarks")
+  posts     Book[]    @relation("UserPosts")
+  customer  Customer?
 
   @@map(name: "users")
+}
+
+model Customer {
+  id          String  @unique
+  description String?
+  email       String
+  metadata    Json
+  name        String
+  phone       String?
+
+  user   User? @relation(fields: [userId], references: [id])
+  userId Int?  @unique @map("user_id")
+
+  shipping Shipping[]
+  address  Address[]
+
+  @@map("customer")
+}
+
+// https://www.prisma.io/docs/concepts/components/prisma-schema/relations/one-to-one-relations
+model Address {
+  id          Int     @id @default(autoincrement())
+  city        String?
+  country     String?
+  line1       String?
+  line2       String?
+  postal_code String?
+  state       String?
+  isAddressSelected Boolean @default(false)
+
+  customer   Customer @relation(fields: [customerId], references: [id])
+  customerId String   @map("customer_id")
+
+  @@map("address")
+}
+
+model Shipping {
+  id          Int     @id @default(autoincrement())
+  city        String?
+  country     String?
+  line1       String?
+  line2       String?
+  postal_code String?
+  state       String?
+  isShippingSelected Boolean @default(false)
+
+  customer   Customer @relation(fields: [customerId], references: [id])
+  customerId String   @map("customer_id")
+
+  @@map("shipping")
 }
 
 model Book {
@@ -84,10 +141,13 @@ model Book {
   title            String
   content          String
   published        Boolean    @default(false)
+  createdAt        DateTime   @default(now()) @map(name: "created_at")
+  updatedAt        DateTime?  @updatedAt @map(name: "updated_at")
   bookmarked_users User[]     @relation("UserBookmarks")
-  posted_user      User?      @relation("UserPosts", fields: [user_id], references: [id])
-  user_id          Int?
   categories       Category[]
+
+  posted_user User? @relation("UserPosts", fields: [user_id], references: [id])
+  user_id     Int?
 
   @@map("books")
 }

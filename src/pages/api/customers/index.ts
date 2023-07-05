@@ -23,6 +23,7 @@ export default async function handler(
 
   if (stripeId) {
     customersUpdate(req, res)
+    return
   }
   customersCreate(req, res)
 }

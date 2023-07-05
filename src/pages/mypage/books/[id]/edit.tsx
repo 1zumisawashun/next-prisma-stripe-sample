@@ -1,6 +1,6 @@
 import { getSession } from 'next-auth/react'
 import { GetServerSideProps } from 'next'
-import { BookEditForm } from '@/features/books/components'
+import { BookEditForm } from '@/features/books'
 import prisma from '@/functions/libs/prisma'
 import { BookProps } from '@/functions/types/Book'
 

@@ -8,8 +8,8 @@ export default async function handler(
   const { stripeId }: { stripeId: string } = req.body
 
   try {
-    const customer = await stripe.customers.retrieve(stripeId)
-    return customer
+    const retrieve_customer = await stripe.customers.retrieve(stripeId)
+    return retrieve_customer
   } catch (e) {
     return null
   }

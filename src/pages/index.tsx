@@ -17,6 +17,7 @@ export default function page() {
             </div>
           </div>
         </div>
+        <img src="/ERD.svg" alt="" />
       </div>
     </div>
   )

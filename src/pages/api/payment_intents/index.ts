@@ -26,6 +26,7 @@ export default async function handler(
 
   if (payment_intent_id) {
     paymentIntentsUpdate(req, res)
+    return
   }
   paymentIntentsCreate(req, res)
 }

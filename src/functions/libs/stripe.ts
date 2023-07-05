@@ -9,6 +9,10 @@ export type StripeCheckoutSessionCreateParams =
 export type StripePaymentIntent = Stripe.PaymentIntent
 export type StripePaymentIntentCreateParams = Stripe.PaymentIntentCreateParams
 
+// NOTE:customer
+export type StripeCustomer = Stripe.Customer.Shipping
+export type StripeAddress = Stripe.Address
+
 // NOTE:webhook
 export type StripeCharge = Stripe.Charge
 export type StripeEvent = Stripe.Event

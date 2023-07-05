@@ -1,11 +1,16 @@
 import { getProviders, signIn } from 'next-auth/react'
 import { InferGetServerSidePropsType } from 'next'
 import Image from 'next/image'
-import { Button } from '../../components/uis'
+import { Button } from '@/components/uis'
 
 export default function page({
   providers
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const login = async (providerId: string) => {
+    const params = { callbackUrl: '/books' }
+    const res = await signIn(providerId, params)
+    console.log(res)
+  }
   return (
     <div className="flex flex-col items-center space-y-20 pt-40">
       <Image
@@ -22,13 +27,7 @@ export default function page({
               Object.values(providers).map((provider) => {
                 return (
                   <div key={provider.name}>
-                    <Button
-                      onClick={() =>
-                        signIn(provider.id, {
-                          callbackUrl: '/books'
-                        })
-                      }
-                    >
+                    <Button onClick={() => login(provider.id)}>
                       Sign in with {provider.name}
                     </Button>
                   </div>

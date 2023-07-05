@@ -1,15 +1,30 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { stripe } from '@/functions/libs/stripe'
+import prisma from '@/functions/libs/prisma'
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { email }: { email: string } = req.body
+  const { email, userId }: { email: string; userId: number } = req.body
 
   try {
     const customer = await stripe.customers.create({ email })
-    // NOTE:prismaでuserに追加する
+    console.log(customer, 'customerの生成に成功しました！')
+
+    const prismaCustomer = await prisma.customer.create({
+      data: {
+        id: customer.id,
+        description: customer.description,
+        email: customer.email ?? email,
+        metadata: {},
+        name: customer.name ?? 'テスト',
+        phone: customer.phone ?? 'テスト',
+        user: { connect: { id: userId } }
+      }
+    })
+    console.log(prismaCustomer, 'prisma-customerの生成に成功しました！')
+
     res.status(200).json(customer)
   } catch (err) {
     const message = err instanceof Error ? err.message : 'Internal server error'

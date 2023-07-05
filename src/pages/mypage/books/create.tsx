@@ -1,4 +1,4 @@
-import { BookCreateForm } from '@/features/books/components'
+import { BookCreateForm } from '@/features/books'
 
 export default function page() {
   return <BookCreateForm />
