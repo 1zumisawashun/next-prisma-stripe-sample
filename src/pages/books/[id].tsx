@@ -34,11 +34,9 @@ export default function page({ book, isBookmarked }: Props) {
     <div className="styled-container">
       <div className="my-12 flex justify-center p-12">
         <div className="mx-auto w-full lg:w-8/12">
-          <div className="text-lightBlue-500 bg-lightBlue-200 mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-3 text-center shadow-sm" />
+          <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-3 text-center shadow-sm" />
           <h3 className="text-3xl font-semibold">{book.title}</h3>
-          <p className="text-blueGray-500 mt-4 text-lg leading-relaxed">
-            {book.content}
-          </p>
+          <p className="mt-4 text-lg leading-relaxed">{book.content}</p>
           {isBookmarked ? (
             // ブックマークされている場合には、ブックマークを削除するボタンを設置します
             <button
@@ -91,6 +89,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   })
 
   const book = JSON.parse(JSON.stringify(data))
+
   const isBookmarked = book.bookmarked_users.some(
     (user: User) => user.email === session.user?.email
   )

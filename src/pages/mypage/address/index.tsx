@@ -1,10 +1,10 @@
 import { GetServerSideProps } from 'next'
-import Link from 'next/link'
 import Router from 'next/router'
 import { getSession } from 'next-auth/react'
 import { Address } from '@prisma/client'
 import prisma from '@/functions/libs/prisma'
 import { fetchPostJSON } from '@/functions/helpers/api-helpers'
+import { ButtonLink } from '@/components/uis'
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 export default function page({ addresses }: { addresses: Address[] }) {
@@ -57,18 +57,19 @@ export default function page({ addresses }: { addresses: Address[] }) {
               </tbody>
             </table>
           </div>
+          <div className="text-center">
+            <ButtonLink href="/mypage/address/create">
+              Register Address
+            </ButtonLink>
+          </div>
         </div>
       ) : (
         // ブックマークしている記事が存在しない場合、記事の一覧ページへのリンクを表示します
         <div className="text-center">
           <h1 className="text-3xl">No Address Registered</h1>
-          <Link href="/mypage/address/create" legacyBehavior>
-            <a className="group mt-5 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 p-0.5 font-medium text-gray-900 hover:text-white focus:ring-4 focus:ring-blue-300 group-hover:from-purple-600 group-hover:to-blue-500 dark:text-white dark:focus:ring-blue-800">
-              <span className="rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900">
-                Register Address
-              </span>
-            </a>
-          </Link>
+          <ButtonLink href="/mypage/address/create">
+            Register Address
+          </ButtonLink>
         </div>
       )}
     </div>

@@ -13,16 +13,10 @@ export default function page({
   }
   return (
     <div className="flex flex-col items-center space-y-20 pt-40">
-      <Image
-        src="/github-icon.png"
-        width={150}
-        height={150}
-        objectFit="contain"
-        alt=""
-      />
+      <Image src="/github-icon.png" width={150} height={150} alt="" />
       <div className="text-center ">
         <div className="mx-auto max-w-3xl">
-          <div className="flexjustify-center">
+          <div className="flex justify-center">
             {providers &&
               Object.values(providers).map((provider) => {
                 return (

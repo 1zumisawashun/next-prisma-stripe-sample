@@ -18,7 +18,8 @@ export default function page({ books }: { books: BookProps[] }) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const books = await prisma.book.findMany()
+  const data = await prisma.book.findMany()
+  const books = JSON.parse(JSON.stringify(data))
   return {
     props: { books }
   }

@@ -82,7 +82,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
   const email = session.user?.email as string
 
-  const posts = await prisma.user
+  const data = await prisma.user
     .findUnique({
       where: {
         email
@@ -90,7 +90,8 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     })
     .posts()
 
-  // const posts = JSON.parse(JSON.stringify(posts))
+  // NOTE:Date型はJson化させないといけないっぽい
+  const posts = JSON.parse(JSON.stringify(data))
 
   return {
     props: { posts }
