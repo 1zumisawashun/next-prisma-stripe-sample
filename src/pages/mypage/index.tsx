@@ -9,45 +9,49 @@ const Page: NextPage = () => {
   const logoutModal = useDisclosure()
   const items = [
     {
-      id: 1,
+      name: '新規投稿',
+      onClick: () => Router.push(`/mypage/books/create`),
+      annotation: '新規登録を行うことができます。'
+    },
+    {
       name: '投稿一覧',
       onClick: () => Router.push(`/mypage/books`),
       annotation:
         '過去に投稿した記事を閲覧できます。投稿した編集を行う場合はこちらからお願いいたします。'
     },
     {
-      id: 2,
-      name: '新規投稿',
-      onClick: () => Router.push(`/mypage/books/create`),
-      annotation: '新規登録を行うことができます。'
-    },
-    {
-      id: 3,
       name: 'ブックマーク一覧',
       onClick: () => Router.push(`/mypage/bookmarks`),
       annotation:
         '過去に保存した記事を閲覧できます。保存取り消しを行うこともできます。'
     },
     {
-      id: 4,
+      name: '購入履歴一覧',
+      onClick: () => Router.push(`/mypage/histories`),
+      annotation: '過去に購入した記事を閲覧できます。'
+    },
+    {
       name: '支払い住所の変更',
       onClick: () => Router.push(`/mypage/address`),
       annotation: 'Stripe決済で使用している支払い住所の変更ができます。'
     },
     {
-      id: 5,
       name: '支払い方法の変更',
       onClick: () => Router.push(`/mypage/payment`),
       annotation:
         'Stripe決済で使用しているクレジットカード情報の更新を行えます。'
     },
     {
-      id: 6,
       name: 'ログアウト',
       onClick: logoutModal.open,
       annotation: 'ログアウトすることができます。'
     }
-  ]
+  ].map((item, index) => {
+    return {
+      id: index,
+      ...item
+    }
+  })
   return (
     <>
       <div className="container mx-auto px-6 py-16">
@@ -58,15 +62,12 @@ const Page: NextPage = () => {
                 {items.map((item) => (
                   <tr
                     key={item.id}
-                    className="group transition-colors hover:bg-gray-100"
+                    className="group cursor-pointer transition-colors hover:bg-gray-100"
+                    onClick={item.onClick}
                   >
                     <td className="py-4 pl-10">
                       <div>
-                        <p
-                          aria-hidden="true"
-                          onClick={item.onClick}
-                          className="cursor-pointer text-lg font-semibold text-gray-700"
-                        >
+                        <p className="text-lg font-semibold text-gray-700">
                           {item.name}
                         </p>
                         <div className="font-medium text-gray-400">
