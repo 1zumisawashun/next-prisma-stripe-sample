@@ -1,6 +1,7 @@
 import { getProviders, signIn } from 'next-auth/react'
 import { InferGetServerSidePropsType } from 'next'
 import Image from 'next/image'
+import { Fragment } from 'react'
 import { Button } from '@/components/uis'
 
 export default function page({
@@ -8,25 +9,24 @@ export default function page({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const login = async (providerId: string) => {
     const params = { callbackUrl: '/books' }
-    const res = await signIn(providerId, params)
-    console.log(res)
+    const response = await signIn(providerId, params)
+    console.log(response)
   }
+
   return (
-    <div className="flex flex-col items-center space-y-20 pt-40">
-      <Image src="/github-icon.png" width={150} height={150} alt="" />
+    <div className="flex flex-col items-center space-y-10 pt-40">
+      <Image src="/github-icon.png" width={100} height={100} alt="" />
       <div className="text-center ">
         <div className="mx-auto max-w-3xl">
           <div className="flex justify-center">
             {providers &&
-              Object.values(providers).map((provider) => {
-                return (
-                  <div key={provider.name}>
-                    <Button onClick={() => login(provider.id)}>
-                      Sign in with {provider.name}
-                    </Button>
-                  </div>
-                )
-              })}
+              Object.values(providers).map((provider) => (
+                <Fragment key={provider.name}>
+                  <Button onClick={() => login(provider.id)}>
+                    Sign in with {provider.name}
+                  </Button>
+                </Fragment>
+              ))}
           </div>
         </div>
       </div>
@@ -35,8 +35,6 @@ export default function page({
 }
 
 export const getServerSideProps = async () => {
-  // ここで、認証の方法を取得しています
-  // 今回は、GitHub による認証だけですが、複数の認証方法（Google・Twitterなど）を取得することが出来ます
   const providers = await getProviders()
   return {
     props: { providers }

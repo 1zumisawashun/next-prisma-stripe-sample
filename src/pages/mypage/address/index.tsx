@@ -7,12 +7,22 @@ import { fetchPostJSON } from '@/functions/helpers/api-helpers'
 import { ButtonLink } from '@/components/uis'
 import { MypageAddressTable } from '@/features/mypage'
 
-export default function page({ addresses }: { addresses: Address[] }) {
-  const updateAddress = async (address: any): Promise<void> => {
-    const res = await fetchPostJSON(
-      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/mypage/address/update/${address.customerId}`,
-      address
+type Props = {
+  customerId?: string
+  selectedAddressId?: number
+  addresses: Address[]
+}
+export default function page({
+  customerId,
+  selectedAddressId,
+  addresses
+}: Props) {
+  const updateAddress = async (address: Address): Promise<void> => {
+    const response = await fetchPostJSON(
+      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/mypage/address/update/${address.id}`,
+      { ...address, customerId }
     )
+    console.log(response)
     Router.push(`/mypage/address`)
   }
 
@@ -22,12 +32,16 @@ export default function page({ addresses }: { addresses: Address[] }) {
         <div className="grid gap-5 overflow-x-auto">
           <h1 className="text-center text-3xl">
             {addresses.length > 0
-              ? 'All addressed you registered'
+              ? 'All Addresses You Registered'
               : 'No Address Registered'}
           </h1>
 
           {addresses.length > 0 && (
-            <MypageAddressTable addresses={addresses} onClick={updateAddress} />
+            <MypageAddressTable
+              addresses={addresses}
+              selectedAddressId={selectedAddressId}
+              onClick={updateAddress}
+            />
           )}
 
           <div className="text-center">
@@ -51,16 +65,20 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
   const email = session?.user?.email as string
 
-  const addresses = await prisma.user
-    .findUnique({
-      where: {
-        email
-      }
-    })
-    ?.customer()
-    ?.address()
+  const user = await prisma.user.findUnique({
+    where: {
+      email
+    },
+    include: {
+      addresses: true
+    }
+  })
 
   return {
-    props: { addresses }
+    props: {
+      customerId: user?.customerId,
+      selectedAddressId: user?.selectedAddressId ?? 0,
+      addresses: user?.addresses ?? []
+    }
   }
 }

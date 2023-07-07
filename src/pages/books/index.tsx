@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next'
-import prisma from '../../functions/libs/prisma'
-import { BookProps } from '../../functions/types/Book'
+import prisma from '@/functions/libs/prisma'
+import { BookProps } from '@/functions/types/Book'
 import { BookCard } from '@/features/books'
 
 export default function page({ books }: { books: BookProps[] }) {

@@ -19,10 +19,11 @@ export const MypageAddressCreateForm = () => {
     }))
   }
   const handleSubmit = async (): Promise<void> => {
-    const res = await fetchPostJSON(
+    const response = await fetchPostJSON(
       `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/mypage/address/create`,
       address
     )
+    console.log(response)
     Router.push(`/mypage/address`)
   }
 

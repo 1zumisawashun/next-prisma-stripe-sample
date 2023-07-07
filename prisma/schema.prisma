@@ -17,7 +17,7 @@ generator client {
 
 generator erd {
   provider = "prisma-erd-generator"
-  output = "./public/ERD.svg"
+  output   = "./public/ERD.svg"
 }
 
 datasource db {
@@ -74,18 +74,26 @@ model User {
   email         String    @unique
   emailVerified DateTime? @map("email_verified")
   image         String?
-  createdAt     DateTime  @default(now()) @map(name: "created_at")
-  updatedAt     DateTime? @updatedAt @map(name: "updated_at")
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime? @updatedAt @map("updated_at")
+
+  customerId         String? @map("customer_id")
+  selectedPaymentId  String? @map("selected_payment_id")
+  selectedAddressId  Int?    @map("selected_address_id")
+  selectedShippingId Int?    @map("selected_shipping_id")
 
   accounts  Account[]
   sessions  Session[]
-  bookmarks Book[]    @relation("UserBookmarks")
-  posts     Book[]    @relation("UserPosts")
+  bookmarks Book[]     @relation(name: "bookmarks")
+  posts     Book[]     @relation(name: "posts")
   customer  Customer?
+  shippings Shipping[]
+  addresses Address[]
 
-  @@map(name: "users")
+  @@map("users")
 }
 
+// NOTE:stripeのcustomer情報
 model Customer {
   id          String  @unique
   description String?
@@ -97,57 +105,52 @@ model Customer {
   user   User? @relation(fields: [userId], references: [id])
   userId Int?  @unique @map("user_id")
 
-  shipping Shipping[]
-  address  Address[]
-
-  @@map("customer")
+  @@map("customers")
 }
 
 // https://www.prisma.io/docs/concepts/components/prisma-schema/relations/one-to-one-relations
 model Address {
-  id          Int     @id @default(autoincrement())
-  city        String?
-  country     String?
-  line1       String?
-  line2       String?
-  postal_code String?
-  state       String?
-  isAddressSelected Boolean @default(false)
+  id          Int    @id @default(autoincrement())
+  city        String
+  country     String
+  line1       String
+  line2       String
+  postal_code String
+  state       String
 
-  customer   Customer @relation(fields: [customerId], references: [id])
-  customerId String   @map("customer_id")
+  user   User? @relation(fields: [userId], references: [id])
+  userId Int?  @map("user_id")
 
-  @@map("address")
+  @@map("addresses")
 }
 
 model Shipping {
-  id          Int     @id @default(autoincrement())
-  city        String?
-  country     String?
-  line1       String?
-  line2       String?
-  postal_code String?
-  state       String?
-  isShippingSelected Boolean @default(false)
+  id          Int    @id @default(autoincrement())
+  city        String
+  country     String
+  line1       String
+  line2       String
+  postal_code String
+  state       String
 
-  customer   Customer @relation(fields: [customerId], references: [id])
-  customerId String   @map("customer_id")
+  user   User? @relation(fields: [userId], references: [id])
+  userId Int?  @map("user_id")
 
-  @@map("shipping")
+  @@map("shippings")
 }
 
 model Book {
-  id               Int        @id @default(autoincrement())
-  title            String
-  content          String
-  published        Boolean    @default(false)
-  createdAt        DateTime   @default(now()) @map(name: "created_at")
-  updatedAt        DateTime?  @updatedAt @map(name: "updated_at")
-  bookmarked_users User[]     @relation("UserBookmarks")
-  categories       Category[]
+  id        Int       @id @default(autoincrement())
+  title     String
+  content   String
+  published Boolean   @default(false)
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
 
-  posted_user User? @relation("UserPosts", fields: [user_id], references: [id])
-  user_id     Int?
+  bookmarked_users User[]     @relation(name: "bookmarks")
+  categories       Category[]
+  posted_user      User?      @relation(name: "posts", fields: [user_id], references: [id])
+  user_id          Int?
 
   @@map("books")
 }
@@ -157,5 +160,5 @@ model Category {
   name  String
   books Book[]
 
-  @@map(name: "categories")
+  @@map("categories")
 }

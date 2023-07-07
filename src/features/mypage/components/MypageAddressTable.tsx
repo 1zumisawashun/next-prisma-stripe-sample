@@ -1,12 +1,15 @@
 import { Address } from '@prisma/client'
 
+type Props = {
+  addresses: Address[]
+  selectedAddressId: number | undefined
+  onClick: (address: Address) => void
+}
 export const MypageAddressTable = ({
   addresses,
+  selectedAddressId,
   onClick
-}: {
-  addresses: Address[]
-  onClick: (address: Address) => void
-}) => {
+}: Props) => {
   return (
     <table className="w-full table-auto">
       <tbody className="divide-y divide-slate-100 text-sm font-medium">
@@ -24,13 +27,21 @@ export const MypageAddressTable = ({
             </td>
 
             <td className="text-center font-medium">
-              {address.isAddressSelected && (
+              {address.id === selectedAddressId ? (
                 <span
                   aria-hidden="true"
                   onClick={() => onClick(address)}
                   className="mr-2 cursor-pointer rounded bg-green-100 px-2.5 py-0.5 text-sm font-medium text-green-800 dark:bg-green-200 dark:text-green-900"
                 >
-                  SELECTED
+                  選択済み
+                </span>
+              ) : (
+                <span
+                  aria-hidden="true"
+                  onClick={() => onClick(address)}
+                  className="mr-2 cursor-pointer rounded bg-red-100 px-2.5 py-0.5 text-sm font-medium text-red-800 dark:bg-red-200 dark:text-red-900"
+                >
+                  未選択
                 </span>
               )}
             </td>
