@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState, BaseSyntheticEvent } from 'react'
 import {
   useStripe,
   useElements,
@@ -6,8 +6,8 @@ import {
   CardCvcElement,
   CardExpiryElement
 } from '@stripe/react-stripe-js'
-// import axios from 'axios'
-// import useResponsiveFontSize from './useResponsiveFontSize'
+import Router from 'next/router'
+import { fetchPostJSON } from '@/functions/helpers/api-helpers'
 
 const useOptions = () => {
   // const fontSize = useResponsiveFontSize()
@@ -34,7 +34,6 @@ const useOptions = () => {
   return options
 }
 
-// pm_1NQqtlEjv771bjTXbMkCgWwZ
 export const MypagePaymentCreateForm = () => {
   const [isProcessing, setProcessingTo] = useState(false)
   const [checkoutError, setCheckoutError] = useState()
@@ -49,21 +48,26 @@ export const MypagePaymentCreateForm = () => {
       : setCheckoutError(undefined)
   }
 
-  const handleSubmit = async (event: any) => {
+  const handleSubmit = async (event: BaseSyntheticEvent) => {
     event.preventDefault()
 
-    if (!stripe || !elements) {
-      return
-    }
-    // card number element as the card element
+    if (!stripe || !elements) return
+
     const cardNumberElement = elements?.getElement(CardNumberElement)
-    // our payment process starts here
+
     if (cardNumberElement) {
+      // NOTE:stripeにクレカ情報を登録する
       const { error, paymentMethod } = await stripe.createPaymentMethod({
         type: 'card',
         card: cardNumberElement
       })
-      console.log(error, paymentMethod)
+      // NOTE:stripeに登録したクレカ情報にユーザー情報を付与する
+      const response = await fetchPostJSON(
+        `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/payment_methods/attach`,
+        { paymentMethodId: paymentMethod?.id }
+      )
+      console.log(response)
+      Router.push(`/mypage/payment`)
     }
   }
 

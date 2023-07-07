@@ -3,9 +3,9 @@ import { MypagePaymentCreateForm } from '@/features/mypage'
 import { getStripe } from '@/functions/libs/stripejs'
 
 export default function page() {
-  console.log(getStripe(), 'getStripe()')
+  const stripe = getStripe()
   return (
-    <Elements stripe={getStripe()}>
+    <Elements stripe={stripe}>
       <MypagePaymentCreateForm />
     </Elements>
   )

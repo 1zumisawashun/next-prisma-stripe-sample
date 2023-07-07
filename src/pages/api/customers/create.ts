@@ -10,9 +10,9 @@ export default async function handler(
 
   try {
     const customer = await stripe.customers.create({ email })
-    console.log(customer, 'customerの生成に成功しました！')
+    console.log(customer)
 
-    const prismaCustomer = await prisma.customer.create({
+    const prisma_customer = await prisma.customer.create({
       data: {
         id: customer.id,
         description: customer.description,
@@ -23,7 +23,7 @@ export default async function handler(
         user: { connect: { id: userId } }
       }
     })
-    console.log(prismaCustomer, 'prisma-customerの生成に成功しました！')
+    console.log(prisma_customer)
 
     res.status(200).json(customer)
   } catch (err) {
