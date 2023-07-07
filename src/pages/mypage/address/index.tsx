@@ -19,7 +19,7 @@ export default function page({
 }: Props) {
   const updateAddress = async (address: Address): Promise<void> => {
     const response = await fetchPostJSON(
-      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/mypage/address/update/${address.id}`,
+      `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/mypage/address/update`,
       { ...address, customerId }
     )
     console.log(response)
