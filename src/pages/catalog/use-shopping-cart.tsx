@@ -1,6 +1,6 @@
 import { Layout } from '@/components/layouts/Layout'
-import CartSummary from '@/features/useShoppingCart/CartSummary'
-import Products from '@/features/useShoppingCart/Products'
+import CartSummary from '@/features/catalog/components/CartSummary'
+import Products from '@/features/catalog/components/Products'
 
 export default function page() {
   return (

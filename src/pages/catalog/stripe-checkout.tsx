@@ -1,4 +1,4 @@
-import CheckoutForm from '../../features/stripeCheckout/CheckoutForm'
+import CheckoutForm from '../../features/catalog/components/CheckoutForm'
 import { Layout } from '@/components/layouts/Layout'
 
 export default function page() {
