@@ -63,7 +63,7 @@ export const MypagePaymentCreateForm = () => {
       })
       // NOTE:stripeに登録したクレカ情報にユーザー情報を付与する
       const response = await fetchPostJSON(
-        `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/payment_methods/attach`,
+        `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/stripe/payment_methods/attach`,
         { paymentMethodId: paymentMethod?.id }
       )
       console.log(response)

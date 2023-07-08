@@ -22,7 +22,7 @@ const CartSummary = () => {
     setErrorMessage('')
 
     const response = await fetchPostJSON(
-      '/api/checkout_sessions/cart',
+      '/api/stripe/checkout_sessions/cart',
       cartDetails
     )
 

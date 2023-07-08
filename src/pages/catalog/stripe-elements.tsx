@@ -12,7 +12,7 @@ const Page: NextPage = () => {
   const [paymentIntent, setPaymentIntent] = useState<PaymentIntent | null>(null)
 
   const asyncFunc = async () => {
-    const res = await fetchPostJSON('/api/payment_intents', {
+    const res = await fetchPostJSON('/api/stripe/payment_intents', {
       amount: Math.round(config.MAX_AMOUNT / config.AMOUNT_STEP)
     })
     setPaymentIntent(res)

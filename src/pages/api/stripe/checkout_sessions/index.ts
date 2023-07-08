@@ -3,13 +3,13 @@ import {
   CURRENCY,
   MIN_AMOUNT,
   MAX_AMOUNT
-} from '../../../functions/constants/config'
-import { formatAmountForStripe } from '../../../functions/helpers/stripe-helpers'
+} from '../../../../functions/constants/config'
+import { formatAmountForStripe } from '../../../../functions/helpers/stripe-helpers'
 import {
   stripe,
   StripeCheckoutSession,
   StripeCheckoutSessionCreateParams
-} from '../../../functions/libs/stripe'
+} from '../../../../functions/libs/stripe'
 
 export default async function handler(
   req: NextApiRequest,
