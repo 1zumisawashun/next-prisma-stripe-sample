@@ -1,15 +1,18 @@
 import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart'
-import products from '@/functions/constants/products'
 import { Button } from '@/components/uis/Button'
 
-export const Products = () => {
-  const { addItem, removeItem } = useShoppingCart()
+export const CartProductList = () => {
+  const { addItem, removeItem, cartDetails } = useShoppingCart()
 
+  const items = Object.values(cartDetails ?? [])
   return (
     <section>
-      {products.map((product) => (
+      {items.map((product) => (
         <div key={product.id}>
-          <img src={product.image} alt={product.name} />
+          <img
+            src={product?.image ?? 'https://placehold.jp/400x250.png'}
+            alt={product.name}
+          />
           <h2>{product.name}</h2>
           <p>
             {formatCurrencyString({

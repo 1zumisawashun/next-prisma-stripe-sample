@@ -7,7 +7,7 @@ const product = [
     image:
       'https://images.unsplash.com/photo-1574226516831-e1dff420e562?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=225&q=80',
     attribution: 'Photo by Priscilla Du Preez on Unsplash',
-    currency: 'USD'
+    currency: 'JPY'
   },
   {
     name: 'Tangerines',
@@ -16,7 +16,7 @@ const product = [
     image:
       'https://images.unsplash.com/photo-1482012792084-a0c3725f289f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=225&q=80',
     attribution: 'Photo by Jonathan Pielmayer on Unsplash',
-    currency: 'USD'
+    currency: 'JPY'
   }
 ]
 export default product

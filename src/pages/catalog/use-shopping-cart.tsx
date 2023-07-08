@@ -1,5 +1,5 @@
 import { Layout } from '@/components/layouts/Layout'
-import { CartSummary, Products } from '@/features/catalog'
+import { CartSummary, CartProductList } from '@/features/cart'
 
 export default function page() {
   return (
@@ -12,7 +12,7 @@ export default function page() {
           hooks library.
         </p>
         <CartSummary />
-        <Products />
+        <CartProductList />
       </div>
     </Layout>
   )

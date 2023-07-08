@@ -2,27 +2,32 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { CURRENCY } from '@/functions/constants/config'
 import { formatAmountForStripe } from '@/functions/helpers/stripe-helpers'
 import { stripe } from '@/functions/libs/stripe'
-import paymentIntentsRetrieve from './retrieve'
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   const {
+    customer_id,
     amount,
     payment_intent_id
-  }: { amount: number; payment_intent_id: string } = req.body
+  }: { customer_id: string; amount: number; payment_intent_id: string } =
+    req.body
 
   try {
-    const current_intent = await paymentIntentsRetrieve(req, res)
-    if (!current_intent) throw new Error()
-    // If PaymentIntent has been created, just update the amount.
+    const params = {
+      amount: formatAmountForStripe(amount, CURRENCY),
+      currency: CURRENCY,
+      description: process.env.STRIPE_PAYMENT_DESCRIPTION ?? '',
+      // automatic_payment_methods: {
+      //   enabled: true
+      // },
+      customer: customer_id
+    }
 
     const updated_intent = await stripe.paymentIntents.update(
       payment_intent_id,
-      {
-        amount: formatAmountForStripe(amount, CURRENCY)
-      }
+      params
     )
     res.status(200).json(updated_intent)
   } catch (e) {

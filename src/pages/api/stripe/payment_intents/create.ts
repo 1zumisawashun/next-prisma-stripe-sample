@@ -13,10 +13,10 @@ export default async function handler(
     const params = {
       amount: formatAmountForStripe(amount, CURRENCY),
       currency: CURRENCY,
-      description: process.env.STRIPE_PAYMENT_DESCRIPTION ?? '',
-      automatic_payment_methods: {
-        enabled: true
-      }
+      description: process.env.STRIPE_PAYMENT_DESCRIPTION ?? ''
+      // automatic_payment_methods: {
+      //   enabled: true
+      // }
     }
 
     const payment_intent = await stripe.paymentIntents.create(params)

@@ -1,18 +1,12 @@
 import { NextPage, GetServerSideProps } from 'next'
 import { Layout } from '@/components/layouts/Layout'
-import { PrintObject } from '@/components/uis/PrintObject'
+import { CartSummary, CartProductList } from '@/features/cart'
 
 export default function page(props: NextPage) {
   return (
     <Layout title="Home | Next.js + TypeScript Example">
-      <ul>
-        <li>
-          <h1 className="text-3xl font-bold underline">Hello world!</h1>
-        </li>
-        <li>
-          <PrintObject content={props} />
-        </li>
-      </ul>
+      <CartSummary />
+      <CartProductList />
     </Layout>
   )
 }
