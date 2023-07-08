@@ -1,4 +1,4 @@
-import CheckoutForm from '../../features/catalog/components/CheckoutForm'
+import { CheckoutForm } from '@/features/catalog'
 import { Layout } from '@/components/layouts/Layout'
 
 export default function page() {

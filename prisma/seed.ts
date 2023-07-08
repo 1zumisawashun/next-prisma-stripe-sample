@@ -1,13 +1,32 @@
 import { PrismaClient } from '@prisma/client'
-// ここで、data/books.ts に記述したデータをインポートしています
 import { books } from '../src/functions/constants/books'
 
 const prisma = new PrismaClient()
 
 async function main() {
-  await prisma.book.createMany({
-    data: books
+  // NOTE:dbにuserがいる前提でseedする
+  const user = await prisma.user.findUnique({
+    where: {
+      email: 'shun.1zumisawa@gmail.com'
+    }
   })
+  if (!user) throw new Error()
+
+  const newBooks = books.map((book) => {
+    return {
+      ...book,
+      posted_user: {
+        connect: { id: user.id }
+      }
+    }
+  })
+
+  /* eslint-disable*/
+  for (const newBook of newBooks) {
+    await prisma.book.create({
+      data: newBook
+    })
+  }
 }
 
 main()

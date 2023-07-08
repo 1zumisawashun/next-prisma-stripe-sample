@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useShoppingCart } from 'use-shopping-cart'
-import { fetchPostJSON } from '../../../functions/helpers/api-helpers'
-import { Button } from '../../../components/uis/Button'
+import { fetchPostJSON } from '@/functions/helpers/api-helpers'
+import { Button } from '@/components/uis/Button'
 
-const CartSummary = () => {
+export const CartSummary = () => {
   const [loading, setLoading] = useState(false)
   const [cartEmpty, setCartEmpty] = useState(true)
   const [errorMessage, setErrorMessage] = useState('')
@@ -60,5 +60,3 @@ const CartSummary = () => {
     </>
   )
 }
-
-export default CartSummary

@@ -1,12 +1,12 @@
 import React, { useState, BaseSyntheticEvent } from 'react'
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js'
 import { PaymentIntent } from '@stripe/stripe-js'
-import { fetchPostJSON } from '../../../functions/helpers/api-helpers'
+import { fetchPostJSON } from '@/functions/helpers/api-helpers'
 import {
   formatAmountForDisplay,
   formatAmountFromStripe
-} from '../../../functions/helpers/stripe-helpers'
-import * as config from '../../../functions/constants/config'
+} from '@/functions/helpers/stripe-helpers'
+import * as config from '@/functions/constants/config'
 import {
   PaymentStatus,
   Button,
@@ -14,13 +14,13 @@ import {
   InputRange,
   InputText,
   PrintObject
-} from '../../../components/uis'
+} from '@/components/uis'
 
 type ElementsFormProps = {
   paymentIntent?: PaymentIntent | null
 }
 
-const ElementsForm: React.FC<ElementsFormProps> = ({
+export const ElementsForm: React.FC<ElementsFormProps> = ({
   paymentIntent = null
 }) => {
   const defaultAmount = paymentIntent
@@ -141,5 +141,3 @@ const ElementsForm: React.FC<ElementsFormProps> = ({
     </>
   )
 }
-
-export default ElementsForm

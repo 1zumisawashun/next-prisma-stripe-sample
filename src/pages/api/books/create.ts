@@ -21,7 +21,7 @@ export default async function handler(
         data: {
           title,
           content,
-          published: false,
+          price: 1000,
           posted_user: {
             connect: { id: user.id }
           }

@@ -1,6 +1,5 @@
 import { Layout } from '@/components/layouts/Layout'
-import CartSummary from '@/features/catalog/components/CartSummary'
-import Products from '@/features/catalog/components/Products'
+import { CartSummary, Products } from '@/features/catalog'
 
 export default function page() {
   return (

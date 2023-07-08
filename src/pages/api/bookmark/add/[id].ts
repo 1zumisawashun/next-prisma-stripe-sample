@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { getSession } from 'next-auth/react'
-import prisma from '../../../../functions/libs/prisma'
+import prisma from '@/functions/libs/prisma'
 
 // リクエストとレスポンスの型を指定しています
 export default async function handler(

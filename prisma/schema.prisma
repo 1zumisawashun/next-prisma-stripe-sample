@@ -143,6 +143,8 @@ model Book {
   id        Int       @id @default(autoincrement())
   title     String
   content   String
+  price     Int?
+  image     String?
   published Boolean   @default(false)
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime? @updatedAt @map("updated_at")

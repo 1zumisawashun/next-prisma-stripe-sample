@@ -1,11 +1,11 @@
 import React, { useState, BaseSyntheticEvent } from 'react'
-import { getStripe } from '../../../functions/libs/stripejs'
-import { fetchPostJSON } from '../../../functions/helpers/api-helpers'
-import { formatAmountForDisplay } from '../../../functions/helpers/stripe-helpers'
-import * as config from '../../../functions/constants/config'
-import { Button, InputNumber, InputRange } from '../../../components/uis'
+import { getStripe } from '@/functions/libs/stripejs'
+import { fetchPostJSON } from '@/functions/helpers/api-helpers'
+import { formatAmountForDisplay } from '@/functions/helpers/stripe-helpers'
+import * as config from '@/functions/constants/config'
+import { Button, InputNumber, InputRange } from '@/components/uis'
 
-const CheckoutForm = () => {
+export const CheckoutForm = () => {
   const [loading, setLoading] = useState(false)
   const [input, setInput] = useState({
     customDonation: Math.round(config.MAX_AMOUNT / config.AMOUNT_STEP)
@@ -75,5 +75,3 @@ const CheckoutForm = () => {
     </form>
   )
 }
-
-export default CheckoutForm
