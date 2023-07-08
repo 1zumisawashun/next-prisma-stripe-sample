@@ -4,8 +4,8 @@ next-prisma-stripe-sample のリポジトリです。
 
 ## Overview
 
-- RBD の素振りのために作成。
-- 本のシェアと本探しが簡単に！ウェブアプリ「BooxMix」を参考に開発をしています。
+- RBD （Next.js API Routes & Prisma & Vercel Postgres）を学ぶ為に作成。
+- 本のシェアと本探しが簡単に！ウェブアプリ「BooxMix」を参考に開発を進めています。
 - http://bookpooh.com/archives/18817
 
 ## 環境
@@ -51,9 +51,9 @@ http://localhost:3000/
 
 <img src="./public/ERD.svg" alt="erd">
 
-## demo
+<!-- ## demo
 
-<img src="./public/shopping_cart_demo.gif" alt="A gif of the Shopping Cart Checkout payment page." align="center">
+<img src="./public/shopping_cart_demo.gif" alt="A gif of the Shopping Cart Checkout payment page." align="center"> -->
 
 ## How to
 

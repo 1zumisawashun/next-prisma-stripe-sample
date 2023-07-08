@@ -15,9 +15,10 @@ generator client {
   previewFeatures = ["jsonProtocol"]
 }
 
+// FIXME:outputを変更するとerdが生成されない？
 generator erd {
   provider = "prisma-erd-generator"
-  output   = "./public/ERD.svg"
+  // output   = "./public/ERD.svg"
 }
 
 datasource db {
@@ -93,7 +94,7 @@ model User {
   @@map("users")
 }
 
-// NOTE:stripeのcustomer情報
+// NOTE:stripeのcustomer情報 → customerIDがあればいいからmodelは不要かもしれない
 model Customer {
   id          String  @unique
   description String?
