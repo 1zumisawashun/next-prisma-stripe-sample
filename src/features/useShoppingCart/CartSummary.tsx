@@ -51,7 +51,7 @@ const CartSummary = () => {
       </p>
 
       {/* Redirects the user to Stripe */}
-      <div className="btn-wrapper">
+      <div>
         <Button onClick={handleCheckout} disabled={cartEmpty || loading}>
           Checkout
         </Button>

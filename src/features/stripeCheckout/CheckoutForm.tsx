@@ -54,7 +54,6 @@ const CheckoutForm = () => {
         {formatAmountForDisplay(config.MAX_AMOUNT, config.CURRENCY)}):
       </label>
       <InputNumber
-        className="elements-style"
         name="customDonation"
         value={input.customDonation}
         min={config.MIN_AMOUNT}
@@ -63,7 +62,6 @@ const CheckoutForm = () => {
         onChange={handleChange}
       />
       <InputRange
-        className="elements-style"
         name="customDonation"
         value={input.customDonation}
         min={config.MIN_AMOUNT}

@@ -98,7 +98,6 @@ const ElementsForm: React.FC<ElementsFormProps> = ({
           {formatAmountForDisplay(config.MAX_AMOUNT, config.CURRENCY)}):
         </label>
         <InputNumber
-          className="elements-style"
           name="customDonation"
           value={input.customDonation}
           min={config.MIN_AMOUNT}
@@ -107,7 +106,6 @@ const ElementsForm: React.FC<ElementsFormProps> = ({
           onChange={handleChange}
         />
         <InputRange
-          className="elements-style"
           name="customDonation"
           value={input.customDonation}
           min={config.MIN_AMOUNT}
@@ -116,18 +114,17 @@ const ElementsForm: React.FC<ElementsFormProps> = ({
           onChange={handleChange}
         />
 
-        <fieldset className="elements-style">
+        <fieldset>
           <legend>Your payment details:</legend>
           {paymentType === 'card' ? (
             <InputText
               value={input.cardholderName}
               placeholder="Cardholder name"
-              className="elements-style"
               name="cardholderName"
               onChange={handleChange}
             />
           ) : null}
-          <div className="FormRow elements-style">
+          <div>
             <PaymentElement
               onChange={(e) => {
                 setPaymentType(e.value.type)
