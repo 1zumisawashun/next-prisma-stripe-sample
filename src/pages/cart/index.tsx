@@ -5,7 +5,7 @@ import { PrintObject } from '@/components/uis/PrintObject'
 export default function page(props: NextPage) {
   return (
     <Layout title="Home | Next.js + TypeScript Example">
-      <ul className="card-list">
+      <ul>
         <li>
           <h1 className="text-3xl font-bold underline">Hello world!</h1>
         </li>
@@ -22,9 +22,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     const host = context.req.headers.host || 'localhost:3000'
     const protocol = /^localhost/.test(host) ? 'http' : 'https'
     console.log(`${protocol}://${host}/api/products`)
-    const products = await fetch(`${protocol}://${host}/api/products`).then(
-      (data) => data.json()
-    )
+    const products = await fetch(
+      `${protocol}://${host}/api/stripe/products/list`
+    ).then((data) => data.json())
     return {
       props: {
         products
