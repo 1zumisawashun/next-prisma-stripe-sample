@@ -1,3 +1,3 @@
 export { CartSummary } from './components/CartSummary'
-export { CartProductList } from './components/CartProductList'
+export { CartProductTable } from './components/CartProductTable'
 export { CartCheckout } from './components/CartCheckout'

@@ -26,7 +26,7 @@ export default function page({ books }: Props) {
           </div>
         </div>
       ) : (
-        <div className="text-center">
+        <div className="grid gap-5 text-center">
           <h1 className="text-3xl">No books bookmarked</h1>
           <ButtonLink href="/books">Find Books</ButtonLink>
         </div>

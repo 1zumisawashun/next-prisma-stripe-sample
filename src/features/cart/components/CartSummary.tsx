@@ -17,24 +17,24 @@ export const CartSummary = () => {
 
   useEffect(() => setCartEmpty(!cartCount), [cartCount])
 
-  // const handleCheckout = async () => {
-  //   setLoading(true)
-  //   setErrorMessage('')
+  const handleCheckout = async () => {
+    setLoading(true)
+    setErrorMessage('')
 
-  //   const response = await fetchPostJSON(
-  //     '/api/stripe/checkout_sessions/cart',
-  //     cartDetails
-  //   )
+    const response = await fetchPostJSON(
+      '/api/stripe/checkout_sessions/cart',
+      cartDetails
+    )
 
-  //   if (response.statusCode > 399) {
-  //     console.error(response.message)
-  //     setErrorMessage(response.message)
-  //     setLoading(false)
-  //     return
-  //   }
+    if (response.statusCode > 399) {
+      console.error(response.message)
+      setErrorMessage(response.message)
+      setLoading(false)
+      return
+    }
 
-  //   redirectToCheckout(response.id as string)
-  // }
+    redirectToCheckout(response.id as string)
+  }
 
   return (
     <>
@@ -52,10 +52,9 @@ export const CartSummary = () => {
 
       {/* Redirects the user to Stripe */}
       <div>
-        {/* <Button onClick={handleCheckout} disabled={cartEmpty || loading}>
-          決済画面へ進む
-        </Button> */}
-        <ButtonLink href="/cart/checkout">決済画面へ進む</ButtonLink>
+        <Button onClick={handleCheckout} disabled={cartEmpty || loading}>
+          checkout
+        </Button>
         <Button onClick={clearCart}>Clear Cart</Button>
       </div>
     </>

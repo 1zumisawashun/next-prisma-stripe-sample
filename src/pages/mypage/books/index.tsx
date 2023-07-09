@@ -23,9 +23,11 @@ export default function page({ posts }: Props) {
           </div>
         </div>
       ) : (
-        <div className="text-center">
+        <div className="grid gap-5 text-center">
           <h1 className="text-3xl">No books posted</h1>
-          <ButtonLink href="/mypage/books/create">Post Books</ButtonLink>
+          <div className="flex justify-center gap-5">
+            <ButtonLink href="/mypage/books/create">Post Books</ButtonLink>
+          </div>
         </div>
       )}
     </div>

@@ -1,15 +1,50 @@
 import { NextPage, GetServerSideProps } from 'next'
+import { useShoppingCart } from 'use-shopping-cart'
 import { Layout } from '@/components/layouts/Layout'
-import { CartSummary, CartProductList } from '@/features/cart'
+import { CartProductTable } from '@/features/cart'
+import { ButtonLink } from '@/components/uis'
 
-export default function page(props: NextPage) {
+// NOTE:nextpageにするとフロントにコンソールが出るのか？
+const Page: NextPage = (props) => {
+  const { cartCount, formattedTotalPrice, cartDetails } = useShoppingCart()
+
+  const posts = Object.values(cartDetails ?? [])
+  console.log(posts, 'posts')
+
   return (
     <Layout title="Home | Next.js + TypeScript Example">
-      <CartSummary />
-      <CartProductList />
+      <div className="container mx-auto px-6 py-16">
+        {posts.length !== 0 ? (
+          <div className="mx-auto sm:w-8/12 lg:w-6/12 xl:w-[50%]">
+            <div className="grid gap-5 overflow-x-auto">
+              <h1 className="text-center text-3xl">All books you wanted</h1>
+              <CartProductTable />
+              <p>
+                <strong>Number of Items:</strong> {cartCount}
+              </p>
+              <p>
+                <strong>Total:</strong> {formattedTotalPrice}
+              </p>
+              <div className="flex justify-center gap-5">
+                <ButtonLink href="/">Top</ButtonLink>
+                <ButtonLink href="/cart/checkout">Next</ButtonLink>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="grid gap-5 text-center">
+            <h1 className="text-3xl">No books you wanted</h1>
+            <div className="flex justify-center gap-5">
+              <ButtonLink href="/mypage/books/create">Find Books</ButtonLink>
+            </div>
+          </div>
+        )}
+      </div>
     </Layout>
   )
 }
+
+export default Page
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
