@@ -4,7 +4,6 @@ import { signOut } from 'next-auth/react'
 import { Modal, Button } from '@/components/uis'
 import { useDisclosure } from '@/functions/hooks'
 
-/* eslint-disable jsx-a11y/anchor-is-valid */
 const Page: NextPage = () => {
   const logoutModal = useDisclosure()
   const items = [
@@ -25,11 +24,11 @@ const Page: NextPage = () => {
       annotation:
         '過去に保存した記事を閲覧できます。保存取り消しを行うこともできます。'
     },
-    {
-      name: '購入履歴一覧',
-      onClick: () => Router.push(`/mypage/histories`),
-      annotation: '過去に購入した記事を閲覧できます。'
-    },
+    // {
+    //   name: '購入履歴一覧',
+    //   onClick: () => Router.push(`/mypage/histories`),
+    //   annotation: '過去に購入した記事を閲覧できます。'
+    // },
     {
       name: '支払い住所の変更',
       onClick: () => Router.push(`/mypage/address`),

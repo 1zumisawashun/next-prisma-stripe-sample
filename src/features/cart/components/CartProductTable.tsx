@@ -1,10 +1,19 @@
 import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart'
 import Router from 'next/router'
+import { LabelButton } from '@/components/uis'
 
 export const CartProductTable: React.FC = () => {
   const { incrementItem, decrementItem, cartDetails } = useShoppingCart()
 
   const items = Object.values(cartDetails ?? [])
+
+  const priceString = (product: any) => {
+    const { price, currency, quantity } = product
+    return `${formatCurrencyString({
+      value: price,
+      currency
+    })} × ${quantity}個`
+  }
 
   return (
     <table className="w-full table-auto">
@@ -31,29 +40,24 @@ export const CartProductTable: React.FC = () => {
                   {product.name}
                 </p>
                 <div className="font-medium text-gray-400">
-                  {`${formatCurrencyString({
-                    value: product.price,
-                    currency: product.currency
-                  })} × ${product.quantity}個`}
+                  {priceString(product)}
                 </div>
               </div>
             </td>
             <td className="w-1/6 p-3">
               <div className="grid gap-5 text-center">
-                <span
+                <LabelButton
+                  type="increment"
                   onClick={() => incrementItem(product.id)}
-                  aria-hidden="true"
-                  className="cursor-pointer rounded bg-blue-100 px-2.5 py-0.5 text-sm font-medium text-blue-800"
                 >
                   INCREMENT
-                </span>
-                <span
+                </LabelButton>
+                <LabelButton
+                  type="decrement"
                   onClick={() => decrementItem(product.id)}
-                  aria-hidden="true"
-                  className="cursor-pointer rounded bg-red-100 px-2.5 py-0.5 text-sm font-medium text-red-800"
                 >
-                  DECREMENT
-                </span>
+                  INCREMENT
+                </LabelButton>
               </div>
             </td>
           </tr>
