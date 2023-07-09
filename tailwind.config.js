@@ -49,9 +49,9 @@ module.exports = {
       }
     }
   },
-
+// hover → hover:bg-gray-100
   variants: {
     extend: {}
   },
-  plugins: []
+  plugins: [require('@tailwindcss/line-clamp'),]
 }

@@ -26,6 +26,7 @@
     "@prisma/client": "^4.16.1",
     "@stripe/react-stripe-js": "1.13.0",
     "@stripe/stripe-js": "1.42.0",
+    "@tailwindcss/line-clamp": "^0.4.4",
     "@vercel/postgres": "^0.4.0",
     "micro": "^9.4.1",
     "micro-cors": "^0.1.1",
