@@ -1,26 +1,35 @@
+import { Book, User } from '@prisma/client'
 import Router from 'next/router'
-import { BookProps } from '@/functions/types/Book'
 
-export const BookCard: React.FC<BookProps> = ({ title, content, id }) => {
+export const BookCard = ({
+  id,
+  title,
+  content,
+  bookmarked_users
+}: Book & { bookmarked_users: User[] }) => {
   return (
     <div
-      className="max-w-sm rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800"
-      onClick={() => Router.push(`/books/${id}`)}
       aria-hidden="true"
+      className="group m-2 grid cursor-pointer gap-2 transition-colors"
+      onClick={() => Router.push(`/books/${id}`)}
     >
       <img
-        className="rounded-t-lg"
+        className="w-full rounded-lg"
         src="https://placehold.jp/400x250.png"
         alt=""
       />
-      <div className="p-5">
-        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+      <div>
+        <p aria-hidden="true" className="text-lg font-semibold text-gray-700">
           {title}
-        </h5>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          {content}
         </p>
+        <div className="font-medium text-gray-400">
+          {bookmarked_users && bookmarked_users.length > 1
+            ? `${bookmarked_users.length} users`
+            : `${bookmarked_users.length} user`}
+          bookmarked this article
+        </div>
       </div>
+      <p className="font-medium text-gray-400 line-clamp-3">{content}</p>
     </div>
   )
 }

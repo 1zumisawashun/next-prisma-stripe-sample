@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 import Router from 'next/router'
 import { signOut } from 'next-auth/react'
-import { Modal } from '@/components/uis'
+import { Modal, Button } from '@/components/uis'
 import { useDisclosure } from '@/functions/hooks'
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
@@ -55,7 +55,7 @@ const Page: NextPage = () => {
   return (
     <>
       <div className="container mx-auto px-6 py-16">
-        <div className="mx-auto sm:w-8/12 lg:w-6/12 xl:w-[40%]">
+        <div className="mx-auto sm:w-8/12 lg:w-6/12 xl:w-[50%]">
           <div className="overflow-x-auto">
             <table className="w-full table-auto">
               <tbody className="divide-y divide-slate-100 text-sm font-medium">
@@ -88,22 +88,14 @@ const Page: NextPage = () => {
           header="ログアウト"
           body="本当にログアウトしますか？"
           footer={
-            <>
-              <button
-                className="background-transparent mb-1 mr-1 px-6 py-2 text-sm font-bold uppercase text-red-500 outline-none transition-all duration-150 ease-linear focus:outline-none"
-                type="button"
-                onClick={logoutModal.close}
-              >
-                cancel
-              </button>
-              <button
-                className="mb-1 mr-1 rounded bg-emerald-500 px-6 py-3 text-sm font-bold uppercase text-white shadow outline-none transition-all duration-150 ease-linear hover:shadow-lg focus:outline-none active:bg-emerald-600"
-                type="button"
-                onClick={() => signOut()}
-              >
+            <div className="flex justify-center gap-5">
+              <Button type="button" onClick={logoutModal.close}>
+                Cancel
+              </Button>
+              <Button type="button" onClick={() => signOut()}>
                 logout
-              </button>
-            </>
+              </Button>
+            </div>
           }
         />
       )}

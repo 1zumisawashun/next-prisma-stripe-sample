@@ -29,7 +29,7 @@ export default function page({
 
   return (
     <div className="container mx-auto px-6 py-16">
-      <div className="mx-auto sm:w-8/12 lg:w-6/12 xl:w-[40%]">
+      <div className="mx-auto sm:w-8/12 lg:w-6/12 xl:w-[50%]">
         <div className="grid gap-5 overflow-x-auto">
           <h1 className="text-center text-3xl">
             {payment_methods.length > 0
@@ -43,7 +43,8 @@ export default function page({
             payment_methods={payment_methods}
           />
 
-          <div className="text-center">
+          <div className="flex justify-center gap-5">
+            <ButtonLink href="/mypage">Back</ButtonLink>
             <ButtonLink href="/mypage/payment/create">
               Register Payment
             </ButtonLink>

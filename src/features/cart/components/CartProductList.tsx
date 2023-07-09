@@ -2,7 +2,8 @@ import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart'
 import { Button } from '@/components/uis/Button'
 
 export const CartProductList = () => {
-  const { addItem, removeItem, cartDetails } = useShoppingCart()
+  const { addItem, incrementItem, decrementItem, removeItem, cartDetails } =
+    useShoppingCart()
 
   const items = Object.values(cartDetails ?? [])
   return (

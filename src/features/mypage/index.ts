@@ -1,5 +1,7 @@
-export { MypageAddressCreateForm } from './components/MypageAddressCreateForm'
-export { MypageAddressTable } from './components/MypageAddressTable'
+export { MypageAddressCreateForm } from '@/features/mypage/components/MypageAddressCreateForm'
+export { MypageAddressTable } from '@/features/mypage/components/MypageAddressTable'
 
-export { MypagePaymentCreateForm } from './components/MypagePaymentCreateForm'
-export { MypagePaymentTable } from './components/MypagePaymentTable'
+export { MypagePaymentCreateForm } from '@/features/mypage/components/MypagePaymentCreateForm'
+export { MypagePaymentTable } from '@/features/mypage/components/MypagePaymentTable'
+
+export { MypageBookTable } from '@/features/mypage/components/MypageBookTable'
