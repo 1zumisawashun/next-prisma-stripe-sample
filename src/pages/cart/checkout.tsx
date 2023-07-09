@@ -3,17 +3,21 @@ import { useState, useEffect } from 'react'
 import { Elements } from '@stripe/react-stripe-js'
 import { PaymentIntent } from '@stripe/stripe-js'
 import { getSession } from 'next-auth/react'
+import { Address } from '@prisma/client'
 import { getStripe } from '@/functions/libs/stripejs'
 import { fetchPostJSON } from '@/functions/helpers/api-helpers'
 import { Layout } from '@/components/layouts/Layout'
 import * as config from '@/functions/constants/config'
 import { CartCheckout } from '@/features/cart'
 import prisma from '@/functions/libs/prisma'
+import { stripe, StripePaymentMethod } from '@/functions/libs/stripe'
 
 const Page: NextPage<{
+  payment: StripePaymentMethod | null
+  address: Address | null
   customerId: string | null
   selectedPaymentId: string | null
-}> = ({ customerId, selectedPaymentId }) => {
+}> = ({ payment, address, customerId, selectedPaymentId }) => {
   const [paymentIntent, setPaymentIntent] = useState<PaymentIntent | null>(null)
 
   const asyncFunc = async () => {
@@ -44,6 +48,8 @@ const Page: NextPage<{
             }}
           >
             <CartCheckout
+              address={address}
+              payment={payment}
               customerId={customerId}
               paymentIntent={paymentIntent}
               selectedPaymentId={selectedPaymentId}
@@ -75,8 +81,26 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     }
   })
 
+  const address = user?.selectedAddressId
+    ? await prisma.address.findUnique({
+        where: {
+          id: user.selectedAddressId
+        }
+      })
+    : null
+
+  const payment =
+    user?.customerId && user?.selectedPaymentId
+      ? await stripe.customers.retrievePaymentMethod(
+          user.customerId,
+          user.selectedPaymentId
+        )
+      : null
+
   return {
     props: {
+      payment,
+      address,
       customerId: user?.customerId,
       selectedPaymentId: user?.selectedPaymentId
     }

@@ -1,7 +1,6 @@
 import { GetServerSideProps } from 'next'
 import Router from 'next/router'
 import { getSession } from 'next-auth/react'
-import { Address } from '@prisma/client'
 import prisma from '@/functions/libs/prisma'
 import { fetchPostJSON } from '@/functions/helpers/api-helpers'
 import { ButtonLink } from '@/components/uis'
