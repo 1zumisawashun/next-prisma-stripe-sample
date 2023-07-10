@@ -16,10 +16,10 @@ generator client {
 }
 
 // FIXME:outputを変更するとerdが生成されない？
-generator erd {
-  provider = "prisma-erd-generator"
+// generator erd {
+//   provider = "prisma-erd-generator"
   // output   = "./public/ERD.svg"
-}
+// }
 
 datasource db {
   provider          = "postgresql"
