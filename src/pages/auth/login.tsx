@@ -8,7 +8,7 @@ export default function page({
   providers
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const login = async (providerId: string) => {
-    const params = { callbackUrl: '/books' }
+    const params = { callbackUrl: '/' }
     const response = await signIn(providerId, params)
     console.log(response)
   }

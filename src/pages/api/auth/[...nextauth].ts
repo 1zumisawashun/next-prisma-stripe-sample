@@ -19,32 +19,32 @@ export const options = {
     signIn: '/auth/login'
   },
   callbacks: {
-    async signIn({ user }: any) {
-      const { id, email, name, customerId } = user as User
-
-      if (!customerId) {
-        // NOTE:stripeアカウントを作成する
-        const stripe_customer = await stripe.customers.create({ email })
-        // NOTE:prismaのcustomerモデルを作成する
-        const prisma_customer = await prisma.customer.create({
-          data: {
-            id: stripe_customer.id,
-            description: stripe_customer.description,
-            email: stripe_customer.email ?? email,
-            metadata: {},
-            name: stripe_customer.name ?? name ?? '',
-            phone: stripe_customer.phone ?? '',
-            user: { connect: { id: +id } }
-          }
-        })
-        // NOTE:prismaのuserモデルのcustomerIdを保存する
-        const update_user = await prisma.user.update({
-          where: { email },
-          data: { customerId: stripe_customer.id }
-        })
-      }
-      return true
-    }
+    // async signIn({ user }: any) {
+    //   const { id, email, name, customerId } = user as User
+    //   console.log(user)
+    // if (!customerId) {
+    // NOTE:stripeアカウントを作成する
+    // const stripe_customer = await stripe.customers.create({ email })
+    // NOTE:prismaのcustomerモデルを作成する
+    // const prisma_customer = await prisma.customer.create({
+    //   data: {
+    //     id: stripe_customer.id,
+    //     description: stripe_customer.description,
+    //     email: stripe_customer.email ?? email,
+    //     metadata: {},
+    //     name: stripe_customer.name ?? name ?? '',
+    //     phone: stripe_customer.phone ?? ''
+    //     user: { connect: { id: +id } }
+    //   }
+    // })
+    // NOTE:prismaのuserモデルのcustomerIdを保存する
+    // const update_user = await prisma.user.update({
+    //   where: { email },
+    //   data: { customerId: stripe_customer.id }
+    // })
+    // }
+    //   return true
+    // }
   }
 }
 

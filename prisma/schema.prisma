@@ -78,7 +78,7 @@ model User {
   createdAt     DateTime  @default(now()) @map("created_at")
   updatedAt     DateTime? @updatedAt @map("updated_at")
 
-  customerId         String? @map("customer_id")
+  customerId         String? //@map("customer_id")
   selectedPaymentId  String? @map("selected_payment_id")
   selectedAddressId  Int?    @map("selected_address_id")
   selectedShippingId Int?    @map("selected_shipping_id")
