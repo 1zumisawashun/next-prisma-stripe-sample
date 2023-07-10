@@ -34,7 +34,7 @@ export const options = {
             metadata: {},
             name: stripe_customer.name ?? name ?? '',
             phone: stripe_customer.phone ?? '',
-            user: { connect: { id } }
+            user: { connect: { id: +id } }
           }
         })
         // NOTE:prismaのuserモデルのcustomerIdを保存する
