@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-import { books } from '../src/functions/constants/books'
+import { books, addresses } from '../src/functions/constants/seeds'
 
 const prisma = new PrismaClient()
 
@@ -21,10 +21,23 @@ async function main() {
     }
   })
 
+  const newAddresses = addresses.map((address) => {
+    return {
+      ...address,
+      user: { connect: { id: user.id } }
+    }
+  })
+
   /* eslint-disable*/
   for (const newBook of newBooks) {
     await prisma.book.create({
       data: newBook
+    })
+  }
+
+  for (const newAddress of newAddresses) {
+    await prisma.address.create({
+      data: newAddress
     })
   }
 }

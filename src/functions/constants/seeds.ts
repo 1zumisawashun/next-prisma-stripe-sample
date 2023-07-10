@@ -42,3 +42,32 @@ export const books = [
     price: 1000
   }
 ]
+
+export const addresses = [
+  {
+    city: '大和市つきみ野',
+    country: '日本',
+    line1: '8-5-11',
+    line2: 'ライオンマンション',
+    postal_code: '2240001',
+    state: '神奈川県'
+  },
+  {
+    city: '大和市下鶴間',
+    country: '日本',
+    line1: '8-5-12',
+    line2: 'オオカミマンション',
+    postal_code: '2240002',
+    state: '神奈川県'
+  },
+  {
+    city: '大和市南林間',
+    country: '日本',
+    line1: '8-5-13',
+    line2: 'ウザギマンション',
+    postal_code: '2240003',
+    state: '神奈川県'
+  }
+]
+
+export const payments = []

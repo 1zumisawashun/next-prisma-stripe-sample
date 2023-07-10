@@ -56,7 +56,7 @@ export const CartProductTable: React.FC = () => {
                   type="decrement"
                   onClick={() => decrementItem(product.id)}
                 >
-                  INCREMENT
+                  DECREMENT
                 </LabelButton>
               </div>
             </td>
