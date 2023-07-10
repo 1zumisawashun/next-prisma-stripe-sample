@@ -1,16 +1,11 @@
-import React, { useState, BaseSyntheticEvent } from 'react'
-import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js'
 import { PaymentIntent } from '@stripe/stripe-js'
-import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart'
+import { useShoppingCart } from 'use-shopping-cart'
 import { Address } from '@prisma/client'
+import Router from 'next/router'
 import { fetchPostJSON } from '@/functions/helpers/api-helpers'
-import {
-  formatAmountForDisplay,
-  formatAmountFromStripe
-} from '@/functions/helpers/stripe-helpers'
-import * as config from '@/functions/constants/config'
-import { Button } from '@/components/uis'
-import { stripe, StripePaymentMethod } from '@/functions/libs/stripe'
+import { Button, ButtonLink } from '@/components/uis'
+import { StripePaymentMethod } from '@/functions/libs/stripe'
+import { CartCheckoutTable, CartProductTable } from '@/features/cart'
 
 type ElementsFormProps = {
   payment: StripePaymentMethod | null
@@ -27,12 +22,22 @@ export const CartCheckout: React.FC<ElementsFormProps> = ({
   paymentIntent = null,
   selectedPaymentId
 }) => {
-  const { addItem, removeItem, cartDetails, totalPrice, clearCart } =
+  const { cartDetails, totalPrice, formattedTotalPrice, clearCart } =
     useShoppingCart()
 
-  console.log(address, 'address')
-  console.log(payment, 'payment')
-  console.log(customerId, paymentIntent, selectedPaymentId)
+  const fullAddress = address
+    ? `${address.postal_code}\n${address.state} ${address.city} ${address.line1}\n${address.line2}`
+    : '未選択'
+
+  const fullPayment = payment
+    ? `＊＊＊＊＊＊＊＊＊${payment.card?.last4}`
+    : '未選択'
+
+  const items = [
+    { title: 'お支払い金額', body: formattedTotalPrice, href: '/cart' },
+    { title: 'お支払い方法', body: fullPayment, href: '/mypage/payment' },
+    { title: 'お届け住所', body: fullAddress, href: '/mypage/address' }
+  ]
 
   const handleCheckout = async () => {
     const payment_intent_update = await fetchPostJSON(
@@ -54,13 +59,20 @@ export const CartCheckout: React.FC<ElementsFormProps> = ({
     )
 
     console.log(payment_intent_confirm, 'payment_intent_confirm')
+
+    // FIXME:このタイミングで「order model」に情報を追加する
     clearCart()
+    Router.push('/cart/thankyou')
   }
 
   return (
-    <div>
-      <p>{totalPrice}</p>
-      <Button onClick={handleCheckout}>購入する</Button>
+    <div className="grid gap-10">
+      <CartProductTable />
+      <CartCheckoutTable items={items} />
+      <div className="flex justify-center gap-5">
+        <ButtonLink href="/cart">Back</ButtonLink>
+        <Button onClick={handleCheckout}>購入する</Button>
+      </div>
     </div>
   )
 }

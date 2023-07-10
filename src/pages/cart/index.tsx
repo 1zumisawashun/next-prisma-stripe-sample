@@ -4,12 +4,11 @@ import { Layout } from '@/components/layouts/Layout'
 import { CartProductTable } from '@/features/cart'
 import { ButtonLink } from '@/components/uis'
 
-// NOTE:nextpageにするとフロントにコンソールが出るのか？
+// NOTE:next-pageにするとフロントにコンソールが出るのか？
 const Page: NextPage = (props) => {
   const { cartCount, formattedTotalPrice, cartDetails } = useShoppingCart()
 
   const posts = Object.values(cartDetails ?? [])
-  console.log(posts, 'posts')
 
   return (
     <Layout title="Home | Next.js + TypeScript Example">

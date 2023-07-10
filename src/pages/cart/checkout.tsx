@@ -34,30 +34,34 @@ const Page: NextPage<{
   return (
     <Layout title="Donate with Elements | Next.js + TypeScript Example">
       <div className="container mx-auto px-6 py-16">
-        {paymentIntent && paymentIntent.client_secret ? (
-          <Elements
-            stripe={getStripe()}
-            options={{
-              appearance: {
-                variables: {
-                  colorIcon: '#6772e5',
-                  fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif'
-                }
-              },
-              clientSecret: paymentIntent.client_secret
-            }}
-          >
-            <CartCheckout
-              address={address}
-              payment={payment}
-              customerId={customerId}
-              paymentIntent={paymentIntent}
-              selectedPaymentId={selectedPaymentId}
-            />
-          </Elements>
-        ) : (
-          <p>Loading...</p>
-        )}
+        <div className="mx-auto sm:w-8/12 lg:w-6/12 xl:w-[50%]">
+          <div className="grid gap-5 overflow-x-auto">
+            {paymentIntent && paymentIntent.client_secret ? (
+              <Elements
+                stripe={getStripe()}
+                options={{
+                  appearance: {
+                    variables: {
+                      colorIcon: '#6772e5',
+                      fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif'
+                    }
+                  },
+                  clientSecret: paymentIntent.client_secret
+                }}
+              >
+                <CartCheckout
+                  address={address}
+                  payment={payment}
+                  customerId={customerId}
+                  paymentIntent={paymentIntent}
+                  selectedPaymentId={selectedPaymentId}
+                />
+              </Elements>
+            ) : (
+              <p>Loading...</p>
+            )}
+          </div>
+        </div>
       </div>
     </Layout>
   )

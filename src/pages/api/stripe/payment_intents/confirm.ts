@@ -1,6 +1,4 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { CURRENCY } from '@/functions/constants/config'
-import { formatAmountForStripe } from '@/functions/helpers/stripe-helpers'
 import { stripe } from '@/functions/libs/stripe'
 import paymentIntentsRetrieve from './retrieve'
 
