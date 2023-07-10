@@ -2,10 +2,9 @@
   "private": true,
   "scripts": {
     "dev": "next",
-    "build": "prisma generate && prisma db push && next build",
-    "build:fix": "next build",
+    "build": "next build",
     "start": "next start",
-    "types": "tsc --pretty --noEmit",
+    "compile": "tsc --pretty --noEmit",
     "lint:js": "eslint --ext .tsx,.ts src/",
     "lint:js:fix": "npm run lint:js -- --fix",
     "format": "prettier --check \"**/*.+(js|json|yml|ts|tsx)\"",
