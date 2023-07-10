@@ -49,7 +49,7 @@ http://localhost:3000/
 
 ## erd
 
-<img src="./public/ERD.svg" alt="erd">
+<!-- <img src="./public/ERD.svg" alt="erd"> -->
 
 <!-- ## demo
 
