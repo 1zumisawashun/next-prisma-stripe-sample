@@ -1,4 +1,5 @@
 import { StripePaymentMethod } from '@/functions/libs/stripe'
+import { LabelButton } from '@/components/uis'
 
 type Props = {
   onClick: (id: string) => void
@@ -10,38 +11,39 @@ export const MypagePaymentTable = ({
   selectedPaymentId,
   payment_methods
 }: Props) => {
+  console.log(payment_methods, 'payment_methods')
   return (
     <table className="w-full table-auto">
       <tbody className="divide-y divide-slate-100 text-sm font-medium">
         {payment_methods.map((payment) => (
           <tr
             key={payment.id}
-            className="group cursor-pointer transition-colors hover:bg-gray-100"
+            className="group cursor-pointer text-center transition-colors hover:bg-gray-100"
           >
-            <td className="py-4 pl-10">
+            <td className="w-1/6 p-3">
+              <img
+                className="rounded-lg"
+                src="https://placehold.jp/120x80.png"
+                alt=""
+              />
+            </td>
+            <td className="w-3/6 p-3">
               <p className="font-medium text-gray-600">
-                *************{payment.card?.last4}
+                ＊＊＊＊＊＊＊＊＊{payment.card?.last4}
               </p>
             </td>
-
-            <td className="text-center font-medium">
-              {payment.id === selectedPaymentId ? (
-                <span
-                  aria-hidden="true"
-                  onClick={() => onClick(payment.id)}
-                  className="mr-2 cursor-pointer rounded bg-green-100 px-2.5 py-0.5 text-sm font-medium text-green-800 dark:bg-green-200 dark:text-green-900"
-                >
-                  選択済み
-                </span>
-              ) : (
-                <span
-                  aria-hidden="true"
-                  onClick={() => onClick(payment.id)}
-                  className="mr-2 cursor-pointer rounded bg-red-100 px-2.5 py-0.5 text-sm font-medium text-red-800 dark:bg-red-200 dark:text-red-900"
-                >
-                  未選択
-                </span>
-              )}
+            <td className="w-1/6 p-3">
+              <p className="font-medium text-gray-600">
+                {`${payment.card?.exp_year} / ${payment.card?.exp_month}`}
+              </p>
+            </td>
+            <td className="w-1/6 p-3 text-center font-medium">
+              <LabelButton
+                type={payment.id === selectedPaymentId ? 'selected' : 'default'}
+                onClick={() => onClick(payment.id)}
+              >
+                {payment.id === selectedPaymentId ? '選択済み' : '未選択'}
+              </LabelButton>
             </td>
           </tr>
         ))}

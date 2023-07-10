@@ -1,9 +1,9 @@
 import { ReactNode } from 'react'
-import { BaseLabel } from './BaseLabel'
+import { BaseLabel, LabelType } from './BaseLabel'
 
 export const LabelButton: React.FC<{
   children: ReactNode
-  type: 'edit' | 'delete' | 'increment' | 'decrement'
+  type: LabelType
   onClick: () => void
 }> = ({ children, type, onClick }) => {
   return (

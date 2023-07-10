@@ -1,10 +1,10 @@
 import { ReactNode } from 'react'
 import Link from 'next/link'
-import { BaseLabel } from './BaseLabel'
+import { BaseLabel, LabelType } from './BaseLabel'
 
 export const LabelLink: React.FC<{
   children: ReactNode
-  type: 'edit' | 'delete' | 'increment' | 'decrement'
+  type: LabelType
   href: string
 }> = ({ children, type, href }) => {
   return (

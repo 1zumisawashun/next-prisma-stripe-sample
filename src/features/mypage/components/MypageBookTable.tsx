@@ -12,7 +12,7 @@ export const MypageBookTable = ({ posts }: Props) => {
   return (
     <>
       <table className="w-full table-auto">
-        <tbody className="divide-y divide-slate-100  text-sm font-medium">
+        <tbody className="divide-y divide-slate-100 text-sm font-medium">
           {posts.map((post) => (
             <tr
               key={post.id}
@@ -30,7 +30,7 @@ export const MypageBookTable = ({ posts }: Props) => {
                   <p
                     aria-hidden="true"
                     onClick={() => Router.push(`/books/${post.id}`)}
-                    className="cursor-pointer text-lg font-semibold text-gray-700"
+                    className="cursor-pointer text-lg font-semibold text-gray-700 line-clamp-1"
                   >
                     {post.title}
                   </p>

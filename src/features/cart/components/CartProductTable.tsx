@@ -35,7 +35,7 @@ export const CartProductTable: React.FC = () => {
                 <p
                   aria-hidden="true"
                   onClick={() => Router.push(`/books/${product.id}`)}
-                  className="cursor-pointer text-lg font-semibold text-gray-700"
+                  className="cursor-pointer text-lg font-semibold text-gray-700 line-clamp-1"
                 >
                   {product.name}
                 </p>
