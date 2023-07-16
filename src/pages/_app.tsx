@@ -16,7 +16,7 @@ export default function page({ Component, pageProps }: AppProps) {
           cartMode="client-only"
           currency="JPY"
           stripe={process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string}
-          successUrl="http://localhost:3000/success"
+          successUrl="http://localhost:3000/cart/thankyou"
           cancelUrl="http://localhost:3000"
         >
           <Header />

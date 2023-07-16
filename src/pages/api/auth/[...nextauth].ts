@@ -1,17 +1,22 @@
 import { NextApiHandler } from 'next'
-import NextAuth, { CallbacksOptions } from 'next-auth'
+import NextAuth, { NextAuthOptions, CallbacksOptions } from 'next-auth'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import GitHubProvider from 'next-auth/providers/github'
+import GoogleProvider from 'next-auth/providers/google'
 import { AdapterUser } from 'next-auth/adapters'
 import prisma from '@/functions/libs/prisma'
 import { stripe } from '@/functions/libs/stripe'
 
-export const options = {
+export const options: NextAuthOptions = {
   providers: [
     GitHubProvider({
-      clientId: process.env.GITHUB_ID!,
-      clientSecret: process.env.GITHUB_SECRET!
+      clientId: process.env.GITHUB_ID as string,
+      clientSecret: process.env.GITHUB_SECRET as string
     })
+    // GoogleProvider({
+    //   clientId: process.env.GOOGLE_CLIENT_ID as string,
+    //   clientSecret: process.env.GOOGLE_CLIENT_SECRET as string
+    // })
   ],
   adapter: {
     ...PrismaAdapter(prisma),
