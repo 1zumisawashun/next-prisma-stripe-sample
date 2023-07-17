@@ -2,7 +2,7 @@ import { AppProps } from 'next/app'
 import { CartProvider } from 'use-shopping-cart'
 import { SessionProvider } from 'next-auth/react'
 import * as config from '../functions/constants/config'
-import { RouteProvider } from '../routers/RouteProvider'
+import { RouteProvider } from '../routes/RouteProvider'
 import { Header } from '../components/layouts/Header'
 import '@/styles/globals.css'
 
