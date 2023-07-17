@@ -12,7 +12,7 @@ next-prisma-stripe-sample のリポジトリです。
 
 ```
 frontend：Next.js, TypeScript
-css：tailwindcss
+css：CSS Modules
 backend：Next.js API Routes
 orm：Prisma
 db：Vercel Postgres
@@ -68,5 +68,8 @@ $ npm run lint
 - なし
 
 ## その他ドキュメント
+
+- CSS Modules を採用した背景  
+  https://zenn.dev/shuuuuuun/scraps/744aa994686183
 
 See [Configuration Reference](https://github.com/vercel/next.js/tree/canary/examples/with-stripe-typescript).
