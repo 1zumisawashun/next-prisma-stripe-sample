@@ -1,0 +1,80 @@
+/* Custom CSS for Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.inner {
+  position: relative;
+  margin: auto;
+  width: 50%;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  border-radius: 0.25rem;
+  border: 0;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+.header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  border-radius: 0.25rem 0.25rem 0 0;
+  border-bottom: 1px solid #a0a0a0;
+  padding: 1.25rem;
+}
+
+.header h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.body {
+  flex: 1;
+  padding: 1.5rem;
+}
+
+.body p {
+  margin: 1rem 0;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-radius: 0 0 0.25rem 0.25rem;
+  border-top: 1px solid #a0a0a0;
+  padding: 1.5rem;
+}
+
+/* Other Styles */
+.backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 40;
+  background-color: #000;
+  opacity: 0.25;
+}

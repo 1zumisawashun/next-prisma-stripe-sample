@@ -7,14 +7,7 @@ import {
   formatAmountFromStripe
 } from '@/functions/helpers/stripe-helpers'
 import * as config from '@/functions/constants/config'
-import {
-  PaymentStatus,
-  Button,
-  InputNumber,
-  InputRange,
-  InputText,
-  PrintObject
-} from '@/components/uis'
+import { Button, InputNumber, InputRange, InputText } from '@/components/uis'
 
 type ElementsFormProps = {
   paymentIntent?: PaymentIntent | null
@@ -90,54 +83,50 @@ export const ElementsForm: React.FC<ElementsFormProps> = ({
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="customDonation">
-          Custom donation amount (
-          {formatAmountForDisplay(config.MIN_AMOUNT, config.CURRENCY)}-
-          {formatAmountForDisplay(config.MAX_AMOUNT, config.CURRENCY)}):
-        </label>
-        <InputNumber
-          name="customDonation"
-          value={input.customDonation}
-          min={config.MIN_AMOUNT}
-          max={config.MAX_AMOUNT}
-          step={config.AMOUNT_STEP}
-          onChange={handleChange}
-        />
-        <InputRange
-          name="customDonation"
-          value={input.customDonation}
-          min={config.MIN_AMOUNT}
-          max={config.MAX_AMOUNT}
-          step={config.AMOUNT_STEP}
-          onChange={handleChange}
-        />
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="customDonation">
+        Custom donation amount (
+        {formatAmountForDisplay(config.MIN_AMOUNT, config.CURRENCY)}-
+        {formatAmountForDisplay(config.MAX_AMOUNT, config.CURRENCY)}):
+      </label>
+      <InputNumber
+        name="customDonation"
+        value={input.customDonation}
+        min={config.MIN_AMOUNT}
+        max={config.MAX_AMOUNT}
+        step={config.AMOUNT_STEP}
+        onChange={handleChange}
+      />
+      <InputRange
+        name="customDonation"
+        value={input.customDonation}
+        min={config.MIN_AMOUNT}
+        max={config.MAX_AMOUNT}
+        step={config.AMOUNT_STEP}
+        onChange={handleChange}
+      />
 
-        <fieldset>
-          <legend>Your payment details:</legend>
-          {paymentType === 'card' ? (
-            <InputText
-              value={input.cardholderName}
-              placeholder="Cardholder name"
-              name="cardholderName"
-              onChange={handleChange}
-            />
-          ) : null}
-          <div>
-            <PaymentElement
-              onChange={(e) => {
-                setPaymentType(e.value.type)
-              }}
-            />
-          </div>
-        </fieldset>
-        <Button type="button" disabled={isDisabled()} onClick={handleSubmit}>
-          Donate {formatAmountForDisplay(input.customDonation, config.CURRENCY)}
-        </Button>
-      </form>
-      <PaymentStatus status={payment.status} message={payment.message} />
-      <PrintObject content={payment} />
-    </>
+      <fieldset>
+        <legend>Your payment details:</legend>
+        {paymentType === 'card' ? (
+          <InputText
+            value={input.cardholderName}
+            placeholder="Cardholder name"
+            name="cardholderName"
+            onChange={handleChange}
+          />
+        ) : null}
+        <div>
+          <PaymentElement
+            onChange={(e) => {
+              setPaymentType(e.value.type)
+            }}
+          />
+        </div>
+      </fieldset>
+      <Button type="button" disabled={isDisabled()} onClick={handleSubmit}>
+        Donate {formatAmountForDisplay(input.customDonation, config.CURRENCY)}
+      </Button>
+    </form>
   )
 }

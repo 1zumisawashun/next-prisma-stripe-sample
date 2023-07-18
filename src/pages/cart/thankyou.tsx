@@ -2,7 +2,6 @@ import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import { Layout } from '@/components/layouts/Layout'
-import { PrintObject } from '@/components/uis/PrintObject'
 import { fetchGetJSON } from '@/functions/helpers/api-helpers'
 
 const Page: NextPage = () => {
@@ -25,7 +24,6 @@ const Page: NextPage = () => {
         <h1>Checkout Payment Result</h1>
         <h2>Status: {data?.payment_intent?.status ?? 'loading...'}</h2>
         <h3>CheckoutSession response:</h3>
-        <PrintObject content={data ?? 'loading...'} />
       </div>
     </Layout>
   )

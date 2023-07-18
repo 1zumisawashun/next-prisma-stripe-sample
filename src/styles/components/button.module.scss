@@ -19,16 +19,7 @@
 
 .button:hover {
   background-image: linear-gradient(to bottom right, #9f7aea, #3b82f6);
-}
-
-.button:hover {
   color: #fff;
-}
-
-.button:focus {
-  outline-width: 4px;
-  outline-color: #93c5fd;
-  outline-offset: 2px;
 }
 
 .button span {

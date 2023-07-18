@@ -1,0 +1,19 @@
+.input {
+  display: block;
+  width: 100%;
+  border-radius: 0.5rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #d1d5db;
+  background-color: #f9fafb;
+  padding: 0.625rem;
+  color: #1f2937;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.input:focus {
+  outline: none; // NOTE:ブラウザのデフォルトフォーカスを消す
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px #3b82f6;
+}

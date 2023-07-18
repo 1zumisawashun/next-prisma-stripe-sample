@@ -12,7 +12,7 @@ next-prisma-stripe-sample のリポジトリです。
 
 ```
 frontend：Next.js, TypeScript
-css：CSS Modules
+css：CSS Modules, ITCSS
 backend：Next.js API Routes
 orm：Prisma
 db：Vercel Postgres
