@@ -1,0 +1,57 @@
+/* styles.css */
+
+/* ヘッダー全体のスタイル */
+.header {
+  background-color: #1a202c;
+}
+
+/* コンテナのスタイル */
+.container {
+  max-width: 64rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  min-height: 60px;
+}
+
+/* ロゴのスタイル */
+.logo {
+  flex: 1;
+}
+
+/* ロゴのリンクスタイル */
+.logoLink {
+  font-weight: 800;
+  color: #1a202c;
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+
+/* ロゴのテキストスタイル */
+.logoText {
+  color: #cbd5e0;
+}
+
+/* メニューのスタイル */
+.menu {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* メニューリストのスタイル */
+.menuList {
+  display: flex;
+  list-style-type: none;
+}
+
+/* メニューアイテムのスタイル */
+.menuItem {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  color: #fff;
+  text-decoration: none;
+}
