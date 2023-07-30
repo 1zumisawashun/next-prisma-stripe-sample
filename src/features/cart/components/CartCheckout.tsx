@@ -3,7 +3,7 @@ import { useShoppingCart } from 'use-shopping-cart'
 import { Address } from '@prisma/client'
 import Router from 'next/router'
 import { fetchPostJSON } from '@/functions/helpers/api-helpers'
-import { Button, ButtonLink } from '@/components/uis'
+import { Button } from '@/components/uis'
 import { StripePaymentMethod } from '@/functions/libs/stripe'
 import { CartCheckoutTable, CartProductTable } from '@/features/cart'
 
@@ -70,8 +70,12 @@ export const CartCheckout: React.FC<ElementsFormProps> = ({
       <CartProductTable />
       <CartCheckoutTable items={items} />
       <div className="flex justify-center gap-5">
-        <ButtonLink href="/cart">Back</ButtonLink>
-        <Button onClick={handleCheckout}>購入する</Button>
+        <Button tag="next-link" href="/cart">
+          Back
+        </Button>
+        <Button tag="button" onClick={handleCheckout}>
+          購入する
+        </Button>
       </div>
     </div>
   )

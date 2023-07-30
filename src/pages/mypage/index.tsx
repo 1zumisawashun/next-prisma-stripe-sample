@@ -88,10 +88,10 @@ const Page: NextPage = () => {
           body="本当にログアウトしますか？"
           footer={
             <div className="flex justify-center gap-5">
-              <Button type="button" onClick={logoutModal.close}>
+              <Button tag="button" type="button" onClick={logoutModal.close}>
                 Cancel
               </Button>
-              <Button type="button" onClick={() => signOut()}>
+              <Button tag="button" type="button" onClick={() => signOut()}>
                 logout
               </Button>
             </div>

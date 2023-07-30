@@ -4,7 +4,7 @@ import { getSession } from 'next-auth/react'
 import { Address } from '@prisma/client'
 import prisma from '@/functions/libs/prisma'
 import { fetchPostJSON } from '@/functions/helpers/api-helpers'
-import { ButtonLink } from '@/components/uis'
+import { Button } from '@/components/uis'
 import { MypageAddressTable } from '@/features/mypage'
 
 type Props = {
@@ -45,10 +45,12 @@ export default function page({
           )}
 
           <div className="flex justify-center gap-5">
-            <ButtonLink href="/mypage">Back</ButtonLink>
-            <ButtonLink href="/mypage/address/create">
+            <Button tag="next-link" href="/mypage">
+              Back
+            </Button>
+            <Button tag="next-link" href="/mypage/address/create">
               Register Address
-            </ButtonLink>
+            </Button>
           </div>
         </div>
       </div>

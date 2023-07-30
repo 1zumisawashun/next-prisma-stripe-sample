@@ -1,6 +1,4 @@
-export { BaseButton } from './BaseButton'
-
-export { Button } from './Button'
+export { BaseButton, Button } from './Button'
 export { ButtonLink } from './ButtonLink'
 export { InputNumber } from './InputNumber'
 export { InputRange } from './InputRange'

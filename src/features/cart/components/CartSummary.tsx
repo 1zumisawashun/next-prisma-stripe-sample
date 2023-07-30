@@ -52,10 +52,16 @@ export const CartSummary = () => {
 
       {/* Redirects the user to Stripe */}
       <div>
-        <Button onClick={handleCheckout} disabled={cartEmpty || loading}>
+        <Button
+          tag="button"
+          onClick={handleCheckout}
+          disabled={cartEmpty || loading}
+        >
           checkout
         </Button>
-        <Button onClick={clearCart}>Clear Cart</Button>
+        <Button tag="button" onClick={clearCart}>
+          Clear Cart
+        </Button>
       </div>
     </>
   )

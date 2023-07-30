@@ -66,10 +66,10 @@ export const MypageBookTable = ({ posts }: Props) => {
           body="本当に削除しますか？"
           footer={
             <div className="flex justify-center gap-5">
-              <Button type="button" onClick={executeModal.close}>
+              <Button tag="button" type="button" onClick={executeModal.close}>
                 Cancel
               </Button>
-              <Button type="button" onClick={() => null}>
+              <Button tag="button" type="button" onClick={() => null}>
                 delete
               </Button>
             </div>

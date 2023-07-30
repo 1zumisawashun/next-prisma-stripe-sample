@@ -60,7 +60,7 @@ export const MypageAddressCreateForm = () => {
         placeholder="address.line2"
       />
       <div>
-        <Button type="button" onClick={handleSubmit}>
+        <Button tag="button" type="button" onClick={handleSubmit}>
           create
         </Button>
       </div>

@@ -3,7 +3,7 @@ import Router from 'next/router'
 import { getSession } from 'next-auth/react'
 import prisma from '@/functions/libs/prisma'
 import { fetchPostJSON } from '@/functions/helpers/api-helpers'
-import { ButtonLink } from '@/components/uis'
+import { Button } from '@/components/uis'
 import { stripe, StripePaymentMethod } from '@/functions/libs/stripe'
 import { MypagePaymentTable } from '@/features/mypage'
 
@@ -43,10 +43,12 @@ export default function page({
           />
 
           <div className="flex justify-center gap-5">
-            <ButtonLink href="/mypage">Back</ButtonLink>
-            <ButtonLink href="/mypage/payment/create">
+            <Button tag="next-link" href="/mypage">
+              Back
+            </Button>
+            <Button tag="next-link" href="/mypage/payment/create">
               Register Payment
-            </ButtonLink>
+            </Button>
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@ import { NextPage, GetServerSideProps } from 'next'
 import { useShoppingCart } from 'use-shopping-cart'
 import { Layout } from '@/components/layouts/Layout'
 import { CartProductTable } from '@/features/cart'
-import { ButtonLink } from '@/components/uis'
+import { Button } from '@/components/uis'
 
 // NOTE:next-pageにするとフロントにコンソールが出るのか？
 const Page: NextPage = (props) => {
@@ -25,8 +25,12 @@ const Page: NextPage = (props) => {
                 <strong>Total:</strong> {formattedTotalPrice}
               </p>
               <div className="flex justify-center gap-5">
-                <ButtonLink href="/">Top</ButtonLink>
-                <ButtonLink href="/cart/checkout">Next</ButtonLink>
+                <Button tag="next-link" href="/">
+                  Top
+                </Button>
+                <Button tag="next-link" href="/cart/checkout">
+                  Next
+                </Button>
               </div>
             </div>
           </div>
@@ -34,7 +38,9 @@ const Page: NextPage = (props) => {
           <div className="grid gap-5 text-center">
             <h1 className="text-3xl">No books you wanted</h1>
             <div className="flex justify-center gap-5">
-              <ButtonLink href="/mypage/books/create">Find Books</ButtonLink>
+              <Button tag="next-link" href="/mypage/books/create">
+                Find Books
+              </Button>
             </div>
           </div>
         )}
