@@ -47,13 +47,15 @@ export const CartProductTable: React.FC = () => {
             <td className="w-1/6 p-3">
               <div className="grid gap-5 text-center">
                 <LabelButton
-                  type="increment"
+                  tag="button"
+                  labelType="increment"
                   onClick={() => incrementItem(product.id)}
                 >
                   INCREMENT
                 </LabelButton>
                 <LabelButton
-                  type="decrement"
+                  tag="button"
+                  labelType="decrement"
                   onClick={() => decrementItem(product.id)}
                 >
                   DECREMENT
