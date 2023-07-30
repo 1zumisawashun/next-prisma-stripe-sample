@@ -1,29 +1,15 @@
-import { BaseSyntheticEvent } from 'react'
+import React, { forwardRef, BaseSyntheticEvent } from 'react'
 import styles from '@/styles/components/input.module.scss'
 
-type InputTextProps = {
-  name: string
-  value: string
-  onChange: (e: BaseSyntheticEvent) => void
-  className?: string
-  placeholder?: string
-}
+export type InputTextProps = {
+  // add your own props
+} & React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>
 
-export const InputText: React.FC<InputTextProps> = ({
-  name,
-  value,
-  onChange,
-  className,
-  placeholder
-}) => {
-  return (
-    <input
-      className={styles.input}
-      type="text"
-      name={name}
-      value={value}
-      onChange={onChange}
-      placeholder={placeholder}
-    />
-  )
-}
+export const InputText = forwardRef<HTMLInputElement, InputTextProps>(
+  ({ ...props }, ref) => {
+    return <input type="text" ref={ref} className={styles.input} {...props} />
+  }
+)

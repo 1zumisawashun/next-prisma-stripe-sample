@@ -7,7 +7,7 @@ import {
   formatAmountFromStripe
 } from '@/functions/helpers/stripe-helpers'
 import * as config from '@/functions/constants/config'
-import { Button, InputNumber, InputRange, InputText } from '@/components/uis'
+import { Button, InputNumber, InputText } from '@/components/uis'
 
 type ElementsFormProps = {
   paymentIntent?: PaymentIntent | null
@@ -90,14 +90,6 @@ export const ElementsForm: React.FC<ElementsFormProps> = ({
         {formatAmountForDisplay(config.MAX_AMOUNT, config.CURRENCY)}):
       </label>
       <InputNumber
-        name="customDonation"
-        value={input.customDonation}
-        min={config.MIN_AMOUNT}
-        max={config.MAX_AMOUNT}
-        step={config.AMOUNT_STEP}
-        onChange={handleChange}
-      />
-      <InputRange
         name="customDonation"
         value={input.customDonation}
         min={config.MIN_AMOUNT}

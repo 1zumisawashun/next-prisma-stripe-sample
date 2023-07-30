@@ -1,0 +1,11 @@
+.buttonWrapper {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  &.start {
+    justify-content: start;
+  }
+  &.end {
+    justify-content: end;
+  }
+}

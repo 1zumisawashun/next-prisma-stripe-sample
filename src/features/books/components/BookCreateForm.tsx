@@ -1,6 +1,6 @@
 import React, { useState, BaseSyntheticEvent } from 'react'
 import Router from 'next/router'
-import { Button, InputText } from '@/components/uis'
+import { Button, InputText, ButtonWrapper } from '@/components/uis'
 import { fetchPostJSON } from '@/functions/helpers/api-helpers'
 
 export const BookCreateForm = () => {
@@ -37,14 +37,14 @@ export const BookCreateForm = () => {
         onChange={handleChange}
         placeholder="formData.content"
       />
-      <div className="flex justify-start gap-5">
+      <ButtonWrapper>
         <Button tag="next-link" href="/mypage">
           Back
         </Button>
         <Button tag="button" type="button" onClick={handleSubmit}>
           create
         </Button>
-      </div>
+      </ButtonWrapper>
     </div>
   )
 }

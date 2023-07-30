@@ -3,7 +3,7 @@ import { getStripe } from '@/functions/libs/stripejs'
 import { fetchPostJSON } from '@/functions/helpers/api-helpers'
 import { formatAmountForDisplay } from '@/functions/helpers/stripe-helpers'
 import * as config from '@/functions/constants/config'
-import { Button, InputNumber, InputRange } from '@/components/uis'
+import { Button, InputNumber } from '@/components/uis'
 
 export const CheckoutForm = () => {
   const [loading, setLoading] = useState(false)
@@ -54,14 +54,6 @@ export const CheckoutForm = () => {
         {formatAmountForDisplay(config.MAX_AMOUNT, config.CURRENCY)}):
       </label>
       <InputNumber
-        name="customDonation"
-        value={input.customDonation}
-        min={config.MIN_AMOUNT}
-        max={config.MAX_AMOUNT}
-        step={config.AMOUNT_STEP}
-        onChange={handleChange}
-      />
-      <InputRange
         name="customDonation"
         value={input.customDonation}
         min={config.MIN_AMOUNT}

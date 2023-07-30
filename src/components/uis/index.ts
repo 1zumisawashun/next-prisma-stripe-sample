@@ -1,5 +1,4 @@
-export { BaseButton, Button, LabelButton } from './Button'
+export * from './button'
 export { InputNumber } from './InputNumber'
-export { InputRange } from './InputRange'
 export { InputText } from './InputText'
 export { Modal } from './Modal'

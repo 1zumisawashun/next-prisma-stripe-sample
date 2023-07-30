@@ -1,6 +1,6 @@
 import React, { useState, BaseSyntheticEvent } from 'react'
 import Router from 'next/router'
-import { Button, InputText } from '@/components/uis'
+import { Button, InputText, ButtonWrapper } from '@/components/uis'
 import { fetchPutJSON } from '@/functions/helpers/api-helpers'
 import { BookProps } from '@/functions/types/Book'
 
@@ -43,14 +43,14 @@ export const BookEditForm: React.FC<Props> = ({ book }) => {
         onChange={handleChange}
         placeholder="formData.content"
       />
-      <div className="flex justify-start gap-5">
+      <ButtonWrapper>
         <Button tag="next-link" href="/mypage">
           Back
         </Button>
         <Button tag="button" type="button" onClick={handleSubmit}>
           edit
         </Button>
-      </div>
+      </ButtonWrapper>
     </div>
   )
 }
