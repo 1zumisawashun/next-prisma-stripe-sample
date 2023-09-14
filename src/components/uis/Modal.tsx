@@ -1,3 +1,4 @@
+import React, { forwardRef, ComponentProps } from 'react'
 import styles from '@/styles/components/modal.module.scss'
 
 type ModalProps = {
@@ -6,6 +7,10 @@ type ModalProps = {
   footer?: JSX.Element | string
   close: () => void
 }
+
+export type InputNumberProps2 = {
+  // add your own props
+} & ComponentProps<typeof Modal>
 export const Modal: React.FC<ModalProps> = ({
   header,
   body,

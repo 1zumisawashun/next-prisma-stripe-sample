@@ -4,7 +4,8 @@ next-prisma-stripe-sample のリポジトリです。
 
 ## Overview
 
-- RBD （Next.js API Routes & Prisma & Vercel Postgres）を学ぶ為に作成。
+- RDB （Next.js API Routes & Prisma & Vercel Postgres）を学ぶ為に作成しました。
+- 骨子は次を参考にしました。（https://zenn.dev/farstep/books/7acd1a7fee7e18）
 - 本のシェアと本探しが簡単に！ウェブアプリ「BooxMix」を参考に開発を進めています。
 - http://bookpooh.com/archives/18817
 

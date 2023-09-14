@@ -1,7 +1,8 @@
 import React, { useState, BaseSyntheticEvent } from 'react'
 import Router from 'next/router'
-import { Button, InputText } from '@/components/uis'
+import { Button, InputText, ButtonWrapper } from '@/components/uis'
 import { fetchPostJSON } from '@/functions/helpers/api-helpers'
+import styles from '@/styles/components/mypageAddressCreateForm.module.scss'
 
 export const MypageAddressCreateForm = () => {
   const [address, setAddress] = useState({
@@ -28,41 +29,46 @@ export const MypageAddressCreateForm = () => {
   }
 
   return (
-    <div className="container mx-auto grid gap-4 px-6 py-16">
-      <InputText
-        name="postal_code"
-        value={address.postal_code}
-        onChange={handleChange}
-        placeholder="address.postal_code"
-      />
-      <InputText
-        name="state"
-        value={address.state}
-        onChange={handleChange}
-        placeholder="address.state"
-      />
-      <InputText
-        name="city"
-        value={address.city}
-        onChange={handleChange}
-        placeholder="address.city"
-      />
-      <InputText
-        name="line1"
-        value={address.line1}
-        onChange={handleChange}
-        placeholder="address.line1"
-      />
-      <InputText
-        name="line2"
-        value={address.line2}
-        onChange={handleChange}
-        placeholder="address.line2"
-      />
-      <div>
-        <Button tag="button" type="button" onClick={handleSubmit}>
-          create
-        </Button>
+    <div className={styles.container}>
+      <div className={styles.gapWrapper}>
+        <InputText
+          name="postal_code"
+          value={address.postal_code}
+          onChange={handleChange}
+          placeholder="address.postal_code"
+        />
+        <InputText
+          name="state"
+          value={address.state}
+          onChange={handleChange}
+          placeholder="address.state"
+        />
+        <InputText
+          name="city"
+          value={address.city}
+          onChange={handleChange}
+          placeholder="address.city"
+        />
+        <InputText
+          name="line1"
+          value={address.line1}
+          onChange={handleChange}
+          placeholder="address.line1"
+        />
+        <InputText
+          name="line2"
+          value={address.line2}
+          onChange={handleChange}
+          placeholder="address.line2"
+        />
+        <ButtonWrapper>
+          <Button tag="next-link" href="/mypage/address">
+            back
+          </Button>
+          <Button tag="button" type="button" onClick={handleSubmit}>
+            create
+          </Button>
+        </ButtonWrapper>
       </div>
     </div>
   )

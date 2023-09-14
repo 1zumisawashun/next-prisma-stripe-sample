@@ -44,3 +44,15 @@
 .button:hover span {
   background-color: rgba(255, 255, 255, 0);
 }
+
+.buttonWrapper {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  &.start {
+    justify-content: start;
+  }
+  &.end {
+    justify-content: end;
+  }
+}
