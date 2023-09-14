@@ -1,3 +1,17 @@
+@mixin hoverAnime {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+
+  @media (hover: none) {
+    &:active {
+      @content;
+    }
+  }
+}
+
 %button {
   font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 700;
@@ -17,6 +31,9 @@
   &.large {
     font-size: 16px;
     padding: 12px 24px;
+  }
+  @include hoverAnime {
+    opacity: 0.7;
   }
 }
 

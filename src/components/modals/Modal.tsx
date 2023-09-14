@@ -8,9 +8,6 @@ type ModalProps = {
   close: () => void
 }
 
-export type InputNumberProps2 = {
-  // add your own props
-} & ComponentProps<typeof Modal>
 export const Modal: React.FC<ModalProps> = ({
   header,
   body,
