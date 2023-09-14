@@ -1,8 +1,8 @@
 import React, { useState, BaseSyntheticEvent } from 'react'
 import Router from 'next/router'
-import { Button, InputText, ButtonWrapper } from '@/components'
+import { Button, InputText, ButtonWrapper, AnchorButton } from '@/components'
 import { fetchPostJSON } from '@/functions/helpers/api-helpers'
-import styles from '@/styles/components/mypageAddressCreateForm.module.scss'
+import styles from '../styles/mypageAddressCreateForm.module.scss'
 
 export const MypageAddressCreateForm = () => {
   const [address, setAddress] = useState({
@@ -62,12 +62,8 @@ export const MypageAddressCreateForm = () => {
           placeholder="address.line2"
         />
         <ButtonWrapper>
-          <Button tag="next-link" href="/mypage/address">
-            back
-          </Button>
-          <Button tag="button" type="button" onClick={handleSubmit}>
-            create
-          </Button>
+          <AnchorButton href="/mypage/address">back</AnchorButton>
+          <Button onClick={handleSubmit}>create</Button>
         </ButtonWrapper>
       </div>
     </div>

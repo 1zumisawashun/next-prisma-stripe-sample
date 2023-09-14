@@ -1,5 +1,5 @@
 import React, { forwardRef, BaseSyntheticEvent } from 'react'
-import styles from '@/styles/components/input.module.scss'
+import styles from './input.module.scss'
 
 export type InputTextProps = {
   // add your own props

@@ -1,5 +1,15 @@
-import styles from '@/styles/components/button.module.scss'
+import clsx from 'clsx'
+import styles from './button.module.scss'
+import { getPosition, PositionType } from './useButton'
 
-export const ButtonWrapper = ({ children }: { children: React.ReactNode }) => {
-  return <div className={styles.buttonWrapper}>{children}</div>
+type ButtonWrapperProps = {
+  children: React.ReactNode
+  position?: PositionType
+}
+export const ButtonWrapper = ({ children, position }: ButtonWrapperProps) => {
+  return (
+    <div className={clsx(styles['button-wrapper'], getPosition(position))}>
+      {children}
+    </div>
+  )
 }

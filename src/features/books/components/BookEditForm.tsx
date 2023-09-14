@@ -1,6 +1,6 @@
 import React, { useState, BaseSyntheticEvent } from 'react'
 import Router from 'next/router'
-import { Button, InputText, ButtonWrapper } from '@/components'
+import { Button, InputText, ButtonWrapper, AnchorButton } from '@/components'
 import { fetchPutJSON } from '@/functions/helpers/api-helpers'
 import { BookProps } from '@/functions/types/Book'
 
@@ -44,12 +44,8 @@ export const BookEditForm: React.FC<Props> = ({ book }) => {
         placeholder="formData.content"
       />
       <ButtonWrapper>
-        <Button tag="next-link" href="/mypage">
-          Back
-        </Button>
-        <Button tag="button" type="button" onClick={handleSubmit}>
-          edit
-        </Button>
+        <AnchorButton href="/mypage">Back</AnchorButton>
+        <Button onClick={handleSubmit}>edit</Button>
       </ButtonWrapper>
     </div>
   )

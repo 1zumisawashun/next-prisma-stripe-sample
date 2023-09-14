@@ -1,5 +1,5 @@
 import React, { forwardRef, ComponentProps } from 'react'
-import styles from '@/styles/components/input.module.scss'
+import styles from './input.module.scss'
 
 // NOTE:https://zenn.dev/leaner_dev/articles/20230711-input_type_number_mouse_wheel
 export type InputNumberProps = {

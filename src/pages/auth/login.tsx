@@ -22,7 +22,7 @@ export default function page({
             {providers &&
               Object.values(providers).map((provider) => (
                 <Fragment key={provider.name}>
-                  <Button tag="button" onClick={() => login(provider.id)}>
+                  <Button onClick={() => login(provider.id)}>
                     Sign in with {provider.name}
                   </Button>
                 </Fragment>

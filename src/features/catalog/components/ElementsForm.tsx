@@ -116,12 +116,7 @@ export const ElementsForm: React.FC<ElementsFormProps> = ({
           />
         </div>
       </fieldset>
-      <Button
-        tag="button"
-        type="button"
-        disabled={isDisabled()}
-        onClick={handleSubmit}
-      >
+      <Button disabled={isDisabled()} onClick={handleSubmit}>
         Donate {formatAmountForDisplay(input.customDonation, config.CURRENCY)}
       </Button>
     </form>

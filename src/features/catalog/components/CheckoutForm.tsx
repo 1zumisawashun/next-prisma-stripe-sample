@@ -61,12 +61,7 @@ export const CheckoutForm = () => {
         step={config.AMOUNT_STEP}
         onChange={handleChange}
       />
-      <Button
-        tag="button"
-        type="button"
-        disabled={loading}
-        onClick={handleSubmit}
-      >
+      <Button disabled={loading} onClick={handleSubmit}>
         Donate {formatAmountForDisplay(input.customDonation, config.CURRENCY)}
       </Button>
     </form>

@@ -39,8 +39,7 @@ export const MypagePaymentTable = ({
             </td>
             <td className="w-1/6 p-3 text-center font-medium">
               <LabelButton
-                tag="button"
-                labelType={
+                variant={
                   payment.id === selectedPaymentId ? 'selected' : 'default'
                 }
                 onClick={() => onClick(payment.id)}

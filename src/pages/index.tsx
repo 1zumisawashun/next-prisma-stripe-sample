@@ -1,4 +1,4 @@
-import { Button } from '../components'
+import { AnchorButton } from '../components'
 
 export default function page() {
   return (
@@ -13,9 +13,7 @@ export default function page() {
           <p className="mb-8 text-xl">Make book playlists you like!</p>
           <div>
             <div className="mt-3">
-              <Button tag="next-link" href="/books">
-                Find Books
-              </Button>
+              <AnchorButton href="/books">Find Books</AnchorButton>
             </div>
           </div>
         </div>

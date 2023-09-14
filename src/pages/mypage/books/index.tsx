@@ -3,7 +3,7 @@ import { getSession } from 'next-auth/react'
 import { Book, User } from '@prisma/client'
 import prisma from '@/functions/libs/prisma'
 import { MypageBookTable } from '@/features/mypage'
-import { Button } from '@/components'
+import { Button, AnchorButton } from '@/components'
 
 type Props = {
   posts: (Book & { bookmarked_users: User[] })[]
@@ -18,9 +18,7 @@ export default function page({ posts }: Props) {
             <h1 className="text-center text-3xl">All books you posted</h1>
             <MypageBookTable posts={posts} />
             <div className="flex justify-center gap-5">
-              <Button tag="next-link" href="/mypage">
-                Back
-              </Button>
+              <AnchorButton href="/mypage">Back</AnchorButton>
             </div>
           </div>
         </div>
@@ -28,9 +26,7 @@ export default function page({ posts }: Props) {
         <div className="grid gap-5 text-center">
           <h1 className="text-3xl">No books posted</h1>
           <div className="flex justify-center gap-5">
-            <Button tag="next-link" href="/mypage/books/create">
-              Post Books
-            </Button>
+            <AnchorButton href="/mypage/books/create">Post Books</AnchorButton>
           </div>
         </div>
       )}

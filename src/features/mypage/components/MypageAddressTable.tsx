@@ -28,9 +28,7 @@ export const MypageAddressTable = ({
             </td>
             <td className="text-center font-medium">
               <LabelButton
-                tag="button"
-                type="button"
-                labelType={
+                variant={
                   address.id === selectedAddressId ? 'selected' : 'default'
                 }
                 onClick={() => onClick(address)}

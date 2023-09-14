@@ -2,7 +2,7 @@ import { GetServerSideProps } from 'next'
 import { getSession } from 'next-auth/react'
 import { Book, User } from '@prisma/client'
 import prisma from '@/functions/libs/prisma'
-import { Button } from '@/components'
+import { Button, AnchorButton } from '@/components'
 import { BookCard } from '@/features/books'
 
 type Props = {
@@ -21,18 +21,14 @@ export default function page({ books }: Props) {
               ))}
             </div>
             <div className="flex justify-center gap-5">
-              <Button tag="next-link" href="/mypage">
-                Back
-              </Button>
+              <AnchorButton href="/mypage">Back</AnchorButton>
             </div>
           </div>
         </div>
       ) : (
         <div className="grid gap-5 text-center">
           <h1 className="text-3xl">No books bookmarked</h1>
-          <Button tag="next-link" href="/books">
-            Find Books
-          </Button>
+          <AnchorButton href="/books">Find Books</AnchorButton>
         </div>
       )}
     </div>

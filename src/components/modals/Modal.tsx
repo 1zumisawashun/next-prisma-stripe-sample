@@ -1,5 +1,5 @@
 import React, { forwardRef, ComponentProps } from 'react'
-import styles from '@/styles/components/modal.module.scss'
+import styles from './modal.module.scss'
 
 type ModalProps = {
   header?: JSX.Element | string
