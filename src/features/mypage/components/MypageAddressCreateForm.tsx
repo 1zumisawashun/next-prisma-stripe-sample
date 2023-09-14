@@ -1,6 +1,6 @@
 import React, { useState, BaseSyntheticEvent } from 'react'
 import Router from 'next/router'
-import { Button, InputText, ButtonWrapper } from '@/components/uis'
+import { Button, InputText, ButtonWrapper } from '@/components'
 import { fetchPostJSON } from '@/functions/helpers/api-helpers'
 import styles from '@/styles/components/mypageAddressCreateForm.module.scss'
 

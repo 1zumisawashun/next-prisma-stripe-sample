@@ -1,6 +1,6 @@
 import Router from 'next/router'
 import { Book, User } from '@prisma/client'
-import { LabelButton, Modal, Button } from '@/components/uis'
+import { LabelButton, Modal, Button } from '@/components'
 import { useDisclosure } from '@/functions/hooks'
 
 type Props = {

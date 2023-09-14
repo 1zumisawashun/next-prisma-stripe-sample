@@ -1,6 +1,6 @@
 import { signIn, useSession } from 'next-auth/react'
 import Link from 'next/link'
-import { BaseButton } from '@/components/uis'
+import { BaseButton } from '@/components'
 import styles from '@/styles/components/header.module.scss'
 
 export const Header = () => {

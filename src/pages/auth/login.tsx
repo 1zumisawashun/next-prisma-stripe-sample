@@ -2,7 +2,7 @@ import { getProviders, signIn } from 'next-auth/react'
 import { InferGetServerSidePropsType } from 'next'
 import Image from 'next/image'
 import { Fragment } from 'react'
-import { Button } from '@/components/uis'
+import { Button } from '@/components'
 
 export default function page({
   providers

@@ -3,7 +3,7 @@ import { useShoppingCart } from 'use-shopping-cart'
 import { Address } from '@prisma/client'
 import Router from 'next/router'
 import { fetchPostJSON } from '@/functions/helpers/api-helpers'
-import { Button } from '@/components/uis'
+import { Button } from '@/components'
 import { StripePaymentMethod } from '@/functions/libs/stripe'
 import { CartCheckoutTable, CartProductTable } from '@/features/cart'
 

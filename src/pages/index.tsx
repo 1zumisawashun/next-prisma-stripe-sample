@@ -1,4 +1,4 @@
-import { Button } from '../components/uis'
+import { Button } from '../components'
 
 export default function page() {
   return (

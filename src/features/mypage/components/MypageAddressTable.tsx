@@ -1,5 +1,5 @@
 import { Address } from '@prisma/client'
-import { LabelButton } from '@/components/uis'
+import { LabelButton } from '@/components'
 
 type Props = {
   addresses: Address[]

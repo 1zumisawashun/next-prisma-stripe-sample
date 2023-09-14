@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 import Router from 'next/router'
 import { signOut } from 'next-auth/react'
-import { Modal, Button } from '@/components/uis'
+import { Modal, Button } from '@/components'
 import { useDisclosure } from '@/functions/hooks'
 
 const Page: NextPage = () => {

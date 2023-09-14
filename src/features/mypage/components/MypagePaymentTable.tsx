@@ -1,5 +1,5 @@
 import { StripePaymentMethod } from '@/functions/libs/stripe'
-import { LabelButton } from '@/components/uis'
+import { LabelButton } from '@/components'
 
 type Props = {
   onClick: (id: string) => void

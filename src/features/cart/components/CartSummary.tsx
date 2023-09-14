@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useShoppingCart } from 'use-shopping-cart'
 import { fetchPostJSON } from '@/functions/helpers/api-helpers'
-import { Button } from '@/components/uis'
+import { Button } from '@/components'
 
 export const CartSummary = () => {
   const [loading, setLoading] = useState(false)

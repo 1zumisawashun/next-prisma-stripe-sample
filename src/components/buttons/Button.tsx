@@ -1,7 +1,7 @@
 import Link, { LinkProps } from 'next/link'
 import { ReactNode, ComponentProps } from 'react'
 import styles from '@/styles/components/button.module.scss'
-import { BaseLabel, LabelType } from '../BaseLabel'
+import { BaseLabel, LabelType } from '../elements/BaseLabel'
 
 type Element<T extends 'button' | 'next-link'> = T extends 'button'
   ? ComponentProps<'button'>

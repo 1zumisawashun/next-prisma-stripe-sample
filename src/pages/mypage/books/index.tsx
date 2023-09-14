@@ -3,7 +3,7 @@ import { getSession } from 'next-auth/react'
 import { Book, User } from '@prisma/client'
 import prisma from '@/functions/libs/prisma'
 import { MypageBookTable } from '@/features/mypage'
-import { Button } from '@/components/uis'
+import { Button } from '@/components'
 
 type Props = {
   posts: (Book & { bookmarked_users: User[] })[]

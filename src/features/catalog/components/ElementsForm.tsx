@@ -7,7 +7,7 @@ import {
   formatAmountFromStripe
 } from '@/functions/helpers/stripe-helpers'
 import * as config from '@/functions/constants/config'
-import { Button, InputNumber, InputText } from '@/components/uis'
+import { Button, InputNumber, InputText } from '@/components'
 
 type ElementsFormProps = {
   paymentIntent?: PaymentIntent | null

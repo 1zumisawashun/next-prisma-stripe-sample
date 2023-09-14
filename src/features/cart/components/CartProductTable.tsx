@@ -1,6 +1,6 @@
 import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart'
 import Router from 'next/router'
-import { LabelButton } from '@/components/uis'
+import { LabelButton } from '@/components'
 
 export const CartProductTable: React.FC = () => {
   const { incrementItem, decrementItem, cartDetails } = useShoppingCart()

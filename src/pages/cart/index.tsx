@@ -2,7 +2,7 @@ import { NextPage, GetServerSideProps } from 'next'
 import { useShoppingCart } from 'use-shopping-cart'
 import { Layout } from '@/components/layouts/Layout'
 import { CartProductTable } from '@/features/cart'
-import { Button } from '@/components/uis'
+import { Button } from '@/components'
 
 // NOTE:next-pageにするとフロントにコンソールが出るのか？
 const Page: NextPage = (props) => {

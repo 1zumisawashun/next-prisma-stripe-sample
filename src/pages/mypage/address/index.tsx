@@ -4,7 +4,7 @@ import { getSession } from 'next-auth/react'
 import { Address } from '@prisma/client'
 import prisma from '@/functions/libs/prisma'
 import { fetchPostJSON } from '@/functions/helpers/api-helpers'
-import { Button } from '@/components/uis'
+import { Button } from '@/components'
 import { MypageAddressTable } from '@/features/mypage'
 
 type Props = {

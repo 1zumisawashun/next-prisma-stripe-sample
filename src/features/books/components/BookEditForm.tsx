@@ -1,6 +1,6 @@
 import React, { useState, BaseSyntheticEvent } from 'react'
 import Router from 'next/router'
-import { Button, InputText, ButtonWrapper } from '@/components/uis'
+import { Button, InputText, ButtonWrapper } from '@/components'
 import { fetchPutJSON } from '@/functions/helpers/api-helpers'
 import { BookProps } from '@/functions/types/Book'
 

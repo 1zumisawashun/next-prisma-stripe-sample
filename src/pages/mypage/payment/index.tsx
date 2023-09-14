@@ -3,7 +3,7 @@ import Router from 'next/router'
 import { getSession } from 'next-auth/react'
 import prisma from '@/functions/libs/prisma'
 import { fetchPostJSON } from '@/functions/helpers/api-helpers'
-import { Button } from '@/components/uis'
+import { Button } from '@/components'
 import { stripe, StripePaymentMethod } from '@/functions/libs/stripe'
 import { MypagePaymentTable } from '@/features/mypage'
 
