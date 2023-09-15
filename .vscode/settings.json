@@ -1,9 +1,16 @@
 {
+  "css.validate": false,
+  "scss.validate": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
   },
+  "editor.guides.bracketPairs": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
+  "stylelint.validate": ["css", "scss", "typescript", "typescriptreact"],
   "typescript.referencesCodeLens.enabled": true,
-  "editor.stickyScroll.enabled": true
+  "editor.stickyScroll.enabled": true,
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "json.schemaDownload.enable": true
 }
