@@ -3,18 +3,11 @@
     "browser": true,
     "es2021": true
   },
-  "extends": [
-    "airbnb",
-    "airbnb/hooks",
-    "airbnb-typescript",
-    "prettier",
-    "plugin:tailwindcss/recommended"
-  ],
-  "plugins": ["tailwindcss"],
+  "extends": ["airbnb", "airbnb/hooks", "airbnb-typescript", "prettier"],
   "parserOptions": {
     "project": "./tsconfig.json"
   },
-  "ignorePatterns": ["postcss.config.js", "tailwind.config.js"],
+  "ignorePatterns": [],
   "rules": {
     // eslint-config-airbnb（eslint)
     "spaced-comment": "off",
@@ -41,10 +34,6 @@
       "error",
       { "allowTernary": true }
     ],
-    "@typescript-eslint/no-unused-vars": "off",
-    // eslint-plugin-tailwindcss
-    "tailwindcss/classnames-order": "warn",
-    "tailwindcss/no-custom-classname": "warn",
-    "tailwindcss/no-contradicting-classname": "error"
+    "@typescript-eslint/no-unused-vars": "off"
   }
 }

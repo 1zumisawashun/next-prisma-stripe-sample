@@ -2,49 +2,5 @@
 # . "$(dirname -- "$0")/_/husky.sh"
 
 # npm test
-# npm run lint-staged
+npm run lint-staged
 
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
-# bash echo color
-RED='\033[1;31m' # 赤色のテキストを表すエスケープシーケンス
-GREEN='\033[1;32m' # 緑色のテキストを表すエスケープシーケンス
-BLUE='\033[1;36m' # 青色のテキストを表すエスケープシーケンス
-BOLD='\033[1;37m' # 太字のテキストを表すエスケープシーケンス
-NC='\033[0m' # テキストの色をリセットするエスケープシーケンス
-
-echo "\n 🚧🏗️  ${BOLD}Checking format, lint and types in your project before committing${NC}"
-
-# Check Prettier standards
-npm run format ||
-(
-    echo "\n ❌🟨 Prettier Check ${RED}Failed${NC}. 🟨❌\n Run ${BLUE}npm run format:fix${NC}, add changes and try commit again.\n";
-    false;
-)
-
-# Check ESLint Standards
-npm run lint:js ||
-(
-    echo "\n ❌🟪 ESLint Check ${RED}Failed${NC}. 🟪❌n Run ${BLUE}npm run list:js:fix${NC}, add changes and try commit again.\n"
-    false;
-)
-
-# Check tsconfig standards
-npm run compile ||
-(
-    echo "\n ❌🟦 Type check ${RED}Failed${NC}. 🟦❌\n Make the changes required above.\n"
-    false;
-)
-
-# If everything passes... Now we can build
-echo "🔥🚀 ${BOLD}All passed... Now we can build.${NC} 🚀🔥"
-
-npm run build ||
-(
-    echo "\n ❌🟩 Next build ${RED}Failed${NC}. 🟩❌\n View the errors above to see why.\n"
-    false;
-)
-
-# If everything passes... Now we can commit
-echo "✅✅ ${GREEN}Build is completed... I am committing this now.${NC} ✅✅\n"

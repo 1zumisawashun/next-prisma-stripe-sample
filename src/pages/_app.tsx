@@ -1,7 +1,7 @@
 import { AppProps } from 'next/app'
 import { Header } from '@/components/layouts/Header'
 import { AppProvider } from '@/providers/app'
-import '@/assets/styles/globals.css'
+import '@/assets/styles/app.scss'
 
 export default function page({ Component, pageProps }: AppProps) {
   return (
