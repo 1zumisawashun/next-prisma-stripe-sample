@@ -9,11 +9,12 @@ export default function page() {
             Boox Mix!
           </span>
         </h1>
-        <div className="mx-auto max-w-3xl">
+        <div className="gap-container">
           <p className="mb-8 text-xl">Make book playlists you like!</p>
           <div>
-            <div className="mt-3">
-              <AnchorButton href="/books">Find Books</AnchorButton>
+            <div className="_pt-3">
+              <AnchorButton href="/books">Find Books1</AnchorButton>
+              <AnchorButton href="/books">Find Books2</AnchorButton>
             </div>
           </div>
         </div>

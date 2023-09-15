@@ -1,17 +1,33 @@
 import styles from './button.module.scss'
 
-export type ColorType = 'primary' | 'secondary'
+export type ColorType = 'primary' | 'secondary' | 'danger' | 'success'
+export type VariantType = 'contained' | 'outlined'
 export type SizeType = 'small' | 'medium' | 'large'
 export type PositionType = 'start' | 'center' | 'end'
 
-export const getColor = (color?: ColorType) => {
-  switch (color) {
-    case 'primary':
-      return styles['button-primary']
-    case 'secondary':
-      return styles['button-secondary']
+export const getColorVariant = ({
+  color,
+  variant
+}: {
+  color: ColorType
+  variant: VariantType
+}) => {
+  const val = `${color}-${variant}`
+  switch (val) {
+    case 'primary-contained':
+      return styles['button-primary-contained']
+    case 'primary-outlined':
+      return styles['button-primary-outlined']
+    case 'danger-contained':
+      return styles['button-danger-contained']
+    case 'danger-outlined':
+      return styles['button-danger-outlined']
+    case 'success-contained':
+      return styles['button-success-contained']
+    case 'success-outlined':
+      return styles['button-success-outlined']
     default:
-      return styles['button-primary']
+      return styles['button-primary-contained']
   }
 }
 
