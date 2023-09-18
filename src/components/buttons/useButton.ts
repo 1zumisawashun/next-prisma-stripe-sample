@@ -1,10 +1,11 @@
 import styles from './button.module.scss'
-
-export type ColorType = 'primary' | 'secondary' | 'danger' | 'success'
-export type VariantType = 'contained' | 'outlined'
-export type SizeType = 'small' | 'medium' | 'large'
-export type PositionType = 'start' | 'center' | 'end'
-export type StatusType = 'loading' | 'disabled' | 'error'
+import {
+  ColorType,
+  VariantType,
+  SizeType,
+  PositionType,
+  StatusType
+} from '@/functions/types/Common'
 
 export const getColorVariant = ({
   color,

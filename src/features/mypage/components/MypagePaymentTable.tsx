@@ -1,5 +1,5 @@
 import { StripePaymentMethod } from '@/functions/libs/stripe'
-import { LabelButton } from '@/components'
+import { Button } from '@/components'
 
 type Props = {
   onClick: (id: string) => void
@@ -38,14 +38,15 @@ export const MypagePaymentTable = ({
               </p>
             </td>
             <td className="w-1/6 p-3 text-center font-medium">
-              <LabelButton
-                variant={
-                  payment.id === selectedPaymentId ? 'selected' : 'default'
-                }
+              <Button
+                // variant={
+                //   payment.id === selectedPaymentId ? 'selected' : 'default'
+                // }
+                size="small"
                 onClick={() => onClick(payment.id)}
               >
                 {payment.id === selectedPaymentId ? '選択済み' : '未選択'}
-              </LabelButton>
+              </Button>
             </td>
           </tr>
         ))}

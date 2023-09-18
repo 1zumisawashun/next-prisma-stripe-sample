@@ -1,5 +1,3 @@
 export { Button } from './Button'
 export { AnchorButton } from './AnchorButton'
-export { ButtonWrapper } from './ButtonWrapper'
-export { LabelButton, LabelButtonAnchor } from './LabelButton'
 export { UnstyledButton, UnstyledButtonAnchor } from './UnstyledButton'

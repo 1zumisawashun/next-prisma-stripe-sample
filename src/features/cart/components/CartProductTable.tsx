@@ -1,6 +1,6 @@
 import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart'
 import Router from 'next/router'
-import { LabelButton } from '@/components'
+import { Button } from '@/components'
 
 export const CartProductTable: React.FC = () => {
   const { incrementItem, decrementItem, cartDetails } = useShoppingCart()
@@ -46,18 +46,12 @@ export const CartProductTable: React.FC = () => {
             </td>
             <td className="w-1/6 p-3">
               <div className="grid gap-5 text-center">
-                <LabelButton
-                  variant="increment"
-                  onClick={() => incrementItem(product.id)}
-                >
+                <Button size="small" onClick={() => incrementItem(product.id)}>
                   INCREMENT
-                </LabelButton>
-                <LabelButton
-                  variant="decrement"
-                  onClick={() => decrementItem(product.id)}
-                >
+                </Button>
+                <Button size="small" onClick={() => decrementItem(product.id)}>
                   DECREMENT
-                </LabelButton>
+                </Button>
               </div>
             </td>
           </tr>

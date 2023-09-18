@@ -1,5 +1,5 @@
 import { Address } from '@prisma/client'
-import { LabelButton } from '@/components'
+import { Button } from '@/components'
 
 type Props = {
   addresses: Address[]
@@ -27,14 +27,15 @@ export const MypageAddressTable = ({
               </p>
             </td>
             <td className="text-center font-medium">
-              <LabelButton
-                variant={
-                  address.id === selectedAddressId ? 'selected' : 'default'
-                }
+              <Button
+                size="small"
+                // variant={
+                //   address.id === selectedAddressId ? 'selected' : 'default'
+                // }
                 onClick={() => onClick(address)}
               >
                 {address.id === selectedAddressId ? '選択済み' : '未選択'}
-              </LabelButton>
+              </Button>
             </td>
           </tr>
         ))}

@@ -1,6 +1,6 @@
 import React, { useState, BaseSyntheticEvent } from 'react'
 import Router from 'next/router'
-import { Button, InputText, ButtonWrapper, AnchorButton } from '@/components'
+import { Button, InputText, AnchorButton } from '@/components'
 import { fetchPostJSON } from '@/functions/helpers/api-helpers'
 import styles from '../styles/mypageAddressCreateForm.module.scss'
 
@@ -61,10 +61,10 @@ export const MypageAddressCreateForm = () => {
           onChange={handleChange}
           placeholder="address.line2"
         />
-        <ButtonWrapper>
+        <div className="flex-gap-container">
           <AnchorButton href="/mypage/address">back</AnchorButton>
           <Button onClick={handleSubmit}>create</Button>
-        </ButtonWrapper>
+        </div>
       </div>
     </div>
   )

@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { ColorType, SizeType, VariantType } from '../../buttons/useButton'
+import { ColorType, VariantType, SizeType } from '@/functions/types/Common'
 import { getSize, getColorVariant } from './useCircularProgress'
 
 export const CircularProgress = ({

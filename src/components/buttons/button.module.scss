@@ -105,15 +105,3 @@ $large-pd-x: 24px;
     border: 1px solid $devils-grass;
   }
 }
-
-.button-wrapper {
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  &.start {
-    justify-content: start;
-  }
-  &.end {
-    justify-content: end;
-  }
-}

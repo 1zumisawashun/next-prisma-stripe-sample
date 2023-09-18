@@ -1,8 +1,6 @@
 import styles from './circularProgress.module.scss'
+import { ColorType, VariantType, SizeType } from '@/functions/types/Common'
 
-export type ColorType = 'primary' | 'secondary' | 'danger' | 'success'
-export type VariantType = 'contained' | 'outlined'
-export type SizeType = 'small' | 'medium' | 'large'
 export const getColorVariant = ({
   color,
   variant

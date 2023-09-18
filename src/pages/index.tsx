@@ -1,4 +1,4 @@
-import { AnchorButton, Button, ButtonWrapper } from '../components'
+import { AnchorButton, Button, Loading } from '../components'
 
 export default function page() {
   return (
@@ -11,7 +11,7 @@ export default function page() {
         </h1>
         <div className="gap-container">
           <p className="mb-8 text-xl">Make book playlists you like!</p>
-          <div>
+          <div className="flex-gap-container">
             <Button size="small">sample</Button>
             <Button size="medium">sample</Button>
             <Button size="large">sample</Button>
@@ -19,7 +19,7 @@ export default function page() {
             <AnchorButton href="/books">Find Books1</AnchorButton>
             <AnchorButton href="/books">Find Books2</AnchorButton>
           </div>
-          <div>
+          <div className="flex-gap-container">
             <Button size="small" loading>
               sample
             </Button>
@@ -31,7 +31,7 @@ export default function page() {
             </Button>
           </div>
 
-          <div>
+          <div className="flex-gap-container">
             <Button size="small" disabled>
               sample
             </Button>

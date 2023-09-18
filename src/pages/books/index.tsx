@@ -2,12 +2,14 @@ import { GetStaticProps } from 'next'
 import { Book, User } from '@prisma/client'
 import prisma from '@/functions/libs/prisma'
 import { BookCard } from '@/features/books'
+import { Loading } from '@/components/elements'
 
 type Props = {
   books: (Book & { bookmarked_users: User[] })[]
 }
 
 export default function page({ books }: Props) {
+  // return <Loading />
   return (
     <div className="styled-container">
       <div className="my-10 w-full">

@@ -1,13 +1,7 @@
 import { ReactNode, ComponentProps } from 'react'
 import clsx from 'clsx'
-import {
-  ColorType,
-  SizeType,
-  VariantType,
-  getColorVariant,
-  getSize,
-  getStatus
-} from './useButton'
+import { getColorVariant, getSize, getStatus } from './useButton'
+import { ColorType, SizeType, VariantType } from '@/functions/types/Common'
 import { CircularProgress } from '@/components/elements'
 
 type ButtonProps = {

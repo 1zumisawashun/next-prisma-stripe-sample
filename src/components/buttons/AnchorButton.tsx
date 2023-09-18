@@ -1,13 +1,8 @@
 import Link, { LinkProps } from 'next/link'
 import { ReactNode } from 'react'
 import clsx from 'clsx'
-import {
-  ColorType,
-  SizeType,
-  VariantType,
-  getColorVariant,
-  getSize
-} from './useButton'
+import { getColorVariant, getSize, getStatus } from './useButton'
+import { ColorType, SizeType, VariantType } from '@/functions/types/Common'
 
 type Props = {
   children: ReactNode

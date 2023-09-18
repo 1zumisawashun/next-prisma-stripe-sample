@@ -1,6 +1,6 @@
 import Router from 'next/router'
 import { Book, User } from '@prisma/client'
-import { LabelButton, Modal, Button, LabelButtonAnchor } from '@/components'
+import { Button, Modal, AnchorButton } from '@/components'
 import { useDisclosure } from '@/functions/hooks'
 
 type Props = {
@@ -47,15 +47,15 @@ export const MypageBookTable = ({ posts }: Props) => {
               </td>
               <td className="w-1/6 p-3">
                 <div className="grid gap-5 text-center">
-                  <LabelButtonAnchor
-                    variant="edit"
+                  <AnchorButton
+                    size="small"
                     href={`/mypage/books/${post.id}/edit`}
                   >
                     EDIT
-                  </LabelButtonAnchor>
-                  <LabelButton variant="delete" onClick={executeModal.open}>
+                  </AnchorButton>
+                  <Button size="small" onClick={executeModal.open}>
                     DELETE
-                  </LabelButton>
+                  </Button>
                 </div>
               </td>
             </tr>
