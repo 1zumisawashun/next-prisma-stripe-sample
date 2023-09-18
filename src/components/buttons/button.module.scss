@@ -1,108 +1,105 @@
-@import '../../assets/styles/css-modules.scss';
-/* Setting Layer */
+@import '@/assets/styles/css-modules.scss';
 
-/* black */
-$black: #000;
-$black-dark-grey: #363636;
+$small: 12px;
+$medium: 14px;
+$large: 16px;
 
-/* grey */
-$grey: #808080;
-$carbon: #333;
-$goshawk-grey: #444;
-$basalt-grey: #999;
+$small-pd-y: 10px;
+$medium-pd-y: 11px;
+$large-pd-y: 13px;
 
-/* white */
-$white: #ffffff;
-$white-dr-white: #fafafa;
-$lighthouse: #f4f4f4;
+$small-pd-x: 16px;
+$medium-pd-x: 20px;
+$large-pd-x: 24px;
 
-/* blue */
-$vintage-blue: #84bcb4; // main
-
-/* green */
-$devils-grass: #4caf50; // mui palette
-
-/* red */
-$spicy-berry: #d13267; // error
-$amour: #ef5350; // mui palette
-
-/* shadow color */
-$black-shadow: rgba(0, 0, 0, 0.1);
-$overlay: rgba(0, 0, 0, 0.6);
-
-@mixin hoverAnime {
-  @media (hover: hover) {
-    &:hover {
-      @content;
-    }
-  }
-
-  @media (hover: none) {
-    &:active {
-      @content;
-    }
-  }
-}
-
-%button {
+.base-button {
   font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 700;
-  border: 0;
-  border-radius: 3em;
-  cursor: pointer;
-  display: inline-block;
+  border-radius: 0.5em;
+  box-sizing: border-box;
   line-height: 1;
+  min-width: 150px;
+  align-items: center;
+  box-shadow: 0px 3px 10px $black-shadow;
+  cursor: pointer;
+  display: inline-flex;
+  gap: 8px;
+  justify-content: center;
+  position: relative;
+  text-align: center;
   &.small {
-    font-size: 12px;
-    padding: 10px 16px;
+    font-size: $small;
+    padding: $small-pd-y $small-pd-x;
   }
   &.medium {
-    font-size: 14px;
-    padding: 11px 20px;
+    font-size: $medium;
+    padding: $medium-pd-y $medium-pd-x;
   }
   &.large {
-    font-size: 16px;
-    padding: 12px 24px;
+    font-size: $large;
+    padding: $large-pd-y $large-pd-x;
   }
   @include hoverAnime {
-    opacity: 0.7;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+  }
+  &.loading {
+    pointer-events: none;
+  }
+  &.disabled {
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  &:disabled::before {
+    opacity: 0.5;
+  }
+  &::before {
+    background: $overlay;
+    border-radius: 0.5em;
+    bottom: -1px; // NOTE:button borderのpx分ネガティブマージンする
+    content: '';
+    left: -1px;
+    opacity: 0;
+    position: absolute;
+    right: -1px;
+    top: -1px;
+    z-index: 2;
   }
 }
 
-// NOTE:button-primary, button-secondaryで呼び出す
 .button {
   &-primary-contained {
-    @extend %button;
+    composes: base-button;
     color: white;
     background-color: $vintage-blue;
     border: 1px solid $vintage-blue;
   }
   &-primary-outlined {
-    @extend %button;
+    composes: base-button;
     color: $vintage-blue;
     background-color: white;
     border: 1px solid $vintage-blue;
   }
   &-danger-contained {
-    @extend %button;
+    composes: base-button;
     color: white;
     background-color: $amour;
     border: 1px solid $amour;
   }
   &-danger-outlined {
-    @extend %button;
+    composes: base-button;
     color: $amour;
     background-color: white;
     border: 1px solid $amour;
   }
   &-success-contained {
-    @extend %button;
+    composes: base-button;
     color: white;
     background-color: $devils-grass;
     border: 1px solid $devils-grass;
   }
   &-success-outlined {
-    @extend %button;
+    composes: base-button;
     color: $devils-grass;
     background-color: white;
     border: 1px solid $devils-grass;

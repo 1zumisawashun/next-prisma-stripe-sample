@@ -4,6 +4,7 @@ export type ColorType = 'primary' | 'secondary' | 'danger' | 'success'
 export type VariantType = 'contained' | 'outlined'
 export type SizeType = 'small' | 'medium' | 'large'
 export type PositionType = 'start' | 'center' | 'end'
+export type StatusType = 'loading' | 'disabled' | 'error'
 
 export const getColorVariant = ({
   color,
@@ -54,5 +55,18 @@ export const getPosition = (position?: PositionType) => {
       return styles.end
     default:
       return styles.center
+  }
+}
+
+export const getStatus = (status?: StatusType) => {
+  switch (status) {
+    case 'disabled':
+      return styles.disabled
+    case 'error':
+      return styles.disabled
+    case 'loading':
+      return styles.loading
+    default:
+      return ''
   }
 }

@@ -58,3 +58,17 @@
 }
 
 /* stylelint-enable */
+
+@mixin hoverAnime {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+
+  @media (hover: none) {
+    &:active {
+      @content;
+    }
+  }
+}

@@ -5,8 +5,10 @@ import {
   SizeType,
   VariantType,
   getColorVariant,
-  getSize
+  getSize,
+  getStatus
 } from './useButton'
+import { CircularProgress } from '@/components/elements'
 
 type ButtonProps = {
   type?: 'button' | 'submit' | 'reset'
@@ -14,6 +16,7 @@ type ButtonProps = {
   variant?: VariantType
   color?: ColorType
   children: ReactNode
+  loading?: boolean
 } & ComponentProps<'button'>
 
 export const Button = ({
@@ -21,16 +24,23 @@ export const Button = ({
   children,
   color = 'primary',
   variant = 'contained',
-  size,
+  size = 'medium',
+  loading,
   ...props
 }: ButtonProps) => {
+  const { disabled } = props
   return (
-    <button {...props} type="button">
-      <span
-        className={clsx(getColorVariant({ color, variant }), getSize(size))}
-      >
-        {children}
-      </span>
+    <button
+      {...props}
+      type="button"
+      className={clsx(
+        getColorVariant({ color, variant }),
+        getSize(size),
+        getStatus(disabled ? 'disabled' : undefined),
+        getStatus(loading ? 'loading' : undefined)
+      )}
+    >
+      {loading ? <CircularProgress {...{ size, color, variant }} /> : children}
     </button>
   )
 }

@@ -1,7 +1,7 @@
 import { LinkProps } from 'next/link'
 import { ReactNode, ComponentProps } from 'react'
-import { Label } from '../elements/label/Label'
-import { LabelVariantType } from '../elements/label/useLabel'
+import { Label } from '../elements/Label/Label'
+import { LabelVariantType } from '../elements/Label/useLabel'
 import { UnstyledButton, UnstyledButtonAnchor } from './UnstyledButton'
 
 type LabelButtonProps = {

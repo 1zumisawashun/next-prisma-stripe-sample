@@ -1,4 +1,4 @@
-import { AnchorButton } from '../components'
+import { AnchorButton, Button, ButtonWrapper } from '../components'
 
 export default function page() {
   return (
@@ -12,10 +12,35 @@ export default function page() {
         <div className="gap-container">
           <p className="mb-8 text-xl">Make book playlists you like!</p>
           <div>
-            <div className="_pt-3">
-              <AnchorButton href="/books">Find Books1</AnchorButton>
-              <AnchorButton href="/books">Find Books2</AnchorButton>
-            </div>
+            <Button size="small">sample</Button>
+            <Button size="medium">sample</Button>
+            <Button size="large">sample</Button>
+
+            <AnchorButton href="/books">Find Books1</AnchorButton>
+            <AnchorButton href="/books">Find Books2</AnchorButton>
+          </div>
+          <div>
+            <Button size="small" loading>
+              sample
+            </Button>
+            <Button size="medium" loading>
+              sample
+            </Button>
+            <Button size="large" loading>
+              sample
+            </Button>
+          </div>
+
+          <div>
+            <Button size="small" disabled>
+              sample
+            </Button>
+            <Button size="medium" disabled>
+              sample
+            </Button>
+            <Button size="large" disabled>
+              sample
+            </Button>
           </div>
         </div>
       </div>
