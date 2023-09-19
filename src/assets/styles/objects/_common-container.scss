@@ -3,4 +3,8 @@
 .common-container {
   width: 100%;
   min-height: 100vh;
+  &.-w576 {
+    width: 576px;
+    margin: auto;
+  }
 }

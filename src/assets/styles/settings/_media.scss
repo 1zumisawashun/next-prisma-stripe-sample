@@ -28,3 +28,24 @@ $pc: 1042px;
     @content;
   }
 }
+
+@mixin hoverAnime {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+
+  @media (hover: none) {
+    &:active {
+      @content;
+    }
+  }
+}
+
+@mixin lineClamp($line-clamp-number: 3) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $line-clamp-number; /* 表示する最大行数を設定 */
+  -webkit-box-orient: vertical;
+}

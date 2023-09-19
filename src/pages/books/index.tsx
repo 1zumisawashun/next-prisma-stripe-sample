@@ -1,26 +1,14 @@
 import { GetStaticProps } from 'next'
 import { Book, User } from '@prisma/client'
 import prisma from '@/functions/libs/prisma'
-import { BookCard } from '@/features/books'
-import { Loading } from '@/components/elements'
+import { BookList } from '@/features/books'
 
 type Props = {
   books: (Book & { bookmarked_users: User[] })[]
 }
 
 export default function page({ books }: Props) {
-  // return <Loading />
-  return (
-    <div className="styled-container">
-      <div className="my-10 w-full">
-        <div className="grid grid-cols-3 text-sm font-medium">
-          {books.map((book) => (
-            <BookCard {...book} key={book.id} />
-          ))}
-        </div>
-      </div>
-    </div>
-  )
+  return <BookList books={books} />
 }
 
 export const getStaticProps: GetStaticProps = async () => {

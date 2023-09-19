@@ -14,6 +14,8 @@
 }
 
 /* stylelint-disable */
+
+// padding
 @for $i from 1 through 10 {
   ._ml-#{$i} {
     margin-left: #{$i}rem !important;
@@ -24,18 +26,30 @@
     margin-right: #{$i}rem !important;
   }
 }
-
 @for $i from 1 through 10 {
   ._mt-#{$i} {
     margin-top: #{$i}rem !important;
   }
 }
-
 @for $i from 1 through 10 {
   ._mb-#{$i} {
     margin-bottom: #{$i}rem !important;
   }
 }
+@for $i from 1 through 10 {
+  ._mx-#{$i} {
+    margin-left: #{$i}rem !important;
+    margin-right: #{$i}rem !important;
+  }
+}
+@for $i from 1 through 10 {
+  ._my-#{$i} {
+    margin-top: #{$i}rem !important;
+    margin-bottom: #{$i}rem !important;
+  }
+}
+
+// margin
 @for $i from 1 through 10 {
   ._pl-#{$i} {
     padding-left: #{$i}rem !important;
@@ -56,19 +70,27 @@
     padding-bottom: #{$i}rem !important;
   }
 }
-
-/* stylelint-enable */
-
-@mixin hoverAnime {
-  @media (hover: hover) {
-    &:hover {
-      @content;
-    }
-  }
-
-  @media (hover: none) {
-    &:active {
-      @content;
-    }
+@for $i from 1 through 10 {
+  ._px-#{$i} {
+    padding-left: #{$i}rem !important;
+    padding-right: #{$i}rem !important;
   }
 }
+@for $i from 1 through 10 {
+  ._py-#{$i} {
+    padding-top: #{$i}rem !important;
+    padding-bottom: #{$i}rem !important;
+  }
+}
+
+// line-clamp
+@for $i from 1 through 10 {
+  ._line-clamp-#{$i} {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: #{$i}; /* 表示する最大行数を設定 */
+    -webkit-box-orient: vertical;
+  }
+}
+
+/* stylelint-enable */

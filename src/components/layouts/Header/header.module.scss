@@ -1,10 +1,12 @@
+@import '@/assets/styles/css-modules.scss';
+
 .header {
-  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding: 15px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 60px;
 }
 
 .svg {
@@ -16,13 +18,17 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 1;
-  margin: 6px 0 6px 10px;
+  margin: 5px;
   display: inline-block;
   vertical-align: top;
 }
 
-.welcome {
-  color: #333;
-  font-size: 14px;
-  margin-right: 10px;
+.header-item {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  transition: color 0.3s ease;
+  @include hoverAnime {
+    color: $vintage-blue;
+  }
 }

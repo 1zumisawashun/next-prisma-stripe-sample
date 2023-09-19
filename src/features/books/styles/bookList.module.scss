@@ -1,0 +1,10 @@
+@import '@/assets/styles/css-modules.scss';
+
+.card-list-container {
+  width: 576px;
+  margin: auto;
+}
+.card-list-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}

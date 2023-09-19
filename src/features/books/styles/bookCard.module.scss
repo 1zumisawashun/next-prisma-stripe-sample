@@ -1,0 +1,28 @@
+@import '@/assets/styles/css-modules.scss';
+
+.card-container {
+  margin: 0.5rem;
+  display: grid;
+  cursor: pointer;
+  gap: 0.5rem;
+}
+.card-image {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+.card-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #4a5568;
+}
+.card-text {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #cbd5e0;
+}
+.card-content {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #cbd5e0;
+  @include lineClamp();
+}
