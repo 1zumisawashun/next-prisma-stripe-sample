@@ -1,13 +1,9 @@
 import { GetStaticProps } from 'next'
-import { Book, User } from '@prisma/client'
 import prisma from '@/functions/libs/prisma'
 import { BookList } from '@/features/books'
+import { BookListProps } from '@/features/books/books.type'
 
-type Props = {
-  books: (Book & { bookmarked_users: User[] })[]
-}
-
-export default function page({ books }: Props) {
+export default function page({ books }: BookListProps) {
   return <BookList books={books} />
 }
 

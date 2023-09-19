@@ -9,6 +9,7 @@
 .card-image {
   width: 100%;
   border-radius: 0.5rem;
+  @include boxShadow();
 }
 .card-title {
   font-size: 1.4rem;

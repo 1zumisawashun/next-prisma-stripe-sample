@@ -1,22 +1,12 @@
 import { GetServerSideProps } from 'next'
 import { getSession } from 'next-auth/react'
-import { Book, User } from '@prisma/client'
+import { User } from '@prisma/client'
 import prisma from '@/functions/libs/prisma'
-import { BookSummary } from '@/features/books'
+import { BookDetail } from '@/features/books'
+import { BookDetailProps } from '@/features/books/books.type'
 
-type Props = {
-  book: Book & { bookmarked_users: User[] }
-  isBookmarked: boolean
-}
-
-export default function page(props: Props) {
-  return (
-    <div className="styled-container">
-      <div className="my-12 flex justify-center p-12">
-        <BookSummary {...props} />
-      </div>
-    </div>
-  )
+export default function page(props: BookDetailProps) {
+  return <BookDetail {...props} />
 }
 
 export const getServerSideProps: GetServerSideProps = async ({

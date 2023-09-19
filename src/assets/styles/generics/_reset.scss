@@ -144,9 +144,9 @@ select::-ms-expand {
   display: none;
 }
 
-// input:-webkit-autofill {
-//   -webkit-box-shadow: 0 0 0 1000px $white-dr-white inset;
-// }
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px $white-dr-white inset;
+}
 
 input[type='number'] {
   -moz-appearance: textfield;

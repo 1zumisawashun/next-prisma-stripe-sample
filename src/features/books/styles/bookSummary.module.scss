@@ -1,0 +1,22 @@
+@import '@/assets/styles/css-modules.scss';
+
+.book-summary-container {
+  width: 576px;
+  margin: auto;
+}
+
+.book-summary-image {
+  width: 100%;
+  border-radius: 0.5rem;
+  @include boxShadow();
+}
+
+.book-summary-title {
+  font-size: 2rem; /* フォントサイズを設定 */
+  font-weight: 600; /* font-semibold クラスのフォントウェイトを設定 */
+}
+
+.book-summary-content {
+  font-size: 1.5rem; /* フォントサイズを設定 */
+  line-height: 1.625; /* 行の高さを設定 */
+}

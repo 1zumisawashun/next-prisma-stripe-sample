@@ -49,3 +49,7 @@ $pc: 1042px;
   -webkit-line-clamp: $line-clamp-number; /* 表示する最大行数を設定 */
   -webkit-box-orient: vertical;
 }
+
+@mixin boxShadow() {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+}
