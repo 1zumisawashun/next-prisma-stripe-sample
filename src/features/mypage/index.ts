@@ -5,3 +5,5 @@ export { MypagePaymentCreateForm } from '@/features/mypage/components/MypagePaym
 export { MypagePaymentTable } from '@/features/mypage/components/MypagePaymentTable'
 
 export { MypageBookTable } from '@/features/mypage/components/MypageBookTable'
+
+export { MypageIndex } from '@/features/mypage/components/MypageIndex'

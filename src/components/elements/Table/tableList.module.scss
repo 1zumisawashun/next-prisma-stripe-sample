@@ -1,0 +1,28 @@
+.table {
+  display: table; /* テーブル要素として表示 */
+  width: auto; /* 幅を自動調整 */
+}
+.table-body {
+  border-collapse: separate; /* ボーダーをセパレートモデルに設定 */
+  border-spacing: 0 1px; /* 上下方向に1pxの間隔を設定（divide-yのデフォルト値） */
+  border-color: #cbd5e0; /* ボーダーカラーを指定 */
+}
+.table-row {
+  position: relative; /* 相対的な位置を設定 */
+  cursor: pointer; /* ポインターカーソルを設定 */
+  transition-property: background-color, color; /* トランジション対象のプロパティを設定 */
+  transition-duration: 0.3s; /* トランジションのデフォルト値を設定 */
+}
+.table-row:hover {
+  background-color: #f3f4f6; /* ホバー時の背景色を設定 */
+}
+
+.table-name {
+  font-weight: 600; /* font-semibold クラスのフォントウェイトを設定 */
+  color: #4a5568; /* text-gray-700 クラスのテキストカラーを設定 */
+}
+.table-annotation {
+  font-size: 1.4rem; /* フォントサイズを設定 */
+  font-weight: 500; /* font-medium クラスのフォントウェイトを設定 */
+  color: #cbd5e0; /* text-gray-400 クラスのテキストカラーを設定 */
+}
