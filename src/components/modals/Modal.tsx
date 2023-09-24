@@ -1,39 +1,22 @@
-import React, { forwardRef, ComponentProps } from 'react'
-import styles from './modal.module.scss'
+import { SizeType } from '@/functions/types/Common'
+import { UnstyledModal } from '@/components/modals/UnstyledModal'
 
 type ModalProps = {
-  header?: JSX.Element | string
-  body?: JSX.Element | string
-  footer?: JSX.Element | string
   close: () => void
+  isOpen: boolean
+  children: React.ReactNode
+  size?: SizeType
 }
 
-export const Modal: React.FC<ModalProps> = ({
-  header,
-  body,
-  footer,
-  close
-}) => {
+export const Modal = ({
+  close,
+  isOpen,
+  children,
+  size = 'medium'
+}: ModalProps) => {
   return (
-    <>
-      <div className={styles.modal} onClick={close} aria-hidden="true">
-        <div className={styles.inner}>
-          {/*content*/}
-          <div className={styles.content}>
-            {/*header*/}
-            <div className={styles.header}>
-              <h3>{header}</h3>
-            </div>
-            {/*body*/}
-            <div className={styles.body}>
-              <p>{body}</p>
-            </div>
-            {/*footer*/}
-            <div className={styles.footer}>{footer}</div>
-          </div>
-        </div>
-      </div>
-      <div className={styles.backdrop} />
-    </>
+    <UnstyledModal close={close} isOpen={isOpen} size={size}>
+      {children}
+    </UnstyledModal>
   )
 }

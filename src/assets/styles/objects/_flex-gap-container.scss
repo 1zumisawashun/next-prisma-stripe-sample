@@ -3,5 +3,8 @@
 .flex-gap-container {
   display: flex;
   gap: 30px;
-  align-items: center;
+  &.-center {
+    text-align: center;
+    justify-content: center;
+  }
 }

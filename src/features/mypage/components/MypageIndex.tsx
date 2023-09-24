@@ -56,19 +56,16 @@ export const MypageIndex = () => {
         <TableList items={items} />
       </div>
 
-      {logoutModal.isOpen && (
-        <Modal
-          close={logoutModal.close}
-          header="ログアウト"
-          body="本当にログアウトしますか？"
-          footer={
-            <div className="flex justify-center gap-5">
-              <Button onClick={logoutModal.close}>Cancel</Button>
-              <Button onClick={() => signOut()}>logout</Button>
-            </div>
-          }
-        />
-      )}
+      <Modal close={logoutModal.close} isOpen={logoutModal.isOpen}>
+        <div className="gap-container -center">
+          <h1>ログアウト</h1>
+          <p>本当にログアウトしますか？</p>
+          <div className="flex-gap-container -center">
+            <Button onClick={logoutModal.close}>キャンセル</Button>
+            <Button onClick={() => signOut()}>ログアウト</Button>
+          </div>
+        </div>
+      </Modal>
     </>
   )
 }

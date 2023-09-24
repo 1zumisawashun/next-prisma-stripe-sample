@@ -62,19 +62,16 @@ export const MypageBookTable = ({ posts }: Props) => {
           ))}
         </tbody>
       </table>
-      {executeModal.isOpen && (
-        <Modal
-          close={executeModal.close}
-          header="削除"
-          body="本当に削除しますか？"
-          footer={
-            <div className="flex justify-center gap-5">
-              <Button onClick={executeModal.close}>Cancel</Button>
-              <Button onClick={() => null}>delete</Button>
-            </div>
-          }
-        />
-      )}
+      <Modal close={executeModal.close} isOpen={executeModal.isOpen}>
+        <div className="gap-container -center">
+          <h1>削除</h1>
+          <p>本当に削除しますか？</p>
+          <div className="flex-gap-container -center">
+            <Button onClick={executeModal.close}>キャンセル</Button>
+            <Button onClick={() => null}>削除する</Button>
+          </div>
+        </div>
+      </Modal>
     </>
   )
 }
