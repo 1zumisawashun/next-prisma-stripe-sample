@@ -1,6 +1,6 @@
 import React, { useState, BaseSyntheticEvent } from 'react'
 import Router from 'next/router'
-import { Button, InputText, AnchorButton } from '@/components'
+import { Button, InputText, AnchorButton, InputSelect } from '@/components'
 import { fetchPostJSON } from '@/functions/helpers/api-helpers'
 
 export const BookCreateForm = () => {
@@ -24,22 +24,47 @@ export const BookCreateForm = () => {
   }
 
   return (
-    <div className="container mx-auto grid gap-4 px-6 py-16">
-      <InputText
-        name="title"
-        value={formData.title}
-        onChange={handleChange}
-        placeholder="formData.title"
-      />
-      <InputText
-        name="content"
-        value={formData.content}
-        onChange={handleChange}
-        placeholder="formData.content"
-      />
-      <div className="flex-gap-container">
-        <AnchorButton href="/mypage">Back</AnchorButton>
-        <Button onClick={handleSubmit}>create</Button>
+    <div className="common-container -w576">
+      <div className="gap-container">
+        <InputText
+          name="title"
+          label="title"
+          description="titletitletitletitletitle"
+          error="errorerrorerrorerror"
+          value={formData.title}
+          onChange={handleChange}
+          placeholder="formData.title"
+          isRequired
+        />
+        <InputText
+          name="content"
+          label="content"
+          description="contentcontentcontentcontentcontent"
+          error="errorerrorerrorerror"
+          value={formData.content}
+          onChange={handleChange}
+          placeholder="formData.content"
+          isOptioned
+        />
+        <InputSelect
+          name="category"
+          label="category"
+          description="categorycategorycategorycategory"
+          error="errorerrorerrorerror"
+          value={formData.content}
+          onChange={handleChange}
+          placeholder="formData.content"
+          options={[
+            {
+              label: '匿名',
+              value: '匿名'
+            }
+          ]}
+        />
+        <div className="flex-gap-container">
+          <AnchorButton href="/mypage">Back</AnchorButton>
+          <Button onClick={handleSubmit}>create</Button>
+        </div>
       </div>
     </div>
   )

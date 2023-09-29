@@ -1,3 +1,5 @@
+@import '@/assets/styles/css-modules.scss';
+
 .input {
   display: block;
   width: 100%;
@@ -6,13 +8,38 @@
   border-style: solid;
   border-color: #d1d5db;
   background-color: #f9fafb;
-  padding: 0.625rem;
+  padding: 1rem;
   color: #1f2937;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  @include hoverAnime {
+    outline: none; // NOTE:ブラウザのデフォルトフォーカスを消す
+    border-color: #3b82f6;
+    transition: opacity 0.3s ease;
+  }
 }
 
 .input:focus {
   outline: none; // NOTE:ブラウザのデフォルトフォーカスを消す
   border-color: #3b82f6;
+}
+
+.input-wrapper-description {
+  color: $basalt-grey;
+}
+.input-wrapper-error {
+  color: $spicy-berry;
+}
+
+.input-label-option {
+  background-color: $basalt-grey;
+  color: white;
+  padding: 3px 6px;
+  font-size: 1rem;
+  border-radius: 10px;
+}
+.input-label-require {
+  background-color: $spicy-berry;
+  color: white;
+  padding: 3px 6px;
+  font-size: 1rem;
+  border-radius: 10px;
 }
