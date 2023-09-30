@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Button } from '@/components/buttons'
+import { CircularProgress } from '@/components/elements'
 
-const meta: Meta<typeof Button> = {
-  title: 'Button',
-  component: Button,
+const meta: Meta<typeof CircularProgress> = {
+  title: 'CircularProgress',
+  component: CircularProgress,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'centered'
@@ -19,28 +19,25 @@ const meta: Meta<typeof Button> = {
 
 export default meta
 
-type Story = StoryObj<typeof Button>
+type Story = StoryObj<typeof CircularProgress>
 
 export const Primary: Story = {
   args: {
-    variant: 'contained',
-    theme: 'primary',
-    children: 'Button'
+    variant: 'outlined',
+    theme: 'primary'
   }
 }
 
 export const Danger: Story = {
   args: {
-    variant: 'contained',
-    theme: 'danger',
-    children: 'Button'
+    variant: 'outlined',
+    theme: 'danger'
   }
 }
 
 export const Success: Story = {
   args: {
-    variant: 'contained',
-    theme: 'success',
-    children: 'Button'
+    variant: 'outlined',
+    theme: 'success'
   }
 }

@@ -1,16 +1,17 @@
 import Link, { LinkProps } from 'next/link'
-import { ReactNode, ComponentProps } from 'react'
+import { ReactNode, ComponentPropsWithoutRef } from 'react'
 
-type UnstyledButtonProps = {
+export type UnstyledButtonProps = {
   type?: 'button' | 'submit' | 'reset'
   children: ReactNode
-} & ComponentProps<'button'>
-type UnstyledButtonAnchorProps = {
+} & ComponentPropsWithoutRef<'button'>
+export type UnstyledButtonAnchorProps = {
   children: ReactNode
+  className?: string
 } & LinkProps
 
 export const UnstyledButton = ({
-  type,
+  type = 'button',
   children,
   ...props
 }: UnstyledButtonProps) => {

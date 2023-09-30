@@ -1,29 +1,34 @@
-import Link, { LinkProps } from 'next/link'
-import { ReactNode } from 'react'
 import clsx from 'clsx'
-import { getColorVariant, getSize, getStatus } from './useButton'
-import { ColorType, SizeType, VariantType } from '@/functions/types/Common'
+import { ThemeType, SizeType, VariantType } from '@/functions/types/Common'
+import {
+  UnstyledButtonAnchorProps,
+  UnstyledButtonAnchor
+} from './UnstyledButton'
+import styles from './styles.module.scss'
 
 type Props = {
-  children: ReactNode
   size?: SizeType
   variant?: VariantType
-  color?: ColorType
-} & LinkProps
+  theme?: ThemeType
+} & UnstyledButtonAnchorProps
 
 export const AnchorButton = ({
   children,
-  color = 'primary',
+  theme = 'primary',
   variant = 'contained',
-  size,
+  size = 'medium',
+  className,
   ...props
 }: Props) => {
   return (
-    <Link
+    <UnstyledButtonAnchor
       {...props}
-      className={clsx(getColorVariant({ color, variant }), getSize(size))}
+      className={clsx(className, styles.module)}
+      data-variant={variant}
+      data-theme={theme}
+      data-size={size}
     >
       {children}
-    </Link>
+    </UnstyledButtonAnchor>
   )
 }

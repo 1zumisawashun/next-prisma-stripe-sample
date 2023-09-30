@@ -1,17 +1,10 @@
-import React, { forwardRef, ComponentProps } from 'react'
-import styles from './input.module.scss'
+import { forwardRef, ComponentPropsWithRef, useId } from 'react'
+import styles from './styles.module.scss'
+import { InputWrapper, InputWrapperPropsPassThroughProps } from './InputWrapper'
 
 // NOTE:https://zenn.dev/leaner_dev/articles/20230711-input_type_number_mouse_wheel
-export type InputNumberProps = {
-  // add your own props
-} & React.DetailedHTMLProps<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
->
-
-export type InputNumberProps2 = {
-  // add your own props
-} & ComponentProps<typeof InputNumber>
+export type InputProps = ComponentPropsWithRef<'input'>
+export type InputNumberProps = InputProps & InputWrapperPropsPassThroughProps
 
 // イベントハンドラを定義
 const onWheelHandler = (e: React.WheelEvent<HTMLInputElement>) => {
@@ -20,15 +13,41 @@ const onWheelHandler = (e: React.WheelEvent<HTMLInputElement>) => {
 }
 
 export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>(
-  ({ ...props }, ref) => {
+  (
+    {
+      label,
+      error,
+      description,
+      className,
+      isOptioned,
+      isRequired,
+      disabled,
+      ...props
+    },
+    ref
+  ) => {
+    const id = useId()
     return (
-      <input
-        type="number"
-        ref={ref}
-        className={styles.input}
-        onWheel={onWheelHandler}
-        {...props}
-      />
+      <InputWrapper
+        label={label}
+        error={error}
+        description={description}
+        id={id}
+        isOptioned={isOptioned}
+        isRequired={isRequired}
+      >
+        <input
+          type="number"
+          {...props}
+          ref={ref}
+          className={styles.module}
+          onWheel={onWheelHandler}
+          data-error={Boolean(error)}
+          disabled={disabled}
+        />
+      </InputWrapper>
     )
   }
 )
+
+InputNumber.displayName = 'InputNumber'

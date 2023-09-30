@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react'
-import styles from './input.module.scss'
+import styles from './styles.module.scss'
 
 type InputLabelProps = {
   isOptioned?: Boolean
@@ -13,14 +13,14 @@ export const InputLabel: FC<InputLabelProps> = ({
   children
 }) => {
   return (
-    <div className={styles['input-label-wrapper']}>
-      <span className="">{children}</span>
+    <>
+      <p className={styles['input-label']}>{children}</p>
       {isOptioned ? (
         <span className={styles['input-label-option']}>任意</span>
       ) : null}
       {isRequired ? (
         <span className={styles['input-label-require']}>必須</span>
       ) : null}
-    </div>
+    </>
   )
 }

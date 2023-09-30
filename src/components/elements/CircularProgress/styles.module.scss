@@ -1,0 +1,57 @@
+@import '@/assets/styles/css-modules.scss';
+
+$small: 12px;
+$medium: 14px;
+$large: 16px;
+
+.module {
+  display: inline-block;
+  border-radius: 100%;
+  animation: loading infinite linear 1s;
+}
+
+// circular-progress-size
+.module[data-size='small'] {
+  width: $small;
+  height: $small;
+  margin-top: -1px;
+  margin-bottom: -1px;
+}
+.module[data-size='medium'] {
+  width: $medium;
+  height: $medium;
+  margin-top: -1px;
+  margin-bottom: -1px;
+}
+.module[data-size='large'] {
+  width: $large;
+  height: $large;
+  margin-top: -1px;
+  margin-bottom: -1px;
+}
+
+// circular-progress-variant-color
+.module[data-variant='contained'][data-theme='primary'] {
+  border: 2px solid white;
+  border-top: 5px solid transparent;
+}
+.module[data-variant='outlined'][data-theme='primary'] {
+  border: 2px solid $vintage-blue;
+  border-top: 5px solid transparent;
+}
+.module[data-variant='contained'][data-theme='danger'] {
+  border: 2px solid white;
+  border-top: 5px solid transparent;
+}
+.module[data-variant='outlined'][data-theme='danger'] {
+  border: 2px solid $amour;
+  border-top: 5px solid transparent;
+}
+.module[data-variant='contained'][data-theme='success'] {
+  border: 2px solid white;
+  border-top: 5px solid transparent;
+}
+.module[data-variant='outlined'][data-theme='success'] {
+  border: 2px solid $devils-grass;
+  border-top: 5px solid transparent;
+}

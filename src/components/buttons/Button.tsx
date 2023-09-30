@@ -1,40 +1,38 @@
-import { ReactNode, ComponentProps } from 'react'
 import clsx from 'clsx'
-import { getColorVariant, getSize, getStatus } from './useButton'
-import { ColorType, SizeType, VariantType } from '@/functions/types/Common'
+import { ThemeType, SizeType, VariantType } from '@/functions/types/Common'
 import { CircularProgress } from '@/components/elements'
+import { UnstyledButtonProps, UnstyledButton } from './UnstyledButton'
+import styles from './styles.module.scss'
 
 type ButtonProps = {
-  type?: 'button' | 'submit' | 'reset'
   size?: SizeType
   variant?: VariantType
-  color?: ColorType
-  children: ReactNode
+  theme?: ThemeType
   loading?: boolean
-} & ComponentProps<'button'>
+} & UnstyledButtonProps
 
 export const Button = ({
   type,
   children,
-  color = 'primary',
+  theme = 'primary',
   variant = 'contained',
   size = 'medium',
   loading,
+  disabled,
+  className,
   ...props
 }: ButtonProps) => {
-  const { disabled } = props
   return (
-    <button
+    <UnstyledButton
       {...props}
       type="button"
-      className={clsx(
-        getColorVariant({ color, variant }),
-        getSize(size),
-        getStatus(disabled ? 'disabled' : undefined),
-        getStatus(loading ? 'loading' : undefined)
-      )}
+      className={clsx(className, styles.module)}
+      data-variant={variant}
+      data-theme={theme}
+      data-size={size}
+      aria-disabled={disabled}
     >
-      {loading ? <CircularProgress {...{ size, color, variant }} /> : children}
-    </button>
+      {loading ? <CircularProgress {...{ size, theme, variant }} /> : children}
+    </UnstyledButton>
   )
 }

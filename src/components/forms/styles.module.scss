@@ -1,0 +1,83 @@
+@import '@/assets/styles/css-modules.scss';
+
+// inputタグに擬似要素は効かない（aタグ・buttonタグは効く）
+.module {
+  display: inline-block;
+  width: 100%;
+  border-radius: 0.5rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #d1d5db;
+  background-color: #f9fafb;
+  padding: 1rem;
+  color: #1f2937;
+  position: relative;
+
+  @include hoverAnime {
+    outline: none; // NOTE:ブラウザのデフォルトフォーカスを消す
+    border-color: #3b82f6;
+    transition: opacity 0.3s ease;
+  }
+  // &:focus {
+  //   outline: none; // NOTE:ブラウザのデフォルトフォーカスを消す
+  //   border-color: #3b82f6;
+  // }
+}
+
+// input-error
+.module[data-error='true'] {
+  background-color: $baby-girl;
+  border: 1px solid $spicy-berry;
+}
+
+// input-disabled
+.module:disabled {
+  background-color: $overlay;
+  border: 1px solid $overlay;
+  opacity: 0.5;
+}
+
+// input-wrapper
+.input-wrapper {
+  display: grid;
+  gap: 3px;
+}
+.input-wrapper-label[aria-disabled='true'] {
+  pointer-events: none;
+}
+.input-wrapper-label {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+}
+.input-wrapper-description {
+  font-size: 1.4rem;
+  color: $basalt-grey;
+}
+.input-wrapper-error {
+  font-size: 1.4rem;
+  color: $spicy-berry;
+}
+
+// input-label
+.input-label {
+  font-weight: bold;
+}
+.input-label-option {
+  display: inline-block;
+  background-color: $basalt-grey;
+  color: white;
+  padding: 2px 8px;
+  font-size: 0.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.input-label-require {
+  display: inline-block;
+  background-color: $spicy-berry;
+  color: white;
+  padding: 2px 8px;
+  font-size: 0.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+}

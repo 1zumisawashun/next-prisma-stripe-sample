@@ -41,7 +41,7 @@ export const BookSummary = ({ book, isBookmarked }: BookDetailProps) => {
           <Button
             type="button"
             onClick={() => addItem(formatCartItem(book))}
-            color="success"
+            theme="success"
             variant="outlined"
           >
             カートに追加する
@@ -49,7 +49,7 @@ export const BookSummary = ({ book, isBookmarked }: BookDetailProps) => {
           <Button
             type="button"
             onClick={() => removeItem(formatCartItem(book).id)}
-            color="danger"
+            theme="danger"
             variant="outlined"
           >
             カートから削除する

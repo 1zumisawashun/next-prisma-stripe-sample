@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react'
-import styles from './input.module.scss'
+import styles from './styles.module.scss'
 import { InputLabel } from './InputLabel'
 
 type InputWrapperProps = {
@@ -9,8 +9,9 @@ type InputWrapperProps = {
   description?: string
   className?: string
   children: ReactNode
-  isOptioned?: Boolean
-  isRequired?: Boolean
+  isOptioned?: boolean
+  isRequired?: boolean
+  disabled?: boolean
 }
 export type InputWrapperPropsPassThroughProps = Omit<
   InputWrapperProps,
@@ -24,19 +25,30 @@ export const InputWrapper: FC<InputWrapperProps> = ({
   description,
   children,
   isOptioned = false,
-  isRequired = false
+  isRequired = false,
+  disabled
 }) => {
   return (
-    <div>
-      <label className={className} htmlFor={id}>
+    <div className={styles['input-wrapper']}>
+      <label
+        className={styles['input-wrapper-label']}
+        htmlFor={id}
+        aria-disabled={disabled}
+      >
         <InputLabel isOptioned={isOptioned} isRequired={isRequired}>
           {label}
         </InputLabel>
-        {children}
       </label>
       {description && (
         <p className={styles['input-wrapper-description']}>{description}</p>
       )}
+      <label
+        className={styles['input-wrapper-label']}
+        htmlFor={id}
+        aria-disabled={disabled}
+      >
+        {children}
+      </label>
       {error && <p className={styles['input-wrapper-error']}>{error}</p>}
     </div>
   )

@@ -29,18 +29,19 @@ export const BookCreateForm = () => {
         <InputText
           name="title"
           label="title"
-          description="titletitletitletitletitle"
-          error="errorerrorerrorerror"
+          // description="titletitletitletitletitle"
+          // error="errorerrorerrorerror"
           value={formData.title}
           onChange={handleChange}
           placeholder="formData.title"
-          isRequired
+          // isRequired
+          // disabled
         />
         <InputText
           name="content"
           label="content"
           description="contentcontentcontentcontentcontent"
-          error="errorerrorerrorerror"
+          error=""
           value={formData.content}
           onChange={handleChange}
           placeholder="formData.content"
@@ -50,7 +51,7 @@ export const BookCreateForm = () => {
           name="category"
           label="category"
           description="categorycategorycategorycategory"
-          error="errorerrorerrorerror"
+          // error="errorerrorerrorerror"
           value={formData.content}
           onChange={handleChange}
           placeholder="formData.content"

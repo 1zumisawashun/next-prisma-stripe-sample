@@ -1,12 +1,21 @@
-import React, { forwardRef, ComponentPropsWithRef, useId } from 'react'
-import styles from './input.module.scss'
+import { forwardRef, ComponentPropsWithRef, useId } from 'react'
+import styles from './styles.module.scss'
 import { InputWrapper, InputWrapperPropsPassThroughProps } from './InputWrapper'
 
 export type InputProps = ComponentPropsWithRef<'input'>
 export type InputFieldProps = InputProps & InputWrapperPropsPassThroughProps
 export const InputText = forwardRef<HTMLInputElement, InputFieldProps>(
   (
-    { label, error, description, className, isOptioned, isRequired, ...props },
+    {
+      label,
+      error,
+      description,
+      className,
+      isOptioned,
+      isRequired,
+      disabled,
+      ...props
+    },
     ref
   ) => {
     const id = useId()
@@ -18,8 +27,16 @@ export const InputText = forwardRef<HTMLInputElement, InputFieldProps>(
         id={id}
         isOptioned={isOptioned}
         isRequired={isRequired}
+        disabled={disabled}
       >
-        <input className={styles.input} {...props} ref={ref} id={id} />
+        <input
+          className={styles.module}
+          {...props}
+          ref={ref}
+          id={id}
+          data-error={Boolean(error)}
+          disabled={disabled}
+        />
       </InputWrapper>
     )
   }
